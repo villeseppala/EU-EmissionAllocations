@@ -1,0 +1,268 @@
+"year","sector","maara","sector2","col","ran","decim","si","lab"
+2013,"ets",31.524,"Päästökauppasektori",NA,0,NA,NA,NA
+2014,"ets",28.813,"Päästökauppasektori",NA,0,NA,NA,NA
+2015,"ets",25.524,"Päästökauppasektori",NA,0,NA,NA,NA
+2016,"ets",27.303,"Päästökauppasektori",NA,0,NA,NA,NA
+2017,"ets",25.237,"Päästökauppasektori",NA,0,NA,NA,NA
+2018,"ets",26.384,"Päästökauppasektori",NA,0,NA,NA,NA
+2019,"ets",23.452,"Päästökauppasektori",NA,0,NA,NA,NA
+2020,"ets",19.668,"Päästökauppasektori",NA,0,NA,NA,NA
+2021,"ets",20.391,"Päästökauppasektori",NA,0,NA,NA,NA
+2022,"ets",19.155,"Päästökauppasektori",NA,0,NA,NA,NA
+2023,"ets",15.502,"Päästökauppasektori",NA,0,NA,NA,NA
+2013,"esd",31.121,"Taakanjakosektori",NA,0,NA,NA,NA
+2014,"esd",29.649,"Taakanjakosektori",NA,0,NA,NA,NA
+2015,"esd",29.437,"Taakanjakosektori",NA,0,NA,NA,NA
+2016,"esd",30.507,"Taakanjakosektori",NA,0,NA,NA,NA
+2017,"esd",29.767,"Taakanjakosektori",NA,0,NA,NA,NA
+2018,"esd",29.549,"Taakanjakosektori",NA,0,NA,NA,NA
+2019,"esd",29.194,"Taakanjakosektori",NA,0,NA,NA,NA
+2020,"esd",27.986,"Taakanjakosektori",NA,0,NA,NA,NA
+2021,"esd",27.212,"Taakanjakosektori",NA,0,NA,NA,NA
+2022,"esd",26.545,"Taakanjakosektori",NA,0,NA,NA,NA
+2023,"esd",25.127,"Taakanjakosektori",NA,0,NA,NA,NA
+2010,"ghg",75.468,"Kokonaispäästöt",NA,0,NA,NA,NA
+2010,"lulucf",-22.378,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2011,"ghg",67.72,"Kokonaispäästöt",NA,0,NA,NA,NA
+2011,"lulucf",-21.62,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2012,"ghg",62.177,"Kokonaispäästöt",NA,0,NA,NA,NA
+2012,"lulucf",-23.342,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2013,"ghg",62.646,"Kokonaispäästöt",NA,0,NA,NA,NA
+2013,"lulucf",-16.557,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2014,"ghg",58.461,"Kokonaispäästöt",NA,0,NA,NA,NA
+2014,"lulucf",-17.541,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2015,"ghg",54.961,"Kokonaispäästöt",NA,0,NA,NA,NA
+2015,"lulucf",-13.131,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2016,"ghg",57.81,"Kokonaispäästöt",NA,0,NA,NA,NA
+2016,"lulucf",-9.493,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2017,"ghg",55.003,"Kokonaispäästöt",NA,0,NA,NA,NA
+2017,"lulucf",-7.032,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2018,"ghg",55.934,"Kokonaispäästöt",NA,0,NA,NA,NA
+2018,"lulucf",2.324,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2019,"ghg",52.646,"Kokonaispäästöt",NA,0,NA,NA,NA
+2019,"lulucf",-3.233,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2020,"ghg",47.654,"Kokonaispäästöt",NA,0,NA,NA,NA
+2020,"lulucf",-5.354,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2021,"ghg",47.604,"Kokonaispäästöt",NA,0,NA,NA,NA
+2021,"lulucf",3.474,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2022,"ghg",45.7,"Kokonaispäästöt",NA,0,NA,NA,NA
+2022,"lulucf",4.443,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2023,"ghg",40.629,"Kokonaispäästöt",NA,0,NA,NA,NA
+2023,"lulucf",-1.346,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2010,"net",53.09,"Nettopäästöt",NA,0,NA,NA,NA
+2011,"net",46.1,"Nettopäästöt",NA,0,NA,NA,NA
+2012,"net",38.835,"Nettopäästöt",NA,0,NA,NA,NA
+2013,"net",46.089,"Nettopäästöt",NA,0,NA,NA,NA
+2014,"net",40.92,"Nettopäästöt",NA,0,NA,NA,NA
+2015,"net",41.83,"Nettopäästöt",NA,0,NA,NA,NA
+2016,"net",48.317,"Nettopäästöt",NA,0,NA,NA,NA
+2017,"net",47.971,"Nettopäästöt",NA,0,NA,NA,NA
+2018,"net",58.258,"Nettopäästöt",NA,0,NA,NA,NA
+2019,"net",49.413,"Nettopäästöt",NA,0,NA,NA,NA
+2020,"net",42.3,"Nettopäästöt",NA,0,NA,NA,NA
+2021,"net",51.078,"Nettopäästöt",NA,0,NA,NA,NA
+2022,"net",50.143,"Nettopäästöt",NA,0,NA,NA,NA
+2023,"net",39.283,"Nettopäästöt",NA,0,NA,NA,NA
+2013,"allocation",33.497,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2014,"allocation",32.977,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2015,"allocation",32.458,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2016,"allocation",31.938,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2017,"allocation",31.771,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2018,"allocation",31.185,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2019,"allocation",30.599,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2020,"allocation",30.013,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2021,"allocation",28.84,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2022,"allocation",27.97,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2023,"allocation",26.626,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2024,"allocation",25.283,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2025,"allocation",23.939,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2026,"allocation",23.0241866666667,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2027,"allocation",21.57064,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2028,"allocation",20.1170933333333,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2029,"allocation",18.6635466666667,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2030,"allocation",17.21,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2012,"metsa",-33.889,"Metsämaa",NA,0,NA,NA,NA
+2010,"metsa",-32.664,"Metsämaa",NA,0,NA,NA,NA
+2011,"metsa",-31.772,"Metsämaa",NA,0,NA,NA,NA
+2014,"metsa",-26.369,"Metsämaa",NA,0,NA,NA,NA
+2013,"metsa",-26.207,"Metsämaa",NA,0,NA,NA,NA
+2015,"metsa",-21.856,"Metsämaa",NA,0,NA,NA,NA
+2016,"metsa",-17.763,"Metsämaa",NA,0,NA,NA,NA
+2020,"metsa",-16.415,"Metsämaa",NA,0,NA,NA,NA
+2017,"metsa",-14.41,"Metsämaa",NA,0,NA,NA,NA
+2019,"metsa",-12.391,"Metsämaa",NA,0,NA,NA,NA
+2023,"metsa",-11.674,"Metsämaa",NA,0,NA,NA,NA
+2018,"metsa",-5.466,"Metsämaa",NA,0,NA,NA,NA
+2021,"metsa",-4.982,"Metsämaa",NA,0,NA,NA,NA
+2022,"metsa",-4.772,"Metsämaa",NA,0,NA,NA,NA
+2018,"puutuote",-4.584,"Puutuotteet",NA,0,NA,NA,NA
+2017,"puutuote",-4.498,"Puutuotteet",NA,0,NA,NA,NA
+2016,"puutuote",-3.818,"Puutuotteet",NA,0,NA,NA,NA
+2021,"puutuote",-3.719,"Puutuotteet",NA,0,NA,NA,NA
+2019,"puutuote",-3.382,"Puutuotteet",NA,0,NA,NA,NA
+2022,"puutuote",-3.251,"Puutuotteet",NA,0,NA,NA,NA
+2014,"puutuote",-3.027,"Puutuotteet",NA,0,NA,NA,NA
+2015,"puutuote",-2.909,"Puutuotteet",NA,0,NA,NA,NA
+2013,"puutuote",-2.367,"Puutuotteet",NA,0,NA,NA,NA
+2023,"puutuote",-2.256,"Puutuotteet",NA,0,NA,NA,NA
+2010,"puutuote",-2.195,"Puutuotteet",NA,0,NA,NA,NA
+2011,"puutuote",-2.171,"Puutuotteet",NA,0,NA,NA,NA
+2012,"puutuote",-1.675,"Puutuotteet",NA,0,NA,NA,NA
+2020,"puutuote",-1.291,"Puutuotteet",NA,0,NA,NA,NA
+2014,"Muut",2.952,"Ruohikkoalueet",NA,0,NA,NA,NA
+2015,"Muut",2.983,"Ruohikkoalueet",NA,0,NA,NA,NA
+2012,"Muut",3.192,"Ruohikkoalueet",NA,0,NA,NA,NA
+2013,"Muut",3.216,"Ruohikkoalueet",NA,0,NA,NA,NA
+2021,"Muut",3.282,"Ruohikkoalueet",NA,0,NA,NA,NA
+2011,"Muut",3.319,"Ruohikkoalueet",NA,0,NA,NA,NA
+2020,"Muut",3.407,"Ruohikkoalueet",NA,0,NA,NA,NA
+2022,"Muut",3.52,"Ruohikkoalueet",NA,0,NA,NA,NA
+2023,"Muut",3.545,"Ruohikkoalueet",NA,0,NA,NA,NA
+2017,"Muut",3.62,"Ruohikkoalueet",NA,0,NA,NA,NA
+2018,"Muut",3.721,"Ruohikkoalueet",NA,0,NA,NA,NA
+2016,"Muut",3.866,"Ruohikkoalueet",NA,0,NA,NA,NA
+2019,"Muut",3.901,"Ruohikkoalueet",NA,0,NA,NA,NA
+2010,"Muut",3.968,"Ruohikkoalueet",NA,0,NA,NA,NA
+2012,"metsajapuu",-35.564,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2010,"metsajapuu",-34.859,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2011,"metsajapuu",-33.943,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2014,"metsajapuu",-29.396,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2013,"metsajapuu",-28.574,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2015,"metsajapuu",-24.765,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2016,"metsajapuu",-21.581,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2020,"metsajapuu",-17.706,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2017,"metsajapuu",-18.908,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2019,"metsajapuu",-15.773,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2023,"metsajapuu",-13.93,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2018,"metsajapuu",-10.05,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2021,"metsajapuu",-8.701,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2022,"metsajapuu",-8.023,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2021,"metsajapuuk",-19.29,"LULUCF-päästökiintiö (2021-2025)","#6A52CC",4,1,0.9,"Nielukiintiö, Mt"
+2022,"metsajapuuk",-19.29,"LULUCF-päästökiintiö (2021-2025)","#6A52CC",4,1,0.9,"Nielukiintiö, Mt"
+2023,"metsajapuuk",-19.29,"LULUCF-päästökiintiö (2021-2025)","#6A52CC",4,1,0.9,"Nielukiintiö, Mt"
+2024,"metsajapuuk",-19.29,"LULUCF-päästökiintiö (2021-2025)","#6A52CC",4,1,0.9,"Nielukiintiö, Mt"
+2025,"metsajapuuk",-19.29,"LULUCF-päästökiintiö (2021-2025)","#6A52CC",4,1,0.9,"Nielukiintiö, Mt"
+2026,"lallocation",-2.71616666666667,"LULUCF-päästökiintiö (2026-2030)","#BC17E6",4,1,0.6,"Nielukiintiö, Mt"
+2027,"lallocation",-3.94279166666667,"LULUCF-päästökiintiö (2026-2030)","#BC17E6",4,1,0.6,"Nielukiintiö, Mt"
+2028,"lallocation",-5.16941666666667,"LULUCF-päästökiintiö (2026-2030)","#BC17E6",4,1,0.6,"Nielukiintiö, Mt"
+2029,"lallocation",-6.39604166666667,"LULUCF-päästökiintiö (2026-2030)","#BC17E6",4,1,0.6,"Nielukiintiö, Mt"
+2030,"lallocation",-7.62266666666667,"LULUCF-päästökiintiö (2026-2030)","#BC17E6",4,1,0.6,"Nielukiintiö, Mt"
+2024,"lulucf",-7.032,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2025,"lulucf",2.324,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2026,"lulucf",-3.233,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2027,"lulucf",-5.354,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2028,"lulucf",3.474,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2029,"lulucf",4.443,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2030,"lulucf",-1.346,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2024,"metsajapuu",-17.706,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2025,"metsajapuu",-18.908,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2026,"metsajapuu",-15.773,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2027,"metsajapuu",-13.93,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2028,"metsajapuu",-10.05,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2029,"metsajapuu",-8.701,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2030,"metsajapuu",-8.023,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2012,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2010,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2011,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2014,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2013,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2015,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2016,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2020,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2017,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2019,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2023,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2018,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2021,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2022,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2024,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2025,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2026,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2027,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2028,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2029,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2030,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2012,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2010,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2011,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2014,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2013,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2015,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2016,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2020,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2017,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2019,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2023,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2018,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2021,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2022,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2024,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2025,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2026,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2027,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2028,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2029,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2030,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2012,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2010,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2011,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2014,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2013,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2015,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2016,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2020,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2017,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2019,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2023,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2018,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2021,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2022,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2024,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2025,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2026,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2027,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2028,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2029,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2030,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2012,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2010,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2011,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2014,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2013,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2015,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2016,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2020,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2017,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2019,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2023,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2018,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2021,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2022,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2024,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2025,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2026,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2027,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2028,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2029,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2030,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2012,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2010,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2011,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2014,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2013,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2015,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2016,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2020,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2017,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2019,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2023,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2018,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2021,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2022,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2024,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2025,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2026,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2027,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2028,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2029,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2030,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"

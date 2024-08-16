@@ -7,7 +7,7 @@ library(data.table)
 library(tidyr)
 library(shinyWidgets)
 
-
+library(shinylive)
 
 
 cumc =hsv(.55,.9,.9)
@@ -17,9 +17,12 @@ emis = "#4ba180"
 
 
 
+usethis::use_github_action(url="https://github.com/posit-dev/r-shinylive/blob/actions-v1/examples/deploy-app.yaml")
 
 
-koki = read
+koki<-read.csv(file="data/koki.csv", header=T,  sep=",", stringsAsFactors = F )
+koki = as.data.table(koki)
+
 lyear = koki[sector == "metsajapuu" & maara <1000000, max(year)]
 
 

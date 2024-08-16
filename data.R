@@ -496,4 +496,5 @@ koki[sector =="cost",lab :="Kustannus yksiköiden hankinnasta, M€"]
 koki[sector =="debt", lab :="Kustannusten kertymä, M€"]
 koki[sector =="price", lab :="Yksiköiden keskihinta, €/t"]
 
+write.csv(koki,"data/koki.csv", row.names = FALSE)
 
