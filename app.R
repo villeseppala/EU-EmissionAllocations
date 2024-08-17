@@ -78,7 +78,13 @@ ui <- fluidPage(
   tags$style(HTML(" .js-irs-2 .irs-bar {background: #bc810d} .js-irs-2 .irs-single {background: #bc810d};" )),
   tags$style(HTML(" .js-irs-0 .irs-bar {background: #4ba180} .js-irs-4 .irs-single {background: #bc810d};" )),
   
-  
+  div(          style = " background-color:#484B4D!important;    ",
+                
+                fluidRow( style = " background-color:#D6D6D6!important; padding: -.2vw; margin: -.1vw; ",
+                          h5(
+                            tags$b("Metsämaan ja puutuotteiden tavoitteet ja päästöt kaudella 2021-2025", 
+                                   style="color: blue; padding: 1vw;")
+                          ),
   
   # Sidebar panel for inputs ----
   column(3,
@@ -149,14 +155,14 @@ ui <- fluidPage(
   ),
   column(9,
   # Output: Histogram ----
-  plotOutput(outputId = "distPlot"),
+  # plotOutput(outputId = "distPlot"),
   
   div(
     # style="  box-shadow: 15px 15px 14px grey inset; padding: 19px;",
     
     # style = " background-color:grey!important;",
     plotOutput(outputId = "plotmetsajapuu", height = "450px")
-  )
+  )))
 ))
 
 # Define server logic required to draw a histogram ----
