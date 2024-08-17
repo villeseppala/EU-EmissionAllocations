@@ -36,18 +36,62 @@ ui <- fluidPage(
   # App title ----
   title = "Hello Shiny!",
   
+  tags$script(HTML('
+                     
+       
+      var dim = [0, 0];
+                                $(document).on("shiny:connected", function(e) {
+                                    dim[0] = window.innerWidth;
+                                    dim[1] = window.innerHeight;
+                                    Shiny.onInputChange("dim", dim);
+                                });
+                                $(window).resize(function(e) {
+                                    dim[0] = window.innerWidth;
+                                    dim[1] = window.innerHeight;
+                                    Shiny.onInputChange("dim", dim);
+                                }); 
+
+                    ')),
+  
+  
+  tags$style(HTML(" 
+                  .js-irs-0 .irs-bar  {background: purple}  .js-irs-0 .irs-single {background: purple}; 
+                                    .js-irs-2 .irs-bar {background: purple}; 
+
+                  .js-irs-0 .irs-max {background-color: transparent !important font-size: 5vw} 
+                  hr {
+  border-top: 1px solid grey; padding: 0p; margin: 0px;
+}
+                  .irs--shiny .irs-min, .irs--shiny .irs-max {
+    
+    font-size: 13px;
+    
+    background-color: transparent;
+
+                  }
+.irs--shiny .irs-single { font-size: 15px; background: transparent; color:purple}; 
+
+
+")),
+  tags$style(HTML(" .js-irs-1 .irs-single .irs-bar {background: #4ba180};" )),
+  tags$style(HTML(" .js-irs-3 .irs-bar {background: #4ba180} .js-irs-3 .irs-single {background: #bc810d};" )),
+  tags$style(HTML(" .js-irs-2 .irs-bar {background: #bc810d} .js-irs-2 .irs-single {background: #bc810d};" )),
+  tags$style(HTML(" .js-irs-0 .irs-bar {background: #4ba180} .js-irs-4 .irs-single {background: #bc810d};" )),
+  
+  
+  
   # Sidebar panel for inputs ----
   column(3,
     
     # Input: Slider for the number of bins ----
-    sliderInput(
-      inputId = "bins",
-      label = "Number of bins:",
-      min = 1,
-      max = 50,
-      value = 30
-    ),
-    
+    # sliderInput(
+    #   inputId = "bins",
+    #   label = "Number of bins:",
+    #   min = 1,
+    #   max = 50,
+    #   value = 30
+    # ),
+    # 
     
     # background-color:#e7e7e7!important;   
     div(        
@@ -211,19 +255,19 @@ server <- function(input, output) {
   # 1. It is "reactive" and therefore should be automatically
   #    re-executed when inputs (input$bins) change
   # 2. Its output type is a plot
-  output$distPlot <- renderPlot({
-    x <- faithful$waiting
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    hist(
-      x,
-      breaks = bins,
-      col = "#75AADB",
-      border = "white",
-      xlab = "Waiting time to next eruption (in mins)",
-      main = "Histogram of waiting times"
-    )
-  })
+  # output$distPlot <- renderPlot({
+  #   x <- faithful$waiting
+  #   bins <- seq(min(x), max(x), length.out = input$bins + 1)
+  #   
+  #   hist(
+  #     x,
+  #     breaks = bins,
+  #     col = "#75AADB",
+  #     border = "white",
+  #     xlab = "Waiting time to next eruption (in mins)",
+  #     main = "Histogram of waiting times"
+  #   )
+  # })
   
   
   output$plotmetsajapuu <- renderPlot({
