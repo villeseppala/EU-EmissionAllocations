@@ -31,13 +31,13 @@ koki1 = koki[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost", "cumu", 
 koki2 = koki[sector %in% c("lulucf", "lallocation", "diff", "cost", "cumu"),]
 
 
-ui <- page_sidebar(
+ui <- fluidPage(
   
   # App title ----
   title = "Hello Shiny!",
   
   # Sidebar panel for inputs ----
-  sidebar = sidebar(
+  column(3,
     
     # Input: Slider for the number of bins ----
     sliderInput(
@@ -103,10 +103,17 @@ ui <- page_sidebar(
     
     
   ),
-  
+  column(9,
   # Output: Histogram ----
-  plotOutput(outputId = "distPlot")
-)
+  plotOutput(outputId = "distPlot"),
+  
+  div(
+    # style="  box-shadow: 15px 15px 14px grey inset; padding: 19px;",
+    
+    # style = " background-color:grey!important;",
+    plotOutput(outputId = "plotmetsajapuu", height = "450px")
+  )
+))
 
 # Define server logic required to draw a histogram ----
 server <- function(input, output) {
@@ -217,6 +224,173 @@ server <- function(input, output) {
       main = "Histogram of waiting times"
     )
   })
+  
+  
+  output$plotmetsajapuu <- renderPlot({
+    luk = 2010
+    if (rv$view ==1) {
+      luk = 2005
+    } else if (rv$view==2) {
+      luk =2010
+    } else {
+      luk =2015
+    }
+    # luk = 2010
+    
+    
+    koke = koke1()
+    koke = as.data.table(koke)
+    koke = koke[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost",  "price") & year %in% C(luk:2025)]
+    kokn = koke[sector %in% c( "diff") & year %in% 2021]
+    
+    mi = as.numeric(unique(koke[sector %in% c("metsajapuu", "metsajapuuk", "diff"),min(maara, na.rm=TRUE)]))
+    ma = as.numeric(unique(koke[sector %in% c("metsajapuu", "metsajapuuk", "diff"),max(maara, na.rm=TRUE)]))
+    hi = ma-mi
+    # ran =.07
+    ba =5.25
+    koke[,place := ma + ba + ran*0.05*hi]
+    
+    bg = "#e7e7e7"
+    
+    scaleFactor <- unique(max(koke[sector %in% c("metsajapuu", "metsajapuuk", "diff"), maara], na.rm=T))/unique(max(koke[sector %in% c("cost"), maara], na.rm=T))
+    
+    koke[,hmaara:=maara*scaleFactor]
+    
+    gup = ggplot(data=koke, aes(x=year, group=sector, fill=col, color=col )) + 
+      
+      geom_text(data=koke[year %in% c(2021) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "price",  "cumu", "cost", "debt"),],
+                aes(x=2020.5, y=place, label=lab), size=5, hjust=1, fontface="bold")+
+      
+      
+      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff"),],
+                aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
+      
+      
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost"),],
+                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
+      
+      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "cost", "debt", "price"),],
+                aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
+      
+      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuuk"),],
+                aes(x=year, y=place+.05*hi, label=year), size=5, fontface="bold", color ="black")+
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
+                aes(x=year+1.5, y=place+.05*hi, label="Kertymä"), size=5, fontface="bold", color ="black")+
+      
+      geom_rect(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
+                aes(xmin=year+1.5-.9, xmax=year+1.5+.9, ymax=(place+1*0.05*hi)+.05*hi, ymin=(place-6*0.05*hi)+.06*hi), 
+                color="red", alpha=0, size=1)+
+      
+      
+      
+      geom_text(data=koke[year %in% c(2021:2024) & sector %in% c("cumu"),],
+                aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")), size=5, fontface="bold")+
+      geom_label(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
+                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ","), fill=bg, color="red"), size=5, fontface="bold", alpha=0,label.size=1)+
+      geom_label(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
+                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ","), fill=bg), size=5, fontface="bold", alpha=0,label.size=0)+
+      
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
+                aes(x=2024.7, y=ma, 
+                    label=
+                      "
+                 Huomioita:
+                
+                 Ei sisällä muita maankäyttösektorin 
+                 alasektoreita ja niiden tavoitteita. 
+                 Niiden vaikutus kuitenkin pieni 
+                 kokonaiskustannukseen. 
+                
+                 Vuodesta 2026 alkaen 
+                 maankäyttösektoria käsitellään
+                 kokonaisuutena (alempi osio). 
+                
+                 Nielukiintiö perustuu 
+                 Luonnonvarakeskuksen arvioon 
+                 ja tulee tarkentumaan.
+                 Myös päästötilastot tarkentuvat.
+                 
+                 "), size=3.5,color="black", fontface="bold", hjust=0, vjust=1)+
+      
+      
+      
+      
+      
+      
+      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("metsajapuuk")], 
+               aes(x=year, y = maara,fill=col, color=col, width=si), 
+               stat='identity', position='stack' )+
+      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("metsajapuu"),], 
+               aes(x=year, y = maara,fill=col, width=si), 
+               stat='identity', position='stack', alpha=.99 )+ 
+      
+      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("cumu"),], 
+               aes(x=year, y = maara,fill=col, width=si), 
+               stat='identity', position='stack', alpha=.99 )+
+      
+      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("diff"),], 
+               aes(x=year, y = maara,fill=col,  width=si), 
+               stat='identity', position='stack', linewidth =.6 )+
+      
+      # geom_area(data=koke[sector %in% c("cost"),], alpha=.3)+
+      
+      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=4, alpha=.6)+
+      geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=1.5)+
+      # geom_area(data=koke[sector %in% c("cost"),], aes(y=hmaara),  alpha=.4)+
+      
+      # geom_line(data=koke[sector %in% c("cost"),], aes(y=maara),  size=2)+
+      # 
+      # geom_point(data=koke[sector %in% c("cost"),],aes(y=maara*scaleFactor/scaleFactor),   size=2)+
+      geom_line(data=koke[sector %in% c("debt"),],  aes(y=hmaara),  size=3,alpha=.6)+
+      
+      geom_hline(aes(yintercept=0), size=.4, color="black", linetype="dashed")+
+      
+      coord_cartesian(xlim=c(luk,  2030), 
+                      # ylim=c(mi, max(90, ma)),
+                      clip ="off") +
+      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
+      
+      scale_x_continuous(breaks =seq(luk, 2030, by=1))   +
+      # scale_y_continuous(breaks =seq(mi, ma, by=10))   +
+      
+      scale_alpha_identity() + 
+      
+      scale_fill_identity() + 
+      scale_color_identity() +
+      theme(
+        axis.text.x = element_text(size=15), 
+        # legend.text=element_text(size =14, color=teksvari),
+        # axis.text.y= element_blank(),
+        axis.title.y.left=element_text(color="blue"),
+        axis.text.y.left=element_text(color="blue", size=15),
+        axis.title.y.right=element_text(color="red"),
+        axis.text.y.right=element_text(color="red", size=15),
+        # axis.title.y= element_blank(),
+        plot.background = element_rect(fill =bg ), 
+        panel.background = element_rect(fill = bg), 
+        # axis.title.x=element_blank(),
+        legend.title=element_blank(),
+        panel.grid.major.y=element_line(color="grey"),
+        panel.grid.minor=element_blank(),
+        panel.grid.major.x=element_blank(),
+        legend.background = element_rect(fill=bg, size=0, color=bg),
+        # legend.text=element_text(color=teksvari)
+        # plot.margin = unit(c(-10,-25,-15,-65), "mm"),
+        # legend.position = c(.53,.535)
+      )
+    
+    # gup =     gup+    coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")
+    
+    gup
+    # +
+    #   geom_point(data=koke[sector %in% c("lulucf"),], aes(y=tse), color="green") + 
+    #   geom_point(data=koke[sector %in% c("metsajapuu"),], aes(y=tse), color="green")  +
+    # 
+    # 
+    # #   
+    #    geom_point(data=koke[year %in% c(2021:2030) & sector %in% c("lulucf", "metsajapuu"),], aes(y=meno), color="purple")
+  })
+  
 }
 
 # Create Shiny app ----
