@@ -1,7 +1,19 @@
 library(shiny)
 library(bslib)
+
+library(shiny)
+library(ggplot2)
+# library(pxweb)
+library(data.table)
+# library(ggplot2)
+# library(tibble)
+library(tidyr)
+library(shinyWidgets)
+
 #
 # Define UI for app that draws a histogram ----
+koki<-read.csv(file="data/koki.csv", header=T,  sep=",", stringsAsFactors = F )
+
 ui <- page_sidebar(
   
   # App title ----
