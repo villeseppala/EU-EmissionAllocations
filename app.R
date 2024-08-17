@@ -17,7 +17,7 @@ emis = "#4ba180"
 
 
 
-usethis::use_github_action(url="https://github.com/posit-dev/r-shinylive/blob/actions-v1/examples/deploy-app.yaml")
+# usethis::use_github_action(url="https://github.com/posit-dev/r-shinylive/blob/actions-v1/examples/deploy-app.yaml")
 
 
 koki<-read.csv(file="data/koki.csv", header=T,  sep=",", stringsAsFactors = F )
