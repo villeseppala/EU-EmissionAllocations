@@ -13,7 +13,7 @@ library(tidyr)
 library(ggtext)
 # install.packages("ggtext")
 
-url <- "https://pxnet2.stat.fi:443/PXWeb/api/v1/fi/StatFin/ymp/khki/statfin_khki_pxt_111k.px"
+# url <- "https://pxnet2.stat.fi:443/PXWeb/api/v1/fi/StatFin/ymp/khki/statfin_khki_pxt_111k.px"
 url <- "https://pxweb2.stat.fi:443/PxWeb/api/v1/fi/StatFin/khki/statfin_khki_pxt_138v.px"
 
 
@@ -403,7 +403,7 @@ kok[sector == "allocation" & year %in% c(2026:2029), maara:=c(m26,m27,m28,m29)]
 lyear = kok[sector == "metsajapuu" & maara <1000000, max(year)]
 
 koki =as.data.table(kok)
-koki = koki[year > 2009,]
+koki = koki[year > 2004,]
 lyear = koki[sector == "metsajapuu" & maara <1000000, max(year)]
 
 dif = 2030-lyear-1
@@ -490,9 +490,9 @@ koki[sector =="cumu", lab :="Ylitysten/alitusten kertymä, Mt"]
 koki[sector =="diff", lab :="Kiintiön ylitys/alitus, Mt"]
 koki[sector =="metsajapuuk", lab :="Nielukiintiö, Mt"]
 koki[sector =="metsajapuu", lab :="Nettonielu, Mt"]
-koki[sector =="lallocation",lab :="Nielukiintiö, Mt"]
+koki[sector =="lallocation",lab :="EU-nielukiintiö, Mt"]
 koki[sector =="lulucf", lab :="Nettonielu, Mt"]
-koki[sector =="cost",lab :="Kustannus yksiköiden hankinnasta, M€"]
+koki[sector =="cost",lab :="Kustannus yksiköistä, M€"]
 koki[sector =="debt", lab :="Kustannusten kertymä, M€"]
 koki[sector =="price", lab :="Yksiköiden keskihinta, €/t"]
 

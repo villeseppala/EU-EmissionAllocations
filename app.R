@@ -7,13 +7,13 @@ library(ggplot2)
 library(data.table)
 # library(ggplot2)
 # library(tibble)
-library(tidyr)
+# library(tidyr)
 library(shinyWidgets)
 
 
 cumc =hsv(.55,.9,.9)
 debt = hsv(.85, .9,.9)
-alloc = hsv(.7, .6,.8)
+allo = hsv(.7, .6,.8)
 emis = "#4ba180"
 #
 # Define UI for app that draws a histogram ----
@@ -55,11 +55,7 @@ ui <- fluidPage(
   
   
   tags$style(HTML(" 
-                  .js-irs-0 .irs-bar  {background: purple}  .js-irs-0 .irs-single {background: purple}; 
-                                    .js-irs-2 .irs-bar {background: purple}; 
-
-                  .js-irs-0 .irs-max {background-color: transparent !important font-size: 5vw} 
-                  hr {
+                                   hr {
   border-top: 1px solid grey; padding: 0p; margin: 0px;
 }
                   .irs--shiny .irs-min, .irs--shiny .irs-max {
@@ -69,14 +65,27 @@ ui <- fluidPage(
     background-color: transparent;
 
                   }
-.irs--shiny .irs-single { font-size: 15px; background: transparent; color:purple}; 
 
 
 ")),
-  tags$style(HTML(" .js-irs-1 .irs-single .irs-bar {background: #4ba180};" )),
-  tags$style(HTML(" .js-irs-3 .irs-bar {background: #4ba180} .js-irs-3 .irs-single {background: #bc810d};" )),
-  tags$style(HTML(" .js-irs-2 .irs-bar {background: #bc810d} .js-irs-2 .irs-single {background: #bc810d};" )),
-  tags$style(HTML(" .js-irs-0 .irs-bar {background: #4ba180} .js-irs-4 .irs-single {background: #bc810d};" )),
+# .irs--shiny .irs-single { font-size: 15px; background: transparent; color:purple}; 
+
+tags$style(HTML("
+          .js-irs-0 .irs-bar, .js-irs-0 .irs-single {background: #4ba180}
+                    .js-irs-1 .irs-bar, .js-irs-1 .irs-single {background: #4ba180} 
+    .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: #bc810d}; 
+                  .js-irs-0 .irs-max {background-color: transparent !important font-size: 5vw} 
+       
+                
+                ")),
+# tags$style(HTML(" .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: #bc810d};")),
+
+  # tags$style(HTML(" " )),
+  tags$style(HTML(" .js-irs-3 .irs-bar {background: #4ba180}
+                  .js-irs-3 .irs-single {background: #bc810d};" )),
+  # tags$style(HTML(" .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: #bc810d};")),
+  tags$style(HTML("
+                  .js-irs-4 .irs-single {background: #bc810d};" )),
   
   div(          style = " background-color:#484B4D!important;    ",
                 
@@ -112,23 +121,29 @@ ui <- fluidPage(
       #                        value=-14, min=-35, max=0,post = " Mt" 
       #                        # style = "background: black;"
       #                        ),
+      div(        
+        style = " background-color:#e7e7e7!important; margin: .4vw;   margin-right: -0.2vw; padding: .2vw; color:#4ba180;",
       sliderTextInput(
         "lulucf2024", label = "Nettonielu 2024:", 
         choices = seq(from = 0, to = -35, by = -1),
         selected = -14,
         width = "100%",
-        
-        post = " Mt"
-      ),
+        # pre = "2024: 
+        # ",
+        post = " Mt",
+        grid =T
+      )),
       hr(),
-      
+      div(        
+        style = " background-color:#e7e7e7!important; margin: .4vw;   margin-right: -0.2vw; padding: .2vw;color:#4ba180;",
+        
       sliderTextInput(
         "lulucf2025", label = "Nettonielu 2025:", 
         choices = seq(from = 0, to = -35, by = -1),
         selected = -14,
         width = "100%",
         post = " Mt"
-      ),
+      )),
       hr(),
       
       #    numericInput("pricepre", "Aseta hintataso sektorilla metsämaa 2021-2025", 20,min=0, max=200),
@@ -137,21 +152,48 @@ ui <- fluidPage(
         tags$b("2021-2023-nielu alustavista tilastoista", 
                # style="color: green;"
                
+        )),
+      
+      h5(
+        tags$b("Kauden 2021-2025 nettonielu", 
+               # style="color: green;"
+               
         ))
+      
+      )
       ,
+      div(style = "border-color: red; border-style: solid; border-size: .1px; padding: .2vw;",
+          uiOutput(style = "margin-left: -0px; border-color: red;","difa")),
+      
       hr(),
-      
-      
-      
-      
-      div( style = " color:#bc810d!important;",
+    
+      div( style = "background-color:#e7e7e7!important; margin: .4vw;   margin-right: -0.2vw; padding: .2vw; color:#bc810d!important;",
            sliderInput("pricepre", label = "Kauden yksiköiden keskihinta", 
-                       value=20, min=0, max=100,post = " €/t", animate = T))),
+                       value=20, min=0, max=100,post = " €/t")),
     # textOutput("pul"),
     div(style = "border-color: red; border-style: solid; border-size: .1px; padding: .2vw;",
         uiOutput(style = "margin-left: -0px; border-color: red;","pula")),
+    hr(),
+    hr(),
+    hr(),
     
-    
+    div(        
+      style = " background-color:#e7e7e7!important; margin: .4vw;   margin-right: -0.2vw; padding: .2vw;color:#4ba180;",
+      
+      sliderTextInput(
+        "maa2025", label = "Maankäyttösektorin muiden tilinpitoluokkien laskennallinen päästö kaudelta:", 
+        choices = seq(from = 0, to = 30, by = 1),
+        selected = 14,
+        width = "100%",
+        post = " Mt"
+      )),
+    div(style = "border-color: red; border-style: solid; border-size: .1px; padding: .2vw;",
+        uiOutput(style = "margin-left: -0px; border-color: red;","totu")),
+    h5(
+      tags$b("Huom: Laskelma ei huomioi mahdollisia ns. metsäjoustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa. Tällöin yksiköiden hinta on todennäköisesti hyvin lähellä nollaa tai käytännössä nolla.", 
+             # style="color: green;"
+             
+      )),  
   ),
   column(9,
   # Output: Histogram ----
@@ -161,7 +203,7 @@ ui <- fluidPage(
     # style="  box-shadow: 15px 15px 14px grey inset; padding: 19px;",
     
     # style = " background-color:grey!important;",
-    plotOutput(outputId = "plotmetsajapuu", height = "450px")
+    plotOutput(outputId = "plotmetsajapuu", height = "500px")
   )))
 ))
 
@@ -170,23 +212,47 @@ server <- function(input, output) {
   
   
   
+  
   rv <- reactiveValues(cums =0)
   rv <- reactiveValues(cul ="Kustannus")
   rv <- reactiveValues(view =2)
+  rv <- reactiveValues(fonts =1)
   
   
+  # different setting for different screen sizes
   observeEvent(input$dim, {
     
     if (input$dim[1] >1800) {
       rv$view = 1
     } 
-    else  if (input$dim[1] >1150 & input$dim[1] <1800) {
+    else  if (input$dim[1] >1300 & input$dim[1] <1800) {
       rv$view = 2
     } else {
       rv$view = 3
+      rv$fonts = input$dim[1]/1300
     }
   })
   
+  
+  
+  output$difa= renderText({
+    paste(
+      rv$cul2,
+      "\n",
+      '<br><span style=\"color:',allo,'\"><b>',  abs(rv$cumalloi),  
+      " Mt ",'</b></span>'," - ",
+      
+      '<span style=\"color:',emis,'\"><b>',  abs(rv$cumsinki),  
+      
+      # '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, "€/t ",
+      " Mt ", '</span>',
+      "= ",
+      '<span style=\"color:', debt, '\"><b>', 
+      '<span style=\"color:',cumc,'\"><b>',  rv$cums,  
+      
+      # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
+      " Mt",'</b></span>',
+      sep ="")})
   
   
   output$pula= renderText({
@@ -195,12 +261,30 @@ server <- function(input, output) {
       "\n",
       '<br><span style=\"color:',cumc,'\"><b>',  rv$cums,  
       " Mt ",'</b></span>'," x ",
-      '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, "€/t ",'</b></span>',"= ",
+      '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
       '<span style=\"color:', debt, '\"><b>', 
       format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " milj. €",'</b></span>',
       sep ="")})
   
+  
+  output$totu= renderText({
+    paste(
+      rv$cul3,
+      "\n",
+      '<span style=\"color:', debt, '\"><b>',
+      format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
+      '</span>',
+      " + ",'</b>',
+      '<span style=\"color:', "#bc810d", '\"><b>',  input$maa2025, " Mtt ",'</b></span>',
+      " x ",
+      '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
+      
+    
+      '<span style=\"color:', debt, '\"><b>', 
+      format(round((input$pricepre*rv$cumsi+input$pricepre*input$maa2025),0), nsmall=0, decimal.mark=","),
+      " milj. €",'</b></span>',
+      sep ="")})
   
   koke1=reactive({
     koki =copy(koki1)
@@ -237,11 +321,18 @@ server <- function(input, output) {
     koki = koki[year %in% c(2021:2025)& sector =="debt", maara :=mora]
     
     koki = koki[year %in% c(2021:2025)& sector =="price", maara :=input$pricepre]
+    koki[year %in% c(2021:2025)& sector =="price", maarab :=maara]
     
     # koki= koki[year %in% c(2021:2025) & sector =="debt", maara := koki[year %in% c(2021:2025) &sector=="cumu", maara]*input$pricepre]
     
+    rv$cumsink= format(round(koki[year %in% 2025 & sector =="metsajapuu", maarab],1), nsmall=1, decimal.mark=",")
+    rv$cumsinki= koki[year %in% 2025 & sector =="metsajapuu", maarab]  
+  
+    rv$cumallo= format(round(koki[year %in% 2025 & sector =="metsajapuuk", maarab],1), nsmall=1, decimal.mark=",")
+    rv$cumalloi= koki[year %in% 2025 & sector =="metsajapuuk", maarab]  
     
-    rv$cums= format(round(koki[year %in% 2025 & sector =="cumu", maara],1), nsmall=1, decimal.mark=",")
+    
+      rv$cums= format(round(koki[year %in% 2025 & sector =="cumu", maara],1), nsmall=1, decimal.mark=",")
     rv$cumsi= koki[year %in% 2025 & sector =="cumu", maara]
     
     if (rv$cums > 0) {
@@ -249,6 +340,20 @@ server <- function(input, output) {
     } else {
       rv$cul1 = "Tuotto yksiköiden myynnistä:"
     }
+    
+    if (rv$cums > 0) {
+      rv$cul3 = "Kokonaiskustannus yksiköiden hankinnasta maankäyttösektorilla:"
+    } else {
+      rv$cul3 = "Kokonaistuotto yksiköiden myynnistä maankäyttösektorilla:"
+    }
+    
+    if (rv$cums > 0) {
+      rv$cul2 = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+    } else {
+      rv$cul2 = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+    }
+    
+    
     
     koki
   })
@@ -287,6 +392,7 @@ server <- function(input, output) {
     }
     # luk = 2010
     
+    f = rv$fonts
     
     koke = koke1()
     koke = as.data.table(koke)
@@ -298,7 +404,7 @@ server <- function(input, output) {
     hi = ma-mi
     # ran =.07
     ba =5.25
-    koke[,place := ma + ba + ran*0.05*hi]
+    koke[,place := ma + ba + ran*0.064*hi]
     
     bg = "#e7e7e7"
     
@@ -308,39 +414,65 @@ server <- function(input, output) {
     
     gup = ggplot(data=koke, aes(x=year, group=sector, fill=col, color=col )) + 
       
-      geom_text(data=koke[year %in% c(2021) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "price",  "cumu", "cost", "debt"),],
-                aes(x=2020.5, y=place, label=lab), size=5, hjust=1, fontface="bold")+
-      
-      
-      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff"),],
-                aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
-      
-      
-      geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
-      
-      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "cost", "debt", "price"),],
-                aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
-      
+      # geom_text(data=koke[year %in% c(2021) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "price",  "cumu", "cost", "debt"),],
+      #           aes(x=2020.5, y=place, label=lab), size=5, hjust=1, fontface="bold")+
+      # 
+      # 
+      # geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff"),],
+      #           aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
+      # 
+      # 
+      #     
+      # geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "cost", "debt", "price"),],
+      #           aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")), size=5, fontface="bold")+
+      # 
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuuk"),],
-                aes(x=year, y=place+.05*hi, label=year), size=5, fontface="bold", color ="black")+
+                aes(x=year, y=place+.05*hi, label=year), size=5*f, fontface="bold", color ="black")+
+     
+      geom_rect(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost", "price"),],
+                aes(xmin=luk, xmax=year+1.5+.9, ymax=(place+0.03*hi), ymin=(place-0.03*hi),
+                    fill=col), 
+                  size=0)+
+      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff"),],
+                aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")),
+                size=5*f, fontface="bold", color="white")+
+      geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "price", "cost"),],
+                aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ",")),
+                size=5*f, fontface="bold", color="white")+
+      
+      
+      geom_text(data=koke[year %in% c(2021) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "price",  "cumu", "cost", "debt"),],
+                aes(x=2020.2, y=place, label=paste0(lab, ":")), 
+                size=5*f, hjust=1, fontface="bold", color="white")+
+      
+      geom_text(data=koke[year %in% c(2021:2024) & sector %in% c("cumu"),],
+                aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")),
+                size=5*f, fontface="bold")+
+      geom_label(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
+                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ","), fill=bg, color="red"),
+                 size=5*f, fontface="bold", alpha=0,label.size=1)+
+      geom_label(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
+                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ","), fill=bg), 
+                 size=5*f, fontface="bold", alpha=0,label.size=0)+
+      
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff"),],
+                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")),
+                size=5, fontface="bold", color="white")+
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("cost", "price"),],
+                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ",")),
+                size=5, fontface="bold", color="white")+
+      
       geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
                 aes(x=year+1.5, y=place+.05*hi, label="Kertymä"), size=5, fontface="bold", color ="black")+
       
+      
       geom_rect(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
-                aes(xmin=year+1.5-.9, xmax=year+1.5+.9, ymax=(place+1*0.05*hi)+.05*hi, ymin=(place-6*0.05*hi)+.06*hi), 
+                aes(xmin=year+1.5-.9, xmax=year+1.5+.9, ymax=(place+1*0.05*hi)+.05*hi, ymin=(place-6*0.06*hi)+.06*hi), 
                 color="red", alpha=0, size=1)+
       
       
       
-      geom_text(data=koke[year %in% c(2021:2024) & sector %in% c("cumu"),],
-                aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")), size=5, fontface="bold")+
-      geom_label(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
-                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ","), fill=bg, color="red"), size=5, fontface="bold", alpha=0,label.size=1)+
-      geom_label(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
-                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ","), fill=bg), size=5, fontface="bold", alpha=0,label.size=0)+
-      
-      geom_text(data=koke[year %in% c(2025) & sector %in% c("cumu"),],
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("diff"),],
                 aes(x=2024.7, y=ma, 
                     label=
                       "
@@ -348,8 +480,6 @@ server <- function(input, output) {
                 
                  Ei sisällä muita maankäyttösektorin 
                  alasektoreita ja niiden tavoitteita. 
-                 Niiden vaikutus kuitenkin pieni 
-                 kokonaiskustannukseen. 
                 
                  Vuodesta 2026 alkaen 
                  maankäyttösektoria käsitellään
@@ -360,7 +490,7 @@ server <- function(input, output) {
                  ja tulee tarkentumaan.
                  Myös päästötilastot tarkentuvat.
                  
-                 "), size=3.5,color="black", fontface="bold", hjust=0, vjust=1)+
+                 "), size=3.5*f,color="black", fontface="bold", hjust=0, vjust=1)+
       
       
       
@@ -395,7 +525,7 @@ server <- function(input, output) {
       
       geom_hline(aes(yintercept=0), size=.4, color="black", linetype="dashed")+
       
-      coord_cartesian(xlim=c(luk,  2030), 
+      coord_cartesian(xlim=c(luk,  2032), 
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
@@ -408,14 +538,14 @@ server <- function(input, output) {
       scale_fill_identity() + 
       scale_color_identity() +
       theme(
-        axis.text.x = element_text(size=15), 
+        axis.text.x = element_text(size=15*f), 
         # legend.text=element_text(size =14, color=teksvari),
         # axis.text.y= element_blank(),
         axis.title.y.left=element_text(color="blue"),
-        axis.text.y.left=element_text(color="blue", size=15),
+        axis.text.y.left=element_text(color="blue", size=15*f),
         axis.title.y.right=element_text(color="red"),
-        axis.text.y.right=element_text(color="red", size=15),
-        # axis.title.y= element_blank(),
+        axis.text.y.right=element_text(color="red", size=15*f),
+         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ), 
         panel.background = element_rect(fill = bg), 
         # axis.title.x=element_blank(),

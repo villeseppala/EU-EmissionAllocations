@@ -21,6 +21,16 @@
 2021,"esd",27.212,"Taakanjakosektori",NA,0,NA,NA,NA
 2022,"esd",26.545,"Taakanjakosektori",NA,0,NA,NA,NA
 2023,"esd",25.127,"Taakanjakosektori",NA,0,NA,NA,NA
+2005,"ghg",69.713,"Kokonaispäästöt",NA,0,NA,NA,NA
+2005,"lulucf",-24.85,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2006,"ghg",81.085,"Kokonaispäästöt",NA,0,NA,NA,NA
+2006,"lulucf",-28.748,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2007,"ghg",79.413,"Kokonaispäästöt",NA,0,NA,NA,NA
+2007,"lulucf",-19.101,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2008,"ghg",71.26,"Kokonaispäästöt",NA,0,NA,NA,NA
+2008,"lulucf",-21.682,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2009,"ghg",67.63,"Kokonaispäästöt",NA,0,NA,NA,NA
+2009,"lulucf",-33.906,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
 2010,"ghg",75.468,"Kokonaispäästöt",NA,0,NA,NA,NA
 2010,"lulucf",-22.378,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
 2011,"ghg",67.72,"Kokonaispäästöt",NA,0,NA,NA,NA
@@ -49,6 +59,11 @@
 2022,"lulucf",4.443,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
 2023,"ghg",40.629,"Kokonaispäästöt",NA,0,NA,NA,NA
 2023,"lulucf",-1.346,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.9,"Nettonielu, Mt"
+2005,"net",44.863,"Nettopäästöt",NA,0,NA,NA,NA
+2006,"net",52.337,"Nettopäästöt",NA,0,NA,NA,NA
+2007,"net",60.312,"Nettopäästöt",NA,0,NA,NA,NA
+2008,"net",49.578,"Nettopäästöt",NA,0,NA,NA,NA
+2009,"net",33.724,"Nettopäästöt",NA,0,NA,NA,NA
 2010,"net",53.09,"Nettopäästöt",NA,0,NA,NA,NA
 2011,"net",46.1,"Nettopäästöt",NA,0,NA,NA,NA
 2012,"net",38.835,"Nettopäästöt",NA,0,NA,NA,NA
@@ -81,20 +96,27 @@
 2028,"allocation",20.1170933333333,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
 2029,"allocation",18.6635466666667,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
 2030,"allocation",17.21,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2009,"metsa",-47.805,"Metsämaa",NA,0,NA,NA,NA
+2006,"metsa",-36.448,"Metsämaa",NA,0,NA,NA,NA
+2005,"metsa",-35.067,"Metsämaa",NA,0,NA,NA,NA
 2012,"metsa",-33.889,"Metsämaa",NA,0,NA,NA,NA
 2010,"metsa",-32.664,"Metsämaa",NA,0,NA,NA,NA
+2008,"metsa",-32.231,"Metsämaa",NA,0,NA,NA,NA
 2011,"metsa",-31.772,"Metsämaa",NA,0,NA,NA,NA
 2014,"metsa",-26.369,"Metsämaa",NA,0,NA,NA,NA
 2013,"metsa",-26.207,"Metsämaa",NA,0,NA,NA,NA
+2007,"metsa",-25.372,"Metsämaa",NA,0,NA,NA,NA
 2015,"metsa",-21.856,"Metsämaa",NA,0,NA,NA,NA
 2016,"metsa",-17.763,"Metsämaa",NA,0,NA,NA,NA
 2020,"metsa",-16.415,"Metsämaa",NA,0,NA,NA,NA
 2017,"metsa",-14.41,"Metsämaa",NA,0,NA,NA,NA
 2019,"metsa",-12.391,"Metsämaa",NA,0,NA,NA,NA
 2023,"metsa",-11.674,"Metsämaa",NA,0,NA,NA,NA
+2007,"puutuote",-5.61,"Puutuotteet",NA,0,NA,NA,NA
 2018,"metsa",-5.466,"Metsämaa",NA,0,NA,NA,NA
 2021,"metsa",-4.982,"Metsämaa",NA,0,NA,NA,NA
 2022,"metsa",-4.772,"Metsämaa",NA,0,NA,NA,NA
+2006,"puutuote",-4.763,"Puutuotteet",NA,0,NA,NA,NA
 2018,"puutuote",-4.584,"Puutuotteet",NA,0,NA,NA,NA
 2017,"puutuote",-4.498,"Puutuotteet",NA,0,NA,NA,NA
 2016,"puutuote",-3.818,"Puutuotteet",NA,0,NA,NA,NA
@@ -107,6 +129,8 @@
 2023,"puutuote",-2.256,"Puutuotteet",NA,0,NA,NA,NA
 2010,"puutuote",-2.195,"Puutuotteet",NA,0,NA,NA,NA
 2011,"puutuote",-2.171,"Puutuotteet",NA,0,NA,NA,NA
+2005,"puutuote",-1.971,"Puutuotteet",NA,0,NA,NA,NA
+2008,"puutuote",-1.785,"Puutuotteet",NA,0,NA,NA,NA
 2012,"puutuote",-1.675,"Puutuotteet",NA,0,NA,NA,NA
 2020,"puutuote",-1.291,"Puutuotteet",NA,0,NA,NA,NA
 2014,"Muut",2.952,"Ruohikkoalueet",NA,0,NA,NA,NA
@@ -123,11 +147,22 @@
 2016,"Muut",3.866,"Ruohikkoalueet",NA,0,NA,NA,NA
 2019,"Muut",3.901,"Ruohikkoalueet",NA,0,NA,NA,NA
 2010,"Muut",3.968,"Ruohikkoalueet",NA,0,NA,NA,NA
+2009,"Muut",4.214,"Ruohikkoalueet",NA,0,NA,NA,NA
+2008,"Muut",4.538,"Ruohikkoalueet",NA,0,NA,NA,NA
+2007,"Muut",4.668,"Ruohikkoalueet",NA,0,NA,NA,NA
+2006,"Muut",4.74,"Ruohikkoalueet",NA,0,NA,NA,NA
+2005,"Muut",4.765,"Ruohikkoalueet",NA,0,NA,NA,NA
+2009,"puutuote",1.646,"Puutuotteet",NA,0,NA,NA,NA
+2009,"metsajapuu",-46.159,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2006,"metsajapuu",-41.211,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2005,"metsajapuu",-37.038,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2012,"metsajapuu",-35.564,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2010,"metsajapuu",-34.859,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2008,"metsajapuu",-34.016,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2011,"metsajapuu",-33.943,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2014,"metsajapuu",-29.396,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2013,"metsajapuu",-28.574,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2007,"metsajapuu",-30.982,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2015,"metsajapuu",-24.765,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2016,"metsajapuu",-21.581,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2020,"metsajapuu",-17.706,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
@@ -161,11 +196,16 @@
 2028,"metsajapuu",-10.05,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2029,"metsajapuu",-8.701,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2030,"metsajapuu",-8.023,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2009,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2006,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2005,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2012,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2010,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2008,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2011,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2014,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2013,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2007,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2015,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2016,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2020,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
@@ -182,11 +222,16 @@
 2028,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2029,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2030,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
+2009,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2006,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2005,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2012,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2010,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2008,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2011,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2014,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2013,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
+2007,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2015,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2016,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2020,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
@@ -203,32 +248,42 @@
 2028,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2029,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
 2030,"cumu",NA,"Metsämaa ja puutuotteet","#17A8E6",1,1,0.9,"Ylitysten/alitusten kertymä, Mt"
-2012,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2010,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2011,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2014,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2013,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2015,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2016,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2020,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2017,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2019,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2023,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2018,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2021,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2022,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2024,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2025,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2026,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2027,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2028,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2029,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
-2030,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköiden hankinnasta, M€"
+2009,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2006,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2005,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2012,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2010,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2008,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2011,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2014,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2013,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2007,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2015,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2016,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2020,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2017,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2019,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2023,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2018,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2021,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2022,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2024,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2025,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2026,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2027,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2028,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2029,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2030,"cost",NA,"Metsämaa ja puutuotteet","#E617D1",0,0,3,"Kustannus yksiköistä, M€"
+2009,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2006,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2005,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2012,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2010,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2008,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2011,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2014,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2013,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2007,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2015,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2016,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2020,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
@@ -245,11 +300,16 @@
 2028,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2029,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
 2030,"debt",NA,"Metsämaa ja puutuotteet","#E617D1",-2,0,3,"Kustannusten kertymä, M€"
+2009,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2006,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2005,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2012,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2010,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2008,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2011,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2014,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2013,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
+2007,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2015,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2016,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
 2020,"price",NA,"Metsämaa ja puutuotteet","#bc810d",1,0,3,"Yksiköiden keskihinta, €/t"
