@@ -1,0 +1,66 @@
+
+
+:root
+ {
+   
+--colb: #D6D6D6;
+--colback:  #41644A;
+--colbcard: #BDBDBD;
+--colemis: #1baa5b;
+
+--colallo: #262ac5;
+--coldiff: #1b87ab;
+--colprice: #e22c8c;
+--colcost: #810eaa;
+
+
+--colm: #89D681;
+--colo: #E86A33;
+--colink: #C98B2C;
+--colbut: #C98B2C;
+--colslide: brown;
+--colinfo: orange;
+--collinea: #41644A;
+--collineb: #41644A;
+
+--colb: #484B4D; 
+--colb: #89D681;
+
+--colbcard:  #c9d1ca;
+--colb: #6CA56C;
+--colb: #67CEC4;
+
+--colb: #D3DDE0;
+
+--colt: #426f83;
+--colm: #67CEC4;
+--colo: #AA8B56;
+W
+--colbtable:#e7e7e7;
+
+
+--colink: #54cae3;
+--colink: #4ba180;
+
+--colbut:  #c2e6ff;
+--colslide:#67CEC4;
+--colcheck: #5ABAE0;
+
+--collinea: #41644A;
+--collinea: #D3DDE0;
+
+--collineb: #d7d7d7;
+--backs:  #ededed5e;
+}  
+
+
+
+.slidy {
+  
+  padding-bottom: -5vw;
+  background-color:#e7e7e7!important; 
+  margin: .4vw;   
+  margin-right: -0.2vw; 
+  padding-top: .2vw; 
+  
+}
