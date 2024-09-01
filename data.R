@@ -478,8 +478,8 @@ koki[sector =="cumu", si :=.9]
 koki[sector =="diff", si :=.45]
 koki[sector =="metsajapuuk",si :=.9]
 koki[sector =="metsajapuu", si :=.6]
-koki[sector =="lallocation", si :=.6]
-koki[sector =="lulucf",si :=.9]
+koki[sector =="lallocation", si :=.9]
+koki[sector =="lulucf",si :=.6]
 koki[sector =="cost", si :=3]
 koki[sector =="debt",si :=3]
 koki[sector =="price", si :=3]
@@ -495,6 +495,9 @@ koki[sector =="lulucf", lab :="Nettonielu, Mt"]
 koki[sector =="cost",lab :="Kustannus yksiköistä, M€"]
 koki[sector =="debt", lab :="Kustannusten kertymä, M€"]
 koki[sector =="price", lab :="Yksiköiden keskihinta, €/t"]
+
+koki[sector=="lulucf" & year %in% c(2024:2025), maara :=NA]
+
 
 write.csv(koki,"data/koki.csv", row.names = FALSE)
 
