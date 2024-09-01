@@ -190,8 +190,8 @@ div(  style = " background-color:#D6D6D6!important;    ",
       h5(
         tags$b("2021-2023-nielu alustavista tilastoista",    )),
       
-      h5(
-        tags$b("Kauden 2021-2025 nettonielu",   ))  ),
+      # h5(
+      #   tags$b("Kauden 2021-2025 nettonielu",   ))  ),
       div(style = "border-color: red; border-style: solid; border-size: .1px; padding: .2vw;",
           uiOutput(style = "margin-left: -0px; border-color: red;","difa")),
       
@@ -308,8 +308,9 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          h5(
                            tags$b("2027-2029-nielu laskettu lineaarisena kehityksenä",    )),
                          
-                         h5(
-                           tags$b("Kauden 2021-2025 nettonielu",   ))  ),
+                         # h5(
+                         #   tags$b("Kauden 2021-2025 nettonielu",   )) 
+                         ),
                        div(style = "border-color: red; border-style: solid; border-size: .1px; padding: .2vw;",
                            uiOutput(style = "margin-left: -0px; border-color: red;","difab")),
                        
@@ -885,7 +886,7 @@ server <- function(input, output) {
         plot.caption=element_text(size =10*f, hjust =c(0,1) , family = "merriweather sans",
                                   lineheight=.85 ,color=c("black","black")),
         
-        axis.text.x = element_text(size=15*f), 
+        axis.text.x = element_text(size=12*f), 
           axis.title.y.left=element_text(color="blue"),
         axis.text.y.left=element_text(color="blue", size=15*f),
         axis.title.y.right=element_text(color="red"),
@@ -1134,7 +1135,7 @@ server <- function(input, output) {
         plot.caption=element_text(size =10*f, hjust =c(0,1) , family = "merriweather sans",
                                   lineheight=.85 ,color=c("black","black")),
         
-        axis.text.x = element_text(size=15*f), 
+        axis.text.x = element_text(size=12*f), 
         axis.title.y.left=element_text(color="blue"),
         axis.text.y.left=element_text(color="blue", size=15*f),
         axis.title.y.right=element_text(color="red"),
