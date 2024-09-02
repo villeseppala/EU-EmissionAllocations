@@ -211,7 +211,7 @@ div(  style = " background-color:#D6D6D6!important;    ",
     hr(),
     hr(),
     hr(),
-  ),
+  )),
   
   
   column(9,
@@ -221,9 +221,9 @@ div(  style = " background-color:#D6D6D6!important;    ",
   ), 
 )
                 ),
-div(style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+# div(
     
-    fluidRow(
+    fluidRow(style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
       column(3,
              div(   class="slidy",         
                style = "color:var(--coldiff);",
@@ -234,7 +234,14 @@ div(style = "background-color:#D6D6D6!important; border-color: blue; border-styl
                  width = "100%",
                  post = " Mt",
                  grid=T
-                  )), 
+                  )),
+             
+             checkboxInput("mores", "Näytä lisätietoja 14 Mt oletukselle", value =F),
+             conditionalPanel( condition = "input.mores == true",
+                               
+                               htmlOutput("moress")
+                               
+             )
                ),
 
       
@@ -244,14 +251,10 @@ div(style = "background-color:#D6D6D6!important; border-color: blue; border-styl
              h5(
                tags$b("Huom: Laskelma ei huomioi mahdollisia ns. metsäjoustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa. Tällöin yksiköiden hinta on todennäköisesti hyvin lähellä nollaa tai käytännössä nolla.", 
                   )), 
-      )),
-    
-    checkboxInput("mores", "Näytä lisätietoja 14 Mt oletukselle", value =F),
-    conditionalPanel( condition = "input.mores == true",
-                      
-                      htmlOutput("moress")
+      )
+      # ),
 
-                      )
+
 )
 ),
 
