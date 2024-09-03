@@ -10,17 +10,17 @@
 2021,"ets",20.391,"Päästökauppasektori",NA,0,NA,NA,NA
 2022,"ets",19.155,"Päästökauppasektori",NA,0,NA,NA,NA
 2023,"ets",15.502,"Päästökauppasektori",NA,0,NA,NA,NA
-2013,"esd",31.121,"Taakanjakosektori",NA,0,NA,NA,NA
-2014,"esd",29.649,"Taakanjakosektori",NA,0,NA,NA,NA
-2015,"esd",29.437,"Taakanjakosektori",NA,0,NA,NA,NA
-2016,"esd",30.507,"Taakanjakosektori",NA,0,NA,NA,NA
-2017,"esd",29.767,"Taakanjakosektori",NA,0,NA,NA,NA
-2018,"esd",29.549,"Taakanjakosektori",NA,0,NA,NA,NA
-2019,"esd",29.194,"Taakanjakosektori",NA,0,NA,NA,NA
-2020,"esd",27.986,"Taakanjakosektori",NA,0,NA,NA,NA
-2021,"esd",27.212,"Taakanjakosektori",NA,0,NA,NA,NA
-2022,"esd",26.545,"Taakanjakosektori",NA,0,NA,NA,NA
-2023,"esd",25.127,"Taakanjakosektori",NA,0,NA,NA,NA
+2013,"esd",31.121,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2014,"esd",29.649,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2015,"esd",29.437,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2016,"esd",30.507,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2017,"esd",29.767,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2018,"esd",29.549,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2019,"esd",29.194,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2020,"esd",27.986,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2021,"esd",27.212,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2022,"esd",26.545,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2023,"esd",25.127,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
 2005,"ghg",69.713,"Kokonaispäästöt",NA,0,NA,NA,NA
 2005,"lulucf",-24.85,"Maankäyttösektori (LULUCF)","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2006,"ghg",81.085,"Kokonaispäästöt",NA,0,NA,NA,NA
@@ -78,24 +78,24 @@
 2021,"net",51.078,"Nettopäästöt",NA,0,NA,NA,NA
 2022,"net",50.143,"Nettopäästöt",NA,0,NA,NA,NA
 2023,"net",39.283,"Nettopäästöt",NA,0,NA,NA,NA
-2013,"allocation",33.497,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2014,"allocation",32.977,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2015,"allocation",32.458,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2016,"allocation",31.938,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2017,"allocation",31.771,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2018,"allocation",31.185,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2019,"allocation",30.599,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2020,"allocation",30.013,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2021,"allocation",28.84,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2022,"allocation",27.97,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2023,"allocation",26.626,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2024,"allocation",25.283,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2025,"allocation",23.939,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2026,"allocation",23.0241866666667,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2027,"allocation",21.57064,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2028,"allocation",20.1170933333333,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2029,"allocation",18.6635466666667,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
-2030,"allocation",17.21,"Taakanjakosektorin päästökiintiö",NA,0,NA,NA,NA
+2013,"allocation",33.497,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2014,"allocation",32.977,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2015,"allocation",32.458,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2016,"allocation",31.938,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2017,"allocation",31.771,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2018,"allocation",31.185,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2019,"allocation",30.599,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2020,"allocation",30.013,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2021,"allocation",28.84,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2022,"allocation",27.97,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2023,"allocation",26.626,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2024,"allocation",25.283,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2025,"allocation",23.939,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2026,"allocation",23.0241866666667,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2027,"allocation",21.57064,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2028,"allocation",20.1170933333333,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2029,"allocation",18.6635466666667,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
+2030,"allocation",17.21,"Taakanjakosektorin päästökiintiö","#BC17E6",4,1,0.9,"EU-päästökiintiö, Mt"
 2009,"metsa",-47.805,"Metsämaa",NA,0,NA,NA,NA
 2006,"metsa",-36.448,"Metsämaa",NA,0,NA,NA,NA
 2005,"metsa",-35.067,"Metsämaa",NA,0,NA,NA,NA
@@ -196,6 +196,13 @@
 2028,"metsajapuu",-10.05,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2029,"metsajapuu",-8.701,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
 2030,"metsajapuu",-8.023,"Metsämaa ja puutuotteet","#4ba180",3,1,0.6,"Nettonielu, Mt"
+2024,"esd",29.767,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2025,"esd",29.549,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2026,"esd",29.194,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2027,"esd",27.986,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2028,"esd",27.212,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2029,"esd",26.545,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
+2030,"esd",25.127,"Taakanjakosektori","#4ba180",3,1,0.6,"Päästöt, Mt"
 2009,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2006,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"
 2005,"diff",NA,"Metsämaa ja puutuotteet","#4017E6",2,1,0.45,"Kiintiön ylitys/alitus, Mt"

@@ -413,13 +413,27 @@ years = (lyear+1):2030
 # koku[ year %in% (lyear-dif):lyear,year := years ]
 # repeat years for as many times as there are sectors, twice here
 koku[ ,year := c(years, years) ]
+
+
+
+
+koki = rbind(koki, koku)
+
+koku = koki[sector %in% c("esd") & year %in% (lyear-dif):lyear, ]
+years = (lyear+1):2030
+# koku[ year %in% (lyear-dif):lyear,year := years ]
+# repeat years for as many times as there are sectors, twice here
+koku[ ,year := c(years) ]
+
+koki = rbind(koki, koku)
+
+
+
+
 cumc =hsv(.55,.9,.9)
 debt = hsv(.85, .9,.9)
 alloc = hsv(.7, .6,.8)
 emis = "#4ba180"
-
-koki = rbind(koki, koku)
-
 
 koki = as.data.table(koki)
 
@@ -451,6 +465,8 @@ koki[sector =="lulucf", col :="#4ba180"]
 koki[sector =="cost", col :=debt]
 koki[sector =="debt", col :=debt]
 koki[sector =="price", col :="#bc810d"]
+koki[sector =="allocation", col :=hsv(.8, .9,.9)]
+koki[sector =="esd", col :="#4ba180"]
 
 koki$ran = 0
 koki[sector =="cumu", ran :=1]
@@ -462,7 +478,8 @@ koki[sector =="lulucf", ran :=3]
 koki[sector =="cost", ran :=0]
 koki[sector =="debt", ran :=-2]
 koki[sector =="price", ran :=1]
-
+koki[sector =="allocation", ran :=4]
+koki[sector =="esd", ran :=3]
 
 koki[sector =="cumu", decim :=1]
 koki[sector =="diff", decim :=1]
@@ -473,6 +490,8 @@ koki[sector =="lulucf", decim :=1]
 koki[sector =="cost", decim :=0]
 koki[sector =="debt", decim :=0]
 koki[sector =="price", decim :=0]
+koki[sector =="allocation", decim :=1]
+koki[sector =="esd", decim :=1]
 
 koki[sector =="cumu", si :=.9]
 koki[sector =="diff", si :=.45]
@@ -483,7 +502,8 @@ koki[sector =="lulucf",si :=.6]
 koki[sector =="cost", si :=3]
 koki[sector =="debt",si :=3]
 koki[sector =="price", si :=3]
-
+koki[sector =="allocation", si :=.9]
+koki[sector =="esd",si :=.6]
 
 
 koki[sector =="cumu", lab :="Ylitysten/alitusten kertymä, Mt"]
@@ -495,6 +515,8 @@ koki[sector =="lulucf", lab :="Nettonielu, Mt"]
 koki[sector =="cost",lab :="Kustannus yksiköistä, M€"]
 koki[sector =="debt", lab :="Kustannusten kertymä, M€"]
 koki[sector =="price", lab :="Yksiköiden keskihinta, €/t"]
+koki[sector =="allocation",lab :="EU-päästökiintiö, Mt"]
+koki[sector =="esd", lab :="Päästöt, Mt"]
 
 koki[sector=="lulucf" & year %in% c(2024:2025), maara :=NA]
 
