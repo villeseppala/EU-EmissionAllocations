@@ -17,8 +17,8 @@ allo = "#262ac5"
 emis = "#1baa5b"
 price = "#e22c8c"
 
-cumc ="#0e5faa"
 cumc ="#1f7fe1"
+cumc ="#0e5faa"
 
 debt ="#6f0c72"
 allo = "#3111ab"
@@ -163,7 +163,24 @@ fluidRow(
 ), 
 
 
+fluidRow(  div(
+  style = " background-color:#D6D6D6!important;    ",
 
+  style = "padding: .2vw; font-size: 15px !important; margin: .5vw;",
+  
+  checkboxInput("inf", "Mikä tämä sivu on?", value =F),
+  conditionalPanel( condition = "input.inf == true",
+                    
+                    htmlOutput("infoa")),
+  
+  checkboxInput("more", "Mitä sivu ei toistaiseksi huomioi + muita kehitysideoita", value =F),
+  conditionalPanel( condition = "input.more == true",
+                                              
+                                              htmlOutput("morea"))
+  
+  )
+
+), 
 
 
 div(  style = " background-color:#D6D6D6!important;    ",
@@ -190,8 +207,8 @@ div(  style = " background-color:#D6D6D6!important;    ",
       div(        class="slidy", 
         style = " color:var(--colemis);",
       sliderTextInput(
-        "lulucf2024", label = "Nettonielu 2024:", 
-        choices = seq(from = 0, to = -35, by = -1),
+        "lulucf2024", label = "Nettopäästö/nielu 2024:", 
+        choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
         post = " Mt",
@@ -204,8 +221,8 @@ div(  style = " background-color:#D6D6D6!important;    ",
         # style = "color:#4ba180;",
         
       sliderTextInput(
-        "lulucf2025", label = "Nettonielu 2025:", 
-        choices = seq(from = 0, to = -35, by = -1),
+        "lulucf2025", label = "Nettopäästö/nielu 2025:", 
+        choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
         post = " Mt",
@@ -256,7 +273,7 @@ div(  style = " background-color:#D6D6D6!important;    ",
              div(   class="slidy",         
                style = "color:var(--coldiff);",
                sliderTextInput(
-                 "maa2025", label = "Maankäyttösektorin muiden tilinpitoluokkien ylitys/alitus kaudelta:", 
+                 "maa2025", label = "Maankäyttösektorin muiden tilinpitoluokkien ylitys kaudelta:", 
                  choices = seq(from = 0, to = 30, by = 1),
                  selected = 14,
                  width = "100%",
@@ -277,7 +294,7 @@ div(  style = " background-color:#D6D6D6!important;    ",
              div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
                  uiOutput(style = "margin-left: -0px; border-color: red;","totu")),
              h5(
-               tags$b("Huom: Laskelma ei huomioi mahdollisia ns. metsäjoustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa. Tällöin yksiköiden hinta on todennäköisesti hyvin lähellä nollaa tai käytännössä nolla.", 
+               tags$b("Huom: Laskelma ei huomioi Suomen mahdollisia joustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa.", 
                   )), 
       )
       # ),
@@ -316,8 +333,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          div(        class="slidy", 
                                      style = " color:var(--colemis);",
                                      sliderTextInput(
-                                       "lulucf2026", label = "Nettonielu 2026:", 
-                                       choices = seq(from = 10, to = -25, by = -1),
+                                       "lulucf2026", label = "Nettopäästö/nielu 2026:", 
+                                       choices = seq(from = -25 , to =10, by = 1),
                                        selected = -3,
                                        width = "100%",
                                        post = " Mt",
@@ -328,8 +345,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        style = "color:#4ba180;",
                                        
                                        sliderTextInput(
-                                         "lulucf2030", label = "Nettonielu 2030:", 
-                                         choices = seq(from =  10, to = -25, by = -1),
+                                         "lulucf2030", label = "Nettopäästö/nielu 2030:", 
+                                         choices = seq(from = -25 , to = 10, by = 1),
                                          selected = -7,
                                          width = "100%",
                                          post = " Mt",
@@ -498,7 +515,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          div(        class="slidy", 
                                      style = " color:var(--colemis);",
                                      sliderTextInput(
-                                       "esd2026", label = "Nettonielu 2026:", 
+                                       "esd2026", label = "Päästöt 2026:", 
                                        choices = seq(from = 10, to = 25, by = 1),
                                        selected = 22,
                                        width = "100%",
@@ -510,7 +527,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        style = "color:#4ba180;",
                                        
                                        sliderTextInput(
-                                         "esd2030", label = "Nettonielu 2030:", 
+                                         "esd2030", label = "Päästöt 2030:", 
                                          choices = seq(from =  10, to = 25, by = 1),
                                          selected = 19,
                                          width = "100%",
@@ -519,7 +536,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        )),
                          hr(),
                          h5(
-                           tags$b("2027-2029-nielu laskettu lineaarisena kehityksenä",    )),
+                           tags$b("2027-2029-päästöt laskettu lineaarisena kehityksenä",    )),
                          
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
@@ -583,9 +600,26 @@ server <- function(input, output) {
     } 
     else  if (input$dim[1] >1300 & input$dim[1] <1800) {
       rv$view = 2
-    } else {
+    } else if (input$dim[1] <1300 & input$dim[1] >770) {
       rv$view = 3
-      rv$fonts = input$dim[1]/1300
+       rv$fonts = .7
+      # rv$fonts = input$dim[1]/1300
+    } else if (input$dim[1] <770 & input$dim[1] >600) {
+      rv$view = 3
+      rv$fonts = .8
+      # rv$fonts = input$dim[1]/1300
+    } 
+    # else if (input$dim[1] <1300 & input$dim[1] >800) {
+    #   rv$view = 3
+    #   rv$fonts = .8
+    #   # rv$fonts = input$dim[1]/1300
+    # } 
+    # 
+    else {
+      rv$view = 3
+      rv$fonts = .5
+      # rv$fonts = input$d
+      
     }
   })
   
@@ -747,7 +781,69 @@ server <- function(input, output) {
     "
     )
   })
+  output$infoa = renderText({
+    paste0(
+      "EU:n päästötavoitteet on maankäyttö- ja taakanjakosektoreilla jaoteltu maa- ja vuosikohtaisiksi 
+      tavoitteiksi/kiintiöiksi, jotka yhdessä toteuttavat EU:n laajuiset tavoitteet. 
+      Mailla on käytössä joustomekanismeja kiintiöisiin pääsemiseksi. Yksi keskeisin on kaupankäynti 
+      päästö- tai nieluyksiköistä maiden välillä.",
+      '<br>',
+      '<br>',
+      
+      "
+      
+      Tällä sivulla voi hahmotella, että millaisia kustannuksia tai tuottoja Suomelle 
+      tulee kaupankäynnistä riippuen Suomen päästö- ja nielukehityksestä sekä yksiköiden hinnasta. 
+      Yksiköiden kaupalle ei ainakaan toistaiseksi ole keskitettyä markkinapaikkaa ja yksiköillä ei luultavasti ole juurikaan
+      käyty kauppaa maiden välillä, joten yksiköiden hintatasoa on vaikea arvioida. Kauden 2021-2025 osalta yksiköiden kaupankäynti
+      tulee suorittaa 2027 mennessä ja kauden 2026-2030 osalta 2032 mennessä. 
+   
+    
+    "
+    )
+  })
   
+  output$morea = renderText({
+    paste0(
+      '<b>',
+      " Toistaiseksi ei ole huomioitu: 
+         ",
+      '</b>',
+      '<br/><dd>',
+      '<br>',
+      
+      # '',
+      "- Joustoja sektoreiden välillä. Jäsenmailla on mahdollisuus kompensoida sektorin alijäämiään toisen sektorin
+      ylijäämillään. Varsinkin mikäli ylijäämäsektorin yksiköiden hinta on halvempi, niin niitä kannattaa käyttää
+      alijäämäsektorin kompensointiin sen sijaan että hankkisi yksiköitä muilta jäsenmailta. 
+    Jäsenmailla on mahdollisuus myös käyttää rajoitetusti päästökauppasektorin päästöoikeuksien mitätöintiä alijäämän korvaamiseen. 
+    Tällöin ne menettävät mitätöinnin verran tuloja päästöoikeuksien huutokauppaamisesta.
+         ",
+      # ' ',
+      "\n",
+      '</dd><br/>',  
+    '<br>',
+    
+          "-Lainausrajoja vuosien välillä sektoreiden sisällä kauden aikana. 
+          Kaudella 2021-2025 jäsenmaa voi taakanjakosektorilla siirtää seuraavan vuoden kiintiöstä korkeintaan 
+          7,5% kunkin vuoden alijäämän paikkaamiseen. Kaudella 2026-2030 maksimisiirto on 5%. Tämä huomioitava kertymää
+          laskettaessa. Kuitenkin, jäsenmaan kaupankäyntimahdollisuuksien myötä 
+      ",
+     # Hoidettu viljelysmaa = 29-29=0",
+      '<br>',
+    '<br>',
+    
+      "- Pankitusmahdollisuuksia kausien välillä. Kunkin vuoden ylijäämästä jäsenmaa voi viedä vuoden 2021 osalta korkeintaan 75% vuosikiintiöstä vastaavan summan seuraaville vuosille aina 2030 saakka ja
+     2021-2029 ylijäämistä 25% vuosikiintiötä vastaavan summan. Rajoitteet vaikuttavat löysiltä ja tuskin vähentävät pankitusta. Maankäyttösektorilla ei ole kai vastaavia rajoitteita. ",
+      '<br>',
+    '<br>',
+    
+      "- Mahdollisia ylimääräisiä yksiköitä, joita jäsenmaat voivat saada mikäli EU pääsee kokonaisuutena tavoitteisiina. 
+    
+     
+    "
+    )
+  })
   #v = Ylitukset: Kiintiötarve = vertailutaso - nielu
   # Hoidettu viljelysmaa
   
@@ -1161,6 +1257,8 @@ server <- function(input, output) {
     koke = as.data.table(koke)
     koke = koke[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost",  "price") & year %in% C(luk:2025)]
 
+    koks = koke[year %in% c(2025) & sector %in% c("diff"),]
+    
     mi = as.numeric(unique(koke[sector %in% c("metsajapuu", "metsajapuuk", "diff"),min(maara, na.rm=TRUE)]))
     ma = as.numeric(unique(koke[sector %in% c("metsajapuu", "metsajapuuk", "diff"),max(maara, na.rm=TRUE)]))
     hi = ma-mi
@@ -1180,6 +1278,7 @@ server <- function(input, output) {
     koke[,hmaara:=maara*scaleFactor]
     
     gup = ggplot(data=koke, aes(x=year, group=sector, fill=col, color=col )) + 
+      geom_vline(aes(xintercept=2023.5), size=.4, color="black", linetype="dashed")+
       
   
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuuk"),],
@@ -1236,6 +1335,15 @@ server <- function(input, output) {
                 size=5*f, fontface="bold")+
       
       
+      # geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
+      #           aes(x=2023.4, y=place+.159*hi), label = paste0("Päästöt tilastoista <="),
+      #           col= "black", fontface="bold" ,  size =5*f, hjust =1, vjust=1, angle=c(0),
+      #           alpha=.9, lineheight=.99) +
+      # geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
+      #           aes(x=2023.6, y=place+.159*hi), label = paste0("=> Päästöt valinnoista"),
+      #           col= "black", fontface="bold" ,  size =5*f, hjust =0, vjust=1, angle=c(0),
+      #           alpha=.9, lineheight=.99) +
+      # 
       geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuuk"),],
                 aes(x=year+1.5, y=place+.059*hi, label="Kertymä"), size=5*f, fontface="bold", color ="black")+
       
@@ -1431,7 +1539,8 @@ server <- function(input, output) {
     
     gup = ggplot(data=koke, aes(x=year, group=sector, fill=col, color=col )) + 
       
-
+      geom_vline(aes(xintercept=2023.5), size=.4, color="black", linetype="dashed")+
+      
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c("lallocation"),],
                 aes(x=year, y=place+.059*hi, label=year), size=5*f, fontface="bold", color ="black")+
 
@@ -1622,7 +1731,7 @@ server <- function(input, output) {
     
     koke = koke3()
     koke = as.data.table(koke)
-    koke = koke[sector %in% c("esd", "allocation", "diff", "cost",  "price") & year %in% C(luk:2025)]
+    koke = koke[sector %in% c("esd", "allocation", "diff", "cost",  "price") & year %in% C(luk:2030)]
     
     
     
@@ -1654,6 +1763,7 @@ server <- function(input, output) {
     koke[,place := ma + ba + ran*0.064*hi]
     
     gup = ggplot(data=koke, aes(x=year, group=sector, fill=col, color=col )) + 
+      geom_vline(aes(xintercept=2023.5), size=.4, color="black", linetype="dashed")+
       
       
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("allocation"),],
@@ -1678,8 +1788,8 @@ server <- function(input, output) {
                 size=5*f, fontface="bold")+
       
       
-      geom_text(data=koke[year %in% c(2026) & sector %in% c("esd", "allocation",  "diff", "price",  "cumu", "cost", "debt"),],
-                aes(x=2025.2, y=place, label=paste0(lab, ":")),
+      geom_text(data=koke[year %in% c(2025) & sector %in% c("esd", "allocation",  "diff", "price",  "cumu", "cost", "debt"),],
+                aes(x=2020.2, y=place, label=paste0(lab, ":")),
                 size=5*f, hjust=1, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2026:2029) & sector %in% c("cumu"),],
@@ -1762,10 +1872,15 @@ server <- function(input, output) {
       ) +
       
       
-      
-      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("allocation")],
+      geom_col(data=koke[year %in% c(luk:2020) & sector %in% c("allocation")],
+               aes(x=year, y = maara,fill=col, color=col, width=si),
+               stat='identity', position='stack',alpha=.0 )+      
+      geom_col(data=koke[year %in% c(2021:2025) & sector %in% c("allocation")],
                aes(x=year, y = maara,fill=col, color=col, width=si),
                stat='identity', position='stack' )+
+      geom_col(data=koke[year %in% c(2026:2030) & sector %in% c("allocation")],
+               aes(x=year, y = maara,fill=col, color=col, width=si),
+               stat='identity', position='stack', alpha=.0 )+
       
       geom_col(data=koke[year %in% c(2021:2025) & sector %in% c("esd"),],
                aes(x=year, y = maara,fill=col, width=si),
@@ -1885,6 +2000,7 @@ server <- function(input, output) {
     koke[,place := ma + ba + ran*0.064*hi]
     
     gup = ggplot(data=koke, aes(x=year, group=sector, fill=col, color=col )) + 
+      geom_vline(aes(xintercept=2023.5), size=.4, color="black", linetype="dashed")+
       
       
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c("allocation"),],
@@ -1994,7 +2110,10 @@ server <- function(input, output) {
       
       
   
-      geom_col(data=koke[year %in% c(luk:2030) & sector %in% c("allocation")],
+      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("allocation")],
+               aes(x=year, y = maara,fill=col, color=col, width=si),
+               stat='identity', position='stack', alpha=.0)+
+      geom_col(data=koke[year %in% c(2026:2030) & sector %in% c("allocation")],
                aes(x=year, y = maara,fill=col, color=col, width=si),
                stat='identity', position='stack' )+
       
