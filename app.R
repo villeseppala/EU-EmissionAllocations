@@ -146,6 +146,19 @@ tags$style(HTML(" .js-irs-12 .irs-bar {background:var(--colprice)}
   #                 .js-irs-4 .irs-single {background: #bc810d};" )),
   # 
 # dashboardHeader(title = "My Dashboard"),
+
+
+
+
+
+
+
+
+
+
+
+
+
 fluidRow(
   column(10,
   h3(style="padding-top: .1vw; ",
@@ -183,6 +196,20 @@ fluidRow(  div(
 ), 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 div(  style = " background-color:#D6D6D6!important;    ",
       
  
@@ -193,21 +220,29 @@ div(  style = " background-color:#D6D6D6!important;    ",
                           
                 fluidRow( 
                   style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
-                                            h5(
-                            tags$b("Metsämaan ja puutuotteiden tavoitteet ja päästöt kaudella 2021-2025", 
-                                   style="color: blue; padding: 1vw;")
+                                            h4(
+                            tags$b("Metsämaa ja puutuotteet kaudella 2021-2025", 
+                                   style="color: black; padding: 1vw;")
                           ),
   
-  # Sidebar panel for inputs ----
   column(3,
+         
+         
    
     div(        
       style = "  margin-right: -0.2vw; padding: .2vw;",
    
+      
+      uiOutput(        style = " color:var(--colallo); font-weight: 600;",
+outputId = "kiin"),
+    
+uiOutput(        style = " color:var(--colemis); font-weight: 600;",
+                 outputId = "alu"),
+      
       div(        class="slidy", 
         style = " color:var(--colemis);",
       sliderTextInput(
-        "lulucf2024", label = "Nettopäästö/nielu 2024:", 
+        "lulucf2024", label = "2024 metsämaan ja puutuotteiden nettopäästöt:", 
         choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
@@ -221,7 +256,7 @@ div(  style = " background-color:#D6D6D6!important;    ",
         # style = "color:#4ba180;",
         
       sliderTextInput(
-        "lulucf2025", label = "Nettopäästö/nielu 2025:", 
+        "lulucf2025", label = "2025 metsämaan ja puutuotteiden nettopäästöt:", 
         choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
@@ -229,8 +264,9 @@ div(  style = " background-color:#D6D6D6!important;    ",
         grid=T
       )),
       hr(),
-      h5(
-        tags$b("2021-2023-nielu alustavista tilastoista",    )),
+
+      # h5(
+      #   tags$b("2021-2023-nielu alustavista tilastoista",    )),
       
       # h5(
       #   tags$b("Kauden 2021-2025 nettonielu",   ))  ),
@@ -259,9 +295,11 @@ div(  style = " background-color:#D6D6D6!important;    ",
   column(9,
   
   div(
+    style = 'overflow-x: scroll;  
+',
     # style = "box-shadow: inset -5px -5px 10px 3px #e7e7e7, inset 5px 5px 10px 3px; padding:8px;",
       # div(style = "padding:8px;",
-       plotOutput(outputId = "plotmetsajapuu", height = "500px")
+       plotOutput(outputId = "plotmetsajapuu", height = "600px", width = "1200px")
       # ) 
     ), 
 )
@@ -384,7 +422,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(9,
                        
                        div(
-                         plotOutput(outputId = "plotlulucf", height = "500px")
+                         plotOutput(outputId = "plotlulucf", height = "600px")
                        ), 
                 )
               ),
@@ -475,7 +513,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(9,
                        
                        div(
-                         plotOutput(outputId = "plotesdpre", height = "500px")
+                         plotOutput(outputId = "plotesdpre", height = "600px")
                        ), 
                 )
               ),
@@ -566,7 +604,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(9,
                        
                        div(
-                         plotOutput(outputId = "plotesdpost", height = "500px")
+                         plotOutput(outputId = "plotesdpost", height = "600px")
                        ), 
                 )
               ),
@@ -725,6 +763,17 @@ server <- function(input, output) {
       " milj. €",'</b></span>',
       sep ="")})
   
+  output$kiin= renderText({
+    paste(
+      
+      "2021-2025 nielukiintiö 96,4 Mt yhteensä - 19,3 Mt vuodessa"
+)})
+  
+  output$alu= renderText({
+    paste(
+      
+      "2021-2023 nettopäästöt alustavista tilastoista"
+    )})
   
   output$difad= renderText({
     paste(
@@ -1165,14 +1214,14 @@ server <- function(input, output) {
     
     koki = koki[year %in% c(2026:2030)& sector =="cumu", maara :=mor]
     
-    koki= koki[year %in% c(2026:2030) & sector =="cost", maara := koki[year %in% c(2026:2030) &sector=="diff", maara]*input$priceesdpre]
+    koki= koki[year %in% c(2026:2030) & sector =="cost", maara := koki[year %in% c(2026:2030) &sector=="diff", maara]*input$priceesdpost]
     
     mora =   cumsum(koki[year %in% c(2026:2030) & sector =="cost", maara])
     koki = koki[year %in% c(2026:2030)& sector =="cost", maarab :=mora]
     
     koki = koki[year %in% c(2026:2030)& sector =="debt", maara :=mora]
     
-    koki = koki[year %in% c(2026:2030)& sector =="price", maara :=input$priceesdpre]
+    koki = koki[year %in% c(2026:2030)& sector =="price", maara :=input$priceesdpost]
     koki[year %in% c(2026:2030)& sector =="price", maarab :=maara]
     
     koki$col2 = "white"

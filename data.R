@@ -4,6 +4,9 @@
 # https://pxnet2.stat.fi:443/PXWeb/api/v1/fi/StatFin/ymp/khki/statfin_khki_pxt_111k.px
 
 
+# add text
+# Nielukiintiö 
+# 
 
 library(pxweb)
 library(data.table)
@@ -517,6 +520,10 @@ koki[sector =="debt", lab :="Kustannusten kertymä, M€"]
 koki[sector =="price", lab :="Yksiköiden keskihinta, €/t"]
 koki[sector =="allocation",lab :="EU-päästökiintiö, Mt"]
 koki[sector =="esd", lab :="Päästöt, Mt"]
+
+# Kusta
+# intra-kuvaksi powerpoint-slide
+# 
 
 koki[sector=="lulucf" & year %in% c(2024:2025), maara :=NA]
 

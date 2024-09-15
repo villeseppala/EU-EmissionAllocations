@@ -61,7 +61,15 @@ W
 --backs:  #ededed5e;
 }  
 
+.bcnavbar {
+  direction: rtl;
+}
 
+.bcnavbar tr,
+.bcnavbar td {
+   -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 
 .slidy {
   
