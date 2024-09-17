@@ -12,10 +12,20 @@
 --coltit: #404040;
 
 --colallo: #3111ab;
+
 --coldiff: #0e5faa;
 --colprice: #c66910;
---colcost: #6f0c72;
+--colcost: #361c77;
 --colcu: #df16e2;
+
+--colemis:#8b513b;
+
+--colallo:#518161;
+
+--coldiff: #6b364a;
+--colprice:#a6a24c;
+--colcost:  #38553f;
+--colcu: #a12da7;
 
 
 
@@ -61,7 +71,11 @@ W
 --backs:  #ededed5e;
 }  
 
-.bcnavbar {
+
+.form-group {
+ margin-bottom: 3px;
+}
+/* .bcnavbar {
   direction: rtl;
 }
 
@@ -70,13 +84,41 @@ W
    -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
-
+*/
 .slidy {
-  
-  padding-bottom: -5vw;
-  background-color:#e7e7e7!important; 
-  margin: .4vw;   
-  margin-right: -0.2vw; 
+     padding: .2vw;
+
+  padding-bottom: -5vw!important;
+  color:white!important; 
+  margin: .2vw;   
+ border-color: black;
   padding-top: .2vw; 
+}
+
+.boxy {
+  color:white; font-weight: 600;
+ margin: 2px; padding: 2px;
+}
+
+
+
+/* 
+  margin-right: -0.2vw; 
+
+.shiny-plot-output, .html-fill-item, .hiny-bound-output {
+  overflow-x: scroll;
+    direction: rtl !important;
+  
   
 }
+
+
+.shiny-plot-output, .html-fill-item, .hiny-bound-output {
+
+    direction: ltr;
+  
+   align-items:lef;
+}
+/* 
+
+.shiny-plot-output::before{ content:''; display:block; width:400%; height:1px; }

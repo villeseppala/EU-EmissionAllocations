@@ -25,6 +25,19 @@ allo = "#3111ab"
 emis = "#13aa82"
 price = "#c66910"
 cu = "#df16e2"
+
+
+emis = "#8b513b"
+
+allo ="#518161"
+cumc ="#6b364a"
+
+debt = "#38553f"
+
+price = "#a6a24c"
+
+re = "#ef4205"
+  gr = "#8fff4a"
 # --colemis: #24aa61;
 #   
 #   --colallo: #198baa;
@@ -88,8 +101,22 @@ ui <- fluidPage(
                                     dim[1] = window.innerHeight;
                                     Shiny.onInputChange("dim", dim);
                                 }); 
+                                
+                                
+                                
 
                     ')),
+  
+  
+  tags$script(HTML("
+                     
+document.querySelector('input').addEventListener('input', function(){
+  document.querySelector('.box').scrollLeft = this.value;
+})
+                                
+
+                    ")),
+  
   
   
   tags$style(HTML(" 
@@ -116,7 +143,9 @@ tags$style(HTML("
     .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: var(--colprice)}; 
                   .js-irs-0 .irs-max {background-color: transparent !important font-size: 5vw} 
        
-                
+                .js-irs .irs-bar, .js-irs-0 .irs-single {
+    background: black;
+}
                 ")),
 # tags$style(HTML(" .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: #bc810d};")),
 
@@ -150,6 +179,7 @@ tags$style(HTML(" .js-irs-12 .irs-bar {background:var(--colprice)}
 
 
 
+uiOutput("css_style2"),
 
 
 
@@ -219,30 +249,35 @@ div(  style = " background-color:#D6D6D6!important;    ",
               ), 
                           
                 fluidRow( 
-                  style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+                  style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
                                             h4(
                             tags$b("Metsämaa ja puutuotteet kaudella 2021-2025", 
                                    style="color: black; padding: 1vw;")
                           ),
   
-  column(3,
+  column(3, style = "     padding-right: 10px;
+    padding-left: 5px;",
          
          
    
     div(        
-      style = "  margin-right: -0.2vw; padding: .2vw;",
+      style = "  margin-right: -0.2vw; padding: .1vw;",
    
       
-      uiOutput(        style = " color:var(--colallo); font-weight: 600;",
-outputId = "kiin"),
     
-uiOutput(        style = " color:var(--colemis); font-weight: 600;",
+      uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+outputId = "kiin"
+),
+hr(),
+
+uiOutput(   class= "boxy",     style = " background-color:var(--colemis);",
                  outputId = "alu"),
-      
+hr(),
+
       div(        class="slidy", 
-        style = " color:var(--colemis);",
+        style = " background-color:var(--colemis);",
       sliderTextInput(
-        "lulucf2024", label = "2024 metsämaan ja puutuotteiden nettopäästöt:", 
+        "lulucf2024", label = "2024 nettopäästöt:", 
         choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
@@ -251,12 +286,12 @@ uiOutput(        style = " color:var(--colemis); font-weight: 600;",
       )),
       hr(),
       div(          class="slidy",  
-                    style = " color:var(--colemis);",
+                    style = " background-color:var(--colemis);",
                     
         # style = "color:#4ba180;",
         
       sliderTextInput(
-        "lulucf2025", label = "2025 metsämaan ja puutuotteiden nettopäästöt:", 
+        "lulucf2025", label = "2025 nettopäästöt:", 
         choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
@@ -270,40 +305,47 @@ uiOutput(        style = " color:var(--colemis); font-weight: 600;",
       
       # h5(
       #   tags$b("Kauden 2021-2025 nettonielu",   ))  ),
-      div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-          uiOutput(style = "margin-left: -0px; border-color: red;","difa")),
+# border-color: var(--colcu);
+      # div(style = "background-color:var(--coldiff);",
+          uiOutput(class= "boxy", style = "background-color:var(--coldiff);","difa")
+,
       
       hr(),
     
       div(  class="slidy",  
-        style = "color:var(--colprice)!important;",
-           sliderTextInput("pricepre", label = "Kauden yksiköiden keskihinta:", 
+            style = " background-color:var(--colprice)!important;",
+            sliderTextInput("pricepre", label = "Yksiköiden keskihinta:", 
                            choices = seq(from = 0, to = 100, by = 1),
                            selected = 30,
                            width = "100%",
                            post = " €/t",
                            grid =T
                        )),
-    div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-        uiOutput(style = "margin-left: -0px; border-color: red;","pula")),
-    hr(),
+# border-color: var(--colcu);
+
+        uiOutput(class= "boxy",style = "background-color:var(--colcost);","pula"),
     hr(),
     hr(),
   )),
   
   
-  column(9,
-  
-  div(
-    style = 'overflow-x: scroll;  
-',
+
+  column(9, class="scrolly",
+   #       style = 'overflow-x: scroll;  align-items:left;
+   # ',
+  # div(
+    # style = 'overflow-x: scroll;  direction: rtl;   ',
     # style = "box-shadow: inset -5px -5px 10px 3px #e7e7e7, inset 5px 5px 10px 3px; padding:8px;",
       # div(style = "padding:8px;",
-       plotOutput(outputId = "plotmetsajapuu", height = "600px", width = "1200px")
+       plotOutput(outputId = "plotmetsajapuu", height = "600px", width = "1100px")
       # ) 
-    ), 
-)
-                ),
+    # )
+  )),
+
+
+
+
+
 # div(
     
     fluidRow(style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
@@ -369,7 +411,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          style = "  margin-right: -0.2vw; padding: .2vw;",
                          
                          div(        class="slidy", 
-                                     style = " color:var(--colemis);",
+                                     style = " background-color:var(--colemis);",
                                      sliderTextInput(
                                        "lulucf2026", label = "Nettopäästö/nielu 2026:", 
                                        choices = seq(from = -25 , to =10, by = 1),
@@ -380,7 +422,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                      )),
                          hr(),
                          div(          class="slidy",  
-                                       style = "color:#4ba180;",
+                                       style = " background-color:var(--colemis);",
                                        
                                        sliderTextInput(
                                          "lulucf2030", label = "Nettopäästö/nielu 2030:", 
@@ -403,7 +445,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                        hr(),
                        
                        div(  class="slidy",  
-                             style = "color:var(--colprice)!important;",
+                             style = " background-color:var(--colprice)!important;",
                              sliderTextInput("pricepost", label = "Kauden yksiköiden keskihinta:", 
                                              choices = seq(from = 0, to = 100, by = 1),
                                              selected = 30,
@@ -419,11 +461,11 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 ),
                 
                 
-                column(9,
+                column(9,class="scrolly",
                        
-                       div(
-                         plotOutput(outputId = "plotlulucf", height = "600px")
-                       ), 
+                       # div(
+                         plotOutput(outputId = "plotlulucf", height = "600px", width = "1100px")
+                       # ), 
                 )
               ),
 
@@ -460,7 +502,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          style = "  margin-right: -0.2vw; padding: .2vw;",
                          
                          div(        class="slidy", 
-                                     style = " color:var(--colemis);",
+                                     style = " background-color:var(--colemis);",
                                      sliderTextInput(
                                        "esd2024", label = "Päästöt 2024:", 
                                        choices = seq(from = 10, to = 30, by = 1),
@@ -471,7 +513,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                      )),
                          hr(),
                          div(          class="slidy",  
-                                       style = "color:#4ba180;",
+                                       style = " background-color:var(--colemis);",
                                        
                                        sliderTextInput(
                                          "esd2025", label = "Päästöt 2025:", 
@@ -494,7 +536,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                        hr(),
                        
                        div(  class="slidy",  
-                             style = "color:var(--colprice)!important;",
+                             style = " background-color:var(--colprice)!important;",
                              sliderTextInput("priceesdpre", label = "Kauden yksiköiden keskihinta:", 
                                              choices = seq(from = 0, to = 200, by = 1),
                                              selected = 50,
@@ -510,11 +552,11 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 ),
                 
                 
-                column(9,
+                column(9,class="scrolly",
                        
-                       div(
-                         plotOutput(outputId = "plotesdpre", height = "600px")
-                       ), 
+                       # div(
+                         plotOutput(outputId = "plotesdpre", height = "600px", width = "700px")
+                       # ), 
                 )
               ),
               
@@ -551,7 +593,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          style = "  margin-right: -0.2vw; padding: .2vw;",
                          
                          div(        class="slidy", 
-                                     style = " color:var(--colemis);",
+                                     style = " background-color:var(--colemis);",
                                      sliderTextInput(
                                        "esd2026", label = "Päästöt 2026:", 
                                        choices = seq(from = 10, to = 25, by = 1),
@@ -562,7 +604,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                      )),
                          hr(),
                          div(          class="slidy",  
-                                       style = "color:#4ba180;",
+                                       style = " background-color:var(--colemis);",
                                        
                                        sliderTextInput(
                                          "esd2030", label = "Päästöt 2030:", 
@@ -585,7 +627,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                        hr(),
                        
                        div(  class="slidy",  
-                             style = "color:var(--colprice)!important;",
+                             style = " background-color:var(--colprice)!important;",
                              sliderTextInput("priceesdpost", label = "Kauden yksiköiden keskihinta:", 
                                              choices = seq(from = 0, to = 200, by = 1),
                                              selected = 50,
@@ -601,11 +643,11 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 ),
                 
                 
-                column(9,
+                column(9,class="scrolly",
                        
-                       div(
-                         plotOutput(outputId = "plotesdpost", height = "600px")
-                       ), 
+                       # div(
+                         plotOutput(outputId = "plotesdpost", height = "600px", width = "800px")
+                       # ), 
                 )
               ),
               
@@ -627,38 +669,110 @@ server <- function(input, output) {
   rv <- reactiveValues(cums =0)
   rv <- reactiveValues(cul ="Kustannus")
   rv <- reactiveValues(view =2)
+  rv <- reactiveValues(ale =2)
+  
   rv <- reactiveValues(fonts =.95)
   
   
+  # serveriin|
+    
+    style2 <- reactive({
+      # if (is.null(input$countr)) { 
+      if (rv$ale ==1) {
+        # if (input$nok =="EXTRA: Country profiles") { 
+        ".scrolly {direction: rtl; overflow-x: scroll; }"
+        
+      }
+      else if (rv$ale ==2) {
+        ".scrolly {direction: ltr; overflow-x: scroll; }"    
+      }
+      
+    }
+    )
+  
+  output$css_style2 <- renderUI({
+    tags$head(
+      tags$style(
+        HTML(
+          paste0(c(style2()), collapse = "\n")
+        )
+      )
+    )})
+  
   # different setting for different screen sizes
+  
+  # observeEvent(input$dim, {
+  # 
+  #   if (input$dim[1] >1800) {
+  #     rv$view = 1
+  #   }
+  #   else  if (input$dim[1] >1300 & input$dim[1] <1800) {
+  #     rv$view = 2
+  #   } else if (input$dim[1] <1300 & input$dim[1] >770) {
+  #     rv$view = 3
+  #      rv$fonts = .7
+  #     # rv$fonts = input$dim[1]/1300
+  #   } else if (input$dim[1] <770 & input$dim[1] >600) {
+  #     rv$view = 3
+  #     rv$fonts = .8
+  #     # rv$fonts = input$dim[1]/1300
+  #   }
+  #   # else if (input$dim[1] <1300 & input$dim[1] >800) {
+  #   #   rv$view = 3
+  #   #   rv$fonts = .8
+  #   #   # rv$fonts = input$dim[1]/1300
+  #   # }
+  #   #
+  #   else {
+  #     rv$view = 3
+  #     rv$fonts = .5
+  #     # rv$fonts = input$d
+  # 
+  #   }
+  # })
+
+  
+  
   observeEvent(input$dim, {
     
-    if (input$dim[1] >1800) {
+    if (input$dim[1] >4800) {
       rv$view = 1
-    } 
-    else  if (input$dim[1] >1300 & input$dim[1] <1800) {
-      rv$view = 2
-    } else if (input$dim[1] <1300 & input$dim[1] >770) {
-      rv$view = 3
-       rv$fonts = .7
-      # rv$fonts = input$dim[1]/1300
-    } else if (input$dim[1] <770 & input$dim[1] >600) {
-      rv$view = 3
-      rv$fonts = .8
-      # rv$fonts = input$dim[1]/1300
-    } 
+    }
+    # else  if (input$dim[1] >1300 & input$dim[1] <1800) {
+    #   rv$view = 2
+    # } else if (input$dim[1] <1300 & input$dim[1] >770) {
+    #   rv$view = 3
+    #   rv$fonts = .7
+    #   # rv$fonts = input$dim[1]/1300
+    # } else if (input$dim[1] <770 & input$dim[1] >600) {
+    #   rv$view = 3
+    #   rv$fonts = .8
+    #   # rv$fonts = input$dim[1]/1300
+    # }
     # else if (input$dim[1] <1300 & input$dim[1] >800) {
     #   rv$view = 3
     #   rv$fonts = .8
     #   # rv$fonts = input$dim[1]/1300
-    # } 
-    # 
+    # }
+    #
     else {
-      rv$view = 3
-      rv$fonts = .5
+      rv$view =1
+      rv$fonts = .85
       # rv$fonts = input$d
       
     }
+    
+    if (input$dim[1] <1500) {
+      
+      rv$ale = 1
+    }
+    else {
+      rv$ale =2
+      # rv$fonts = .85
+      # rv$fonts = input$d
+      
+    }
+    
   })
   
   
@@ -667,16 +781,16 @@ server <- function(input, output) {
     paste(
       rv$cul2,
       "\n",
-      '<br><span style=\"color: var(--colallo)','\"><b>',  rv$cumallo,  
+      '<br><span style=\"background-color: var(--colallo); color: white;','\"><b>',  rv$cumallo,  
       " Mt ",'</b></span>'," - ",
       
-      '<span style=\"color: var(--colemis)','\"><b>', rv$cumsink,  
+      '<span style=\"background-color: var(--colemis); color: white;','\"><b>', rv$cumsink,  
       
       # '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, "€/t ",
       " Mt ", '</span>',
       "= ",
-      '<span style=\"color: var(--coldiff)', '\"><b>', 
-      '<span style=\"color:var(--coldiff)','\"><b>',  rv$cums,  
+      '<span style=\"color: white;', '\"><b>', 
+      '<span style=\"color: white;','\"><b>',  rv$cums,  
       
       # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " Mt",'</b></span>',
@@ -687,10 +801,10 @@ server <- function(input, output) {
     paste(
       rv$cul1,
       "\n",
-      '<br><span style=\"color: var(--coldiff)','\"><b>',  rv$cumsaa,  
+      '<br><span style=\"background-color: var(--coldiff); color: white;','\"><b>',  rv$cumsaa,  
       " Mt ",'</b></span>'," x ",
-      '<span style=\"color: var(--colprice)',  '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
-      '<span style=\"color: var(--colcost)', '\"><b>', 
+      '<span style=\"background-color: var(--colprice); color: white;',  '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
+      '<span style=\"background-color: var(--colcost); color: white;', '\"><b>', 
       format(round(input$pricepre*rv$cumsiaa,0), nsmall=0, decimal.mark=","),
       " milj. €",'</b></span>',
       sep ="")})
@@ -952,10 +1066,10 @@ server <- function(input, output) {
     koki[year %in% c(2021:2025)& sector =="price", maarab :=maara]
     
     koki$col2 = "white"
-    koki[maara < 0, col2 :="green"]
-    koki[maara > 0, col2 :="#fc3a02"]
-    koki[maarab < 0, col3 :="green"]
-    koki[maarab > 0, col3 :="red"]
+    koki[maara < 0, col2 :=gr]
+    koki[maara > 0, col2 :=re]
+    koki[maarab < 0, col3 :=gr]
+    koki[maarab > 0, col3 :=re]
     
     rv$cumsink= format(round(koki[year %in% 2025 & sector =="metsajapuu", abs(maarab)],1), nsmall=1, decimal.mark=",")
     rv$cumsinki= koki[year %in% 2025 & sector =="metsajapuu", maarab]  
@@ -1048,10 +1162,11 @@ server <- function(input, output) {
     koki[year %in% c(2026:2030)& sector =="price", maarab :=maara]
     
     koki$col2 = "white"
-    koki[maara < 0, col2 :="green"]
-    koki[maara > 0, col2 :="#fc3a02"]
-    koki[maarab < 0, col3 :="green"]
-    koki[maarab > 0, col3 :="red"]
+    koki[maara < 0, col2 :=gr]
+    koki[maara > 0, col2 :=re]
+    koki[maarab < 0, col3 :=gr]
+    koki[maarab > 0, col3 :=re]
+    
     
     rv$cumsinkb= format(round(koki[year %in% 2030 & sector =="lulucf", abs(maarab)],1), nsmall=1, decimal.mark=",")
     rv$cumsinkib= koki[year %in% 2030 & sector =="lulucf", maarab]  
@@ -1133,10 +1248,11 @@ server <- function(input, output) {
     koki[year %in% c(2021:2025)& sector =="price", maarab :=maara]
     
     koki$col2 = "white"
-    koki[maara < 0, col2 :="green"]
-    koki[maara > 0, col2 :="#fc3a02"]
-    koki[maarab < 0, col3 :="green"]
-    koki[maarab > 0, col3 :="red"]
+    koki[maara < 0, col2 :=gr]
+    koki[maara > 0, col2 :=re]
+    koki[maarab < 0, col3 :=gr]
+    koki[maarab > 0, col3 :=re]
+    
     
     rv$cumsinkc= format(round(koki[year %in% 2025 & sector =="esd", abs(maarab)],1), nsmall=1, decimal.mark=",")
     rv$cumsinkic= koki[year %in% 2025 & sector =="esd", maarab]  
@@ -1225,10 +1341,11 @@ server <- function(input, output) {
     koki[year %in% c(2026:2030)& sector =="price", maarab :=maara]
     
     koki$col2 = "white"
-    koki[maara < 0, col2 :="green"]
-    koki[maara > 0, col2 :="#fc3a02"]
-    koki[maarab < 0, col3 :="green"]
-    koki[maarab > 0, col3 :="red"]
+    koki[maara < 0, col2 :=gr]
+    koki[maara > 0, col2 :=re]
+    koki[maarab < 0, col3 :=gr]
+    koki[maarab > 0, col3 :=re]
+    
     
     rv$cumsinkd= format(round(koki[year %in% 2030 & sector =="esd", abs(maarab)],1), nsmall=1, decimal.mark=",")
     rv$cumsinkid= koki[year %in% 2030 & sector =="esd", maarab]  
@@ -1295,10 +1412,15 @@ server <- function(input, output) {
       luk = 2005
     } else if (rv$view==2) {
       luk =2010
+      luk = 2005
+      
     } else {
       luk =2015
+      
+       luk = 2005
+      
     }
-    # luk = 2010
+    #luk = 2010
     
     f = rv$fonts
     
@@ -1446,25 +1568,25 @@ server <- function(input, output) {
       
       
       
-      geom_text(data=koke[year %in% c(2025) & sector %in% c("diff"),],
-                aes(x=2024.7, y=ma, 
-                    label=
-                      "
-                 Huomioita:
-                
-                 Ei sisällä muita maankäyttösektorin 
-                 alasektoreita ja niiden tavoitteita. 
-                
-                 Vuodesta 2026 alkaen 
-                 maankäyttösektoria käsitellään
-                 kokonaisuutena (alempi osio). 
-                
-                 Nielukiintiö perustuu 
-                 Luonnonvarakeskuksen arvioon 
-                 ja tulee tarkentumaan.
-                 Myös päästötilastot tarkentuvat.
-                 
-                 "), size=3.5*f,color="black", fontface="bold", hjust=0, vjust=1)+
+      # geom_text(data=koke[year %in% c(2025) & sector %in% c("diff"),],
+      #           aes(x=2024.7, y=ma, 
+      #               label=
+      #                 "
+      #            Huomioita:
+      #           
+      #            Ei sisällä muita maankäyttösektorin 
+      #            alasektoreita ja niiden tavoitteita. 
+      #           
+      #            Vuodesta 2026 alkaen 
+      #            maankäyttösektoria käsitellään
+      #            kokonaisuutena (alempi osio). 
+      #           
+      #            Nielukiintiö perustuu 
+      #            Luonnonvarakeskuksen arvioon 
+      #            ja tulee tarkentumaan.
+      #            Myös päästötilastot tarkentuvat.
+      #            
+      #            "), size=3.5*f,color="black", fontface="bold", hjust=0, vjust=1)+
       
       
       
@@ -1481,10 +1603,10 @@ server <- function(input, output) {
                stat='identity', position='stack', alpha=.99 )+
       
       geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("diff"),], 
-               aes(x=year, y = maara,fill=col,  width=si, col=col2), 
+               aes(x=year, y = maara,fill=col,  width=si), 
                stat='identity', position='stack', linewidth =.6 )+
       
-           geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col, color=col2), 
+           geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col), 
                       size=4.5, stroke=1, alpha=.9, shape =21)+
       geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=2)+
         geom_point(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=5, alpha=.9)+
@@ -1492,7 +1614,7 @@ server <- function(input, output) {
       
       geom_hline(aes(yintercept=0), size=.4, color="black", linetype="dashed")+
       
-      coord_cartesian(xlim=c(luk,  2032), 
+      coord_cartesian(xlim=c(luk,  2027), 
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       
@@ -1500,7 +1622,7 @@ server <- function(input, output) {
                       "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
       
-        scale_x_continuous(breaks =seq(luk, 2030, by=1), minor_breaks = seq(luk-.5, 2030.5, by=1))   +
+        scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
        scale_alpha_identity() + 
       
       scale_fill_identity() + 
@@ -1780,7 +1902,7 @@ server <- function(input, output) {
     
     koke = koke3()
     koke = as.data.table(koke)
-    koke = koke[sector %in% c("esd", "allocation", "diff", "cost",  "price") & year %in% C(luk:2030)]
+    koke = koke[sector %in% c("esd", "allocation", "diff", "cost",  "price") & year %in% C(luk:2025)]
     
     
     
@@ -1927,9 +2049,9 @@ server <- function(input, output) {
       geom_col(data=koke[year %in% c(2021:2025) & sector %in% c("allocation")],
                aes(x=year, y = maara,fill=col, color=col, width=si),
                stat='identity', position='stack' )+
-      geom_col(data=koke[year %in% c(2026:2030) & sector %in% c("allocation")],
-               aes(x=year, y = maara,fill=col, color=col, width=si),
-               stat='identity', position='stack', alpha=.0 )+
+      # geom_col(data=koke[year %in% c(2026:2030) & sector %in% c("allocation")],
+      #          aes(x=year, y = maara,fill=col, color=col, width=si),
+      #          stat='identity', position='stack', alpha=.0 )+
       
       geom_col(data=koke[year %in% c(2021:2025) & sector %in% c("esd"),],
                aes(x=year, y = maara,fill=col, width=si),
@@ -1954,7 +2076,7 @@ server <- function(input, output) {
       
       geom_hline(aes(yintercept=0), size=.4, color="black", linetype="dashed")+
       
-      coord_cartesian(xlim=c(luk,  2032), 
+      coord_cartesian(xlim=c(luk,  2027), 
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       
@@ -1962,7 +2084,7 @@ server <- function(input, output) {
                       "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
       
-      scale_x_continuous(breaks =seq(luk, 2030, by=1), minor_breaks = seq(luk-.5, 2030.5, by=1))   +
+      scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
       scale_alpha_identity() + 
       
       scale_fill_identity() + 
