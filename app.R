@@ -38,6 +38,8 @@ price = "#a6a24c"
 
 re = "#ef4205"
   gr = "#8fff4a"
+  dgr = "darkgreen"
+  
 # --colemis: #24aa61;
 #   
 #   --colallo: #198baa;
@@ -143,9 +145,7 @@ tags$style(HTML("
     .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: var(--colprice)}; 
                   .js-irs-0 .irs-max {background-color: transparent !important font-size: 5vw} 
        
-                .js-irs .irs-bar, .js-irs-0 .irs-single {
-    background: black;
-}
+
                 ")),
 # tags$style(HTML(" .js-irs-2 .irs-bar,  .js-irs-2 .irs-single {background: #bc810d};")),
 
@@ -209,7 +209,7 @@ fluidRow(
 fluidRow(  div(
   style = " background-color:#D6D6D6!important;    ",
 
-  style = "padding: .2vw; font-size: 15px !important; margin: .5vw;",
+  style = "padding: .2vw; font-size: 15px !important; margin: 15px;",
   
   checkboxInput("inf", "Mikä tämä sivu on?", value =F),
   conditionalPanel( condition = "input.inf == true",
@@ -278,7 +278,7 @@ hr(),
         style = " background-color:var(--colemis);",
       sliderTextInput(
         "lulucf2024", label = "2024 nettopäästöt:", 
-        choices = seq(from = -35, to = 0, by = 1),
+        choices = seq(from = -35, to = 0, by = .1),
         selected = -14,
         width = "100%",
         post = " Mt",
@@ -292,7 +292,7 @@ hr(),
         
       sliderTextInput(
         "lulucf2025", label = "2025 nettopäästöt:", 
-        choices = seq(from = -35, to = 0, by = 1),
+        choices = seq(from = -35, to = 0, by = .1),
         selected = -14,
         width = "100%",
         post = " Mt",
@@ -337,7 +337,7 @@ hr(),
     # style = 'overflow-x: scroll;  direction: rtl;   ',
     # style = "box-shadow: inset -5px -5px 10px 3px #e7e7e7, inset 5px 5px 10px 3px; padding:8px;",
       # div(style = "padding:8px;",
-       plotOutput(outputId = "plotmetsajapuu", height = "600px", width = "1100px")
+       plotOutput(outputId = "plotmetsajapuu", height = "550px", width = "1100px")
       # ) 
     # )
   )),
@@ -349,9 +349,10 @@ hr(),
 # div(
     
     fluidRow(style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
-      column(3,
+      column(3,style = "     padding-right: 10px;
+    padding-left: 5px;",
              div(   class="slidy",         
-               style = "color:var(--coldiff);",
+                    style = "background-color:var(--coldiff);",
                sliderTextInput(
                  "maa2025", label = "Maankäyttösektorin muiden tilinpitoluokkien ylitys kaudelta:", 
                  choices = seq(from = 0, to = 30, by = 1),
@@ -406,14 +407,15 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 
                 # Sidebar panel for inputs ----
                 column(3,
-                       
+                       style = "     padding-right: 10px;
+    padding-left: 5px;",
                        div(        
                          style = "  margin-right: -0.2vw; padding: .2vw;",
                          
                          div(        class="slidy", 
                                      style = " background-color:var(--colemis);",
                                      sliderTextInput(
-                                       "lulucf2026", label = "Nettopäästö/nielu 2026:", 
+                                       "lulucf2026", label = "2026 nettopäästöt:", 
                                        choices = seq(from = -25 , to =10, by = 1),
                                        selected = -3,
                                        width = "100%",
@@ -425,7 +427,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        style = " background-color:var(--colemis);",
                                        
                                        sliderTextInput(
-                                         "lulucf2030", label = "Nettopäästö/nielu 2030:", 
+                                         "lulucf2030", label = "2030 nettopäästöt:", 
                                          choices = seq(from = -25 , to = 10, by = 1),
                                          selected = -7,
                                          width = "100%",
@@ -439,8 +441,9 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
                          ),
-                       div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(style = "margin-left: -0px; border-color: red;","difab")),
+                       # div(                    style = "background-color:var(--coldiff);
+                       #                         ",
+                           uiOutput( class= "boxy",style = "background-color:var(--coldiff);","difab"),
                        
                        hr(),
                        
@@ -453,9 +456,12 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                              post = " €/t",
                                              grid =T
                              )),
-                       div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(style = "margin-left: -0px; border-color: red;","pulab")),
                        hr(),
+                       
+                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                           uiOutput(class= "boxy", style = "background-color:var(--colcost); ","pulab")
+                           # )
+                       ,
                        hr(),
                        hr(),
                 ),
@@ -464,7 +470,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(9,class="scrolly",
                        
                        # div(
-                         plotOutput(outputId = "plotlulucf", height = "600px", width = "1100px")
+                         plotOutput(outputId = "plotlulucf", height = "550px", width = "1100px")
                        # ), 
                 )
               ),
@@ -496,7 +502,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 # ),
                 
                 # Sidebar panel for inputs ----
-                column(3,
+                column(3,style = "     padding-right: 10px;
+    padding-left: 5px;",
                        
                        div(        
                          style = "  margin-right: -0.2vw; padding: .2vw;",
@@ -504,7 +511,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          div(        class="slidy", 
                                      style = " background-color:var(--colemis);",
                                      sliderTextInput(
-                                       "esd2024", label = "Päästöt 2024:", 
+                                       "esd2024", label = "2024 päästöt:", 
                                        choices = seq(from = 10, to = 30, by = 1),
                                        selected = 24,
                                        width = "100%",
@@ -516,7 +523,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        style = " background-color:var(--colemis);",
                                        
                                        sliderTextInput(
-                                         "esd2025", label = "Päästöt 2025:", 
+                                         "esd2025", label = "2025 päästöt:", 
                                          choices = seq(from =  10, to = 30, by = 1),
                                          selected = 23,
                                          width = "100%",
@@ -530,8 +537,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
                        ),
-                       div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(style = "margin-left: -0px; border-color: red;","difac")),
+                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                           uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difac"),
                        
                        hr(),
                        
@@ -544,8 +551,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                              post = " €/t",
                                              grid =T
                              )),
-                       div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(style = "margin-left: -0px; border-color: red;","pulac")),
+                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                           uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulac"),
                        hr(),
                        hr(),
                        hr(),
@@ -555,7 +562,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(9,class="scrolly",
                        
                        # div(
-                         plotOutput(outputId = "plotesdpre", height = "600px", width = "700px")
+                         plotOutput(outputId = "plotesdpre", height = "550px", width = "700px")
                        # ), 
                 )
               ),
@@ -587,7 +594,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 # ),
                 
                 # Sidebar panel for inputs ----
-                column(3,
+                column(3,style = "     padding-right: 10px;
+    padding-left: 5px;",
                        
                        div(        
                          style = "  margin-right: -0.2vw; padding: .2vw;",
@@ -595,7 +603,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          div(        class="slidy", 
                                      style = " background-color:var(--colemis);",
                                      sliderTextInput(
-                                       "esd2026", label = "Päästöt 2026:", 
+                                       "esd2026", label = "2026 päästöt:", 
                                        choices = seq(from = 10, to = 25, by = 1),
                                        selected = 22,
                                        width = "100%",
@@ -607,7 +615,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        style = " background-color:var(--colemis);",
                                        
                                        sliderTextInput(
-                                         "esd2030", label = "Päästöt 2030:", 
+                                         "esd2030", label = "2030 päästöt:", 
                                          choices = seq(from =  10, to = 25, by = 1),
                                          selected = 19,
                                          width = "100%",
@@ -621,8 +629,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
                        ),
-                       div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(style = "margin-left: -0px; border-color: red;","difad")),
+                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                           uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difad"),
                        
                        hr(),
                        
@@ -635,8 +643,8 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                              post = " €/t",
                                              grid =T
                              )),
-                       div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(style = "margin-left: -0px; border-color: red;","pulad")),
+                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                           uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulad"),
                        hr(),
                        hr(),
                        hr(),
@@ -646,7 +654,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(9,class="scrolly",
                        
                        # div(
-                         plotOutput(outputId = "plotesdpost", height = "600px", width = "800px")
+                         plotOutput(outputId = "plotesdpost", height = "550px", width = "800px")
                        # ), 
                 )
               ),
@@ -815,16 +823,16 @@ server <- function(input, output) {
     paste(
       rv$cul2b,
       "\n",
-      '<br><span style=\"color: var(--colallo)','\"><b>',  rv$cumallob,  
+      '<br><span style=\"color: white; background-color: var(--colallo)','\"><b>',  rv$cumallob,  
       " Mt ",'</b></span>'," - ",
       
-      '<span style=\"color: var(--colemis)','\"><b>',  rv$cumsinkb,  
+      '<span style=\"color: white; background-color: var(--colemis)','\"><b>',  rv$cumsinkb,  
       
       # '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, "€/t ",
       " Mt ", '</span>',
       "= ",
-      '<span style=\"color: var(--coldiff)', '\"><b>', 
-      '<span style=\"color:var(--coldiff)','\"><b>',  rv$cumsb,  
+      '<span style=\"color: white; background-color: var(--coldiff)', '\"><b>', 
+      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsb,  
       
       # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " Mt",'</b></span>',
@@ -835,10 +843,10 @@ server <- function(input, output) {
     paste(
       rv$cul1b,
       "\n",
-      '<br><span style=\"color: var(--coldiff)','\"><b>',  rv$cumsba,  
+      '<br><span style=\"color: white; background-color: var(--coldiff)','\"><b>',  rv$cumsba,  
       " Mt ",'</b></span>'," x ",
-      '<span style=\"color: var(--colprice)',  '\"><b>',  input$pricepost, " €/t ",'</b></span>',"= ",
-      '<span style=\"color: var(--colcost)', '\"><b>', 
+      '<span style=\"color: white; background-color: var(--colprice)',  '\"><b>',  input$pricepost, " €/t ",'</b></span>',"= ",
+      '<span style=\"color: white; background-color: var(--colcost)', '\"><b>', 
       format(round(input$pricepost*rv$cumsiba,0), nsmall=0, decimal.mark=","),
       " milj. €",'</b></span>',
       sep ="")})
@@ -849,16 +857,16 @@ server <- function(input, output) {
     paste(
       rv$cul2c,
       "\n",
-      '<br><span style=\"color: var(--colallo)','\"><b>',  rv$cumalloc,  
+      '<br><span style=\"color: white; background-color: var(--colallo)','\"><b>',  rv$cumalloc,  
       " Mt ",'</b></span>'," - ",
       
-      '<span style=\"color: var(--colemis)','\"><b>',  rv$cumsinkc,  
+      '<span style=\"color: white; background-color: var(--colemis)','\"><b>',  rv$cumsinkc,  
       
       # '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, "€/t ",
       " Mt ", '</span>',
       "= ",
-      '<span style=\"color: var(--coldiff)', '\"><b>', 
-      '<span style=\"color:var(--coldiff)','\"><b>',  rv$cumsc,  
+      '<span style=\"color: white; background-color: var(--coldiff)', '\"><b>', 
+      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsc,  
       
       # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " Mt",'</b></span>',
@@ -869,10 +877,10 @@ server <- function(input, output) {
     paste(
       rv$cul1c,
       "\n",
-      '<br><span style=\"color: var(--coldiff)','\"><b>',  rv$cumsca,  
+      '<br><span style=\"color: white; background-color: var(--coldiff)','\"><b>',  rv$cumsca,  
       " Mt ",'</b></span>'," x ",
-      '<span style=\"color: var(--colprice)',  '\"><b>',  input$priceesdpre, " €/t ",'</b></span>',"= ",
-      '<span style=\"color: var(--colcost)', '\"><b>', 
+      '<span style=\"color: white; background-color: var(--colprice)',  '\"><b>',  input$priceesdpre, " €/t ",'</b></span>',"= ",
+      '<span style=\"color: white; background-color: var(--colcost)', '\"><b>', 
       format(round(input$priceesdpre*rv$cumsica,0), nsmall=0, decimal.mark=","),
       " milj. €",'</b></span>',
       sep ="")})
@@ -893,16 +901,16 @@ server <- function(input, output) {
     paste(
       rv$cul2d,
       "\n",
-      '<br><span style=\"color: var(--colallo)','\"><b>',  rv$cumallod,  
+      '<br><span style=\"color: white; background-color: var(--colallo)','\"><b>',  rv$cumallod,  
       " Mt ",'</b></span>'," - ",
       
-      '<span style=\"color: var(--colemis)','\"><b>',  rv$cumsinkd,  
+      '<span style=\"color: white; background-color: var(--colemis)','\"><b>',  rv$cumsinkd,  
       
       # '<span style=\"color:', "#bc810d", '\"><b>',  input$pricepre, "€/t ",
       " Mt ", '</span>',
       "= ",
-      '<span style=\"color: var(--coldiff)', '\"><b>', 
-      '<span style=\"color:var(--coldiff)','\"><b>',  rv$cumsd,  
+      '<span style=\"color: white; background-color: var(--coldiff)', '\"><b>', 
+      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsd,  
       
       # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " Mt",'</b></span>',
@@ -913,10 +921,10 @@ server <- function(input, output) {
     paste(
       rv$cul1d,
       "\n",
-      '<br><span style=\"color: var(--coldiff)','\"><b>',  rv$cumsda,  
+      '<br><span style=\"color: white; background-color: var(--coldiff)','\"><b>',  rv$cumsda,  
       " Mt ",'</b></span>'," x ",
-      '<span style=\"color: var(--colprice)',  '\"><b>',  input$priceesdpost, " €/t ",'</b></span>',"= ",
-      '<span style=\"color: var(--colcost)', '\"><b>', 
+      '<span style=\"color: white; background-color: var(--colprice)',  '\"><b>',  input$priceesdpost, " €/t ",'</b></span>',"= ",
+      '<span style=\"color: white; background-color: var(--colcost)', '\"><b>', 
       format(round(input$priceesdpost*rv$cumsida,0), nsmall=0, decimal.mark=","),
       " milj. €",'</b></span>',
       sep ="")})
@@ -1620,7 +1628,7 @@ server <- function(input, output) {
       
       labs(caption =c("Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  ", 
                       "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
-      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
+      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
       
         scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
        scale_alpha_identity() + 
@@ -1631,11 +1639,11 @@ server <- function(input, output) {
         plot.caption=element_text(size =10*f, hjust =c(0,1) , family = "merriweather sans",
                                   lineheight=.85 ,color=c("black","black")),
         
-        axis.text.x = element_text(size=12*f), 
-          axis.title.y.left=element_text(color="blue"),
-        axis.text.y.left=element_text(color="blue", size=15*f),
-        axis.title.y.right=element_text(color="red"),
-        axis.text.y.right=element_text(color="red", size=15*f),
+        axis.text.x = element_text(size=15*f), 
+          axis.title.y.left=element_text(color=dgr),
+        axis.text.y.left=element_text(color=dgr, size=15*f),
+        axis.title.y.right=element_text(color=re),
+        axis.text.y.right=element_text(color=re, size=15*f),
          axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 

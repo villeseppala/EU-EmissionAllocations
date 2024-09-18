@@ -70,10 +70,29 @@ W
 --collineb: #d7d7d7;
 --backs:  #ededed5e;
 }  
+.irs--shiny.irs-with-grid {
+height: 40px;
+}
 
+
+.irs--shiny .irs-single {
+  font-size: 13px;
+  border-color: white;
+    border: solid;
+    border-width: thin;
+}
+  
+.irs-grid-text {
+  font-size: 0px;
+}
 
 .form-group {
  margin-bottom: 3px;
+}
+
+.irs-grid-pol {
+      height: 0px;
+
 }
 /* .bcnavbar {
   direction: rtl;
