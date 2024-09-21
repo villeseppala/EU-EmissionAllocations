@@ -190,6 +190,11 @@ uiOutput("css_style2"),
 
 
 fluidRow(
+#   column(1,
+#          actionButton(inputId = "eng", label = NULL, style = "width: 2.5rem; height: 1.5rem; margin: 3px;
+# background: url('flag/eng.png');  background-size: cover; background-position: center;"), 
+#   ) , 
+
   column(10,
   h3(style="padding-top: .1vw; ",
      tags$b("Suomen EU-päästötavoitteista poikkeamisen kustannusten ja tuottojen hahmottaminen", 
@@ -260,8 +265,8 @@ div(  style = " background-color:#D6D6D6!important;    ",
          
          
    
-    div(        
-      style = "  margin-right: -0.2vw; padding: .1vw;",
+    # div(        
+    #   style = "  margin-right: -0.2vw; padding: .1vw;",
    
       
     
@@ -278,7 +283,7 @@ hr(),
         style = " background-color:var(--colemis);",
       sliderTextInput(
         "lulucf2024", label = "2024 nettopäästöt:", 
-        choices = seq(from = -35, to = 0, by = .1),
+        choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
         post = " Mt",
@@ -292,7 +297,7 @@ hr(),
         
       sliderTextInput(
         "lulucf2025", label = "2025 nettopäästöt:", 
-        choices = seq(from = -35, to = 0, by = .1),
+        choices = seq(from = -35, to = 0, by = 1),
         selected = -14,
         width = "100%",
         post = " Mt",
@@ -307,6 +312,11 @@ hr(),
       #   tags$b("Kauden 2021-2025 nettonielu",   ))  ),
 # border-color: var(--colcu);
       # div(style = "background-color:var(--coldiff);",
+
+uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+         outputId = "emisa"
+),
+
           uiOutput(class= "boxy", style = "background-color:var(--coldiff);","difa")
 ,
       
@@ -326,7 +336,8 @@ hr(),
         uiOutput(class= "boxy",style = "background-color:var(--colcost);","pula"),
     hr(),
     hr(),
-  )),
+  # )
+),
   
   
 
@@ -348,7 +359,7 @@ hr(),
 
 # div(
     
-    fluidRow(style = "background-color:#D6D6D6!important; border-color: blue; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+    fluidRow(style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
       column(3,style = "     padding-right: 10px;
     padding-left: 5px;",
              div(   class="slidy",         
@@ -372,8 +383,10 @@ hr(),
 
       
       column(9,
-             div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                 uiOutput(style = "margin-left: -0px; border-color: red;","totu")),
+             # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                 uiOutput(class="boxy",style = "background-color:var(--colcost); color: white;","totu")
+             # )
+      ,
              h5(
                tags$b("Huom: Laskelma ei huomioi Suomen mahdollisia joustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa.", 
                   )), 
@@ -409,8 +422,15 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(3,
                        style = "     padding-right: 10px;
     padding-left: 5px;",
-                       div(        
-                         style = "  margin-right: -0.2vw; padding: .2vw;",
+                       # div(        
+                       #   style = "  margin-right: -0.2vw; padding: .2vw;",
+                         
+                         uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                  outputId = "kiinb"
+                         ),
+                         
+    # A
+                         
                          
                          div(        class="slidy", 
                                      style = " background-color:var(--colemis);",
@@ -435,14 +455,27 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                          grid=T
                                        )),
                          hr(),
-                         h5(
-                           tags$b("2027-2029-nielu laskettu lineaarisena kehityksenä",    )),
                          
+                         
+                         # uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                         #          outputId = "kiin"
+                         # ),
+                         
+                         # div(
+                           p(class= "boxy",style = " background-color:var(--colemis); ","2027-2029 arvot laskettu valintojen lineaarisena kehityksenä",  
+                             # )
+    ),
+                         
+    
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
-                         ),
+                         # ),
                        # div(                    style = "background-color:var(--coldiff);
                        #                         ",
+    
+    uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+             outputId = "emisb"
+    ),
                            uiOutput( class= "boxy",style = "background-color:var(--coldiff);","difab"),
                        
                        hr(),
@@ -505,9 +538,16 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(3,style = "     padding-right: 10px;
     padding-left: 5px;",
                        
-                       div(        
-                         style = "  margin-right: -0.2vw; padding: .2vw;",
+                       # div(        
+                       #   style = "  margin-right: -0.2vw; padding: .2vw;",
+                       #   
                          
+                         uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                  outputId = "kiinc"
+                         ),
+                         
+                         p(class= "boxy",style = " background-color:var(--colemis); ","2021-2023-päästöt alustavista tilastoista"),  
+                           
                          div(        class="slidy", 
                                      style = " background-color:var(--colemis);",
                                      sliderTextInput(
@@ -536,7 +576,11 @@ div(          style = " background-color:#D6D6D6!important;    ",
                          
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
+                       # ),
+                       uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+                                outputId = "emisc"
                        ),
+                       
                        # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
                            uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difac"),
                        
@@ -597,8 +641,13 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 column(3,style = "     padding-right: 10px;
     padding-left: 5px;",
                        
-                       div(        
-                         style = "  margin-right: -0.2vw; padding: .2vw;",
+                       # div(        
+                       #   style = "  margin-right: -0.2vw; padding: .2vw;",
+                         
+                         
+                         uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                  outputId = "kiind"
+                         ),
                          
                          div(        class="slidy", 
                                      style = " background-color:var(--colemis);",
@@ -623,12 +672,19 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                          grid=T
                                        )),
                          hr(),
-                         h5(
-                           tags$b("2027-2029-päästöt laskettu lineaarisena kehityksenä",    )),
-                         
+                         # h5(class= "boxy",style = " background-color:var(--colemis); color:white",
+                            p(class= "boxy",style = " background-color:var(--colemis); ","2027-2029-päästöt laskettu lineaarisena kehityksenä"  ),
+                       hr(),
+                       
                          # h5(
                          #   tags$b("Kauden 2021-2025 nettonielu",   )) 
+                       # ),
+                       
+                       uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+                                outputId = "emisd"
                        ),
+                       hr(),
+                       
                        # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
                            uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difad"),
                        
@@ -645,7 +701,6 @@ div(          style = " background-color:#D6D6D6!important;    ",
                              )),
                        # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
                            uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulad"),
-                       hr(),
                        hr(),
                        hr(),
                 ),
@@ -681,6 +736,25 @@ server <- function(input, output) {
   
   rv <- reactiveValues(fonts =.95)
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  # observeEvent(input$fin,{
+  #   rv$lang = c("fin")
+  # }    )
+  # 
+  # observeEvent(input$eng,{
+  #   rv$lang = c("eng")
+  # }    )
+  # 
   
   # serveriin|
     
@@ -809,7 +883,7 @@ server <- function(input, output) {
     paste(
       rv$cul1,
       "\n",
-      '<br><span style=\"background-color: var(--coldiff); color: white;','\"><b>',  rv$cumsaa,  
+      '<br><span style=\"background-color: var(--coldiff); color: white;','\"><b>', rv$cumsaa,  
       " Mt ",'</b></span>'," x ",
       '<span style=\"background-color: var(--colprice); color: white;',  '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
       '<span style=\"background-color: var(--colcost); color: white;', '\"><b>', 
@@ -866,7 +940,7 @@ server <- function(input, output) {
       " Mt ", '</span>',
       "= ",
       '<span style=\"color: white; background-color: var(--coldiff)', '\"><b>', 
-      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsc,  
+      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsca,  
       
       # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " Mt",'</b></span>',
@@ -888,8 +962,47 @@ server <- function(input, output) {
   output$kiin= renderText({
     paste(
       
-      "2021-2025 nielukiintiö 96,4 Mt yhteensä - 19,3 Mt vuodessa"
+      "2021-2025 nielukiintiö -96,4 Mt yhteensä, -19,3 Mt vuodessa"
 )})
+  
+  output$kiinb= renderText({
+    paste(
+      
+      "2026-2030 nielukiintiö ", rv$cumallob, " Mt yhteensä"
+    )})
+  output$kiinc= renderText({
+    paste(
+      
+      "2021-2025 päästökiintiö ", rv$cumalloc, " Mt yhteensä"
+    )})
+  output$kiind= renderText({
+    paste(
+      
+      "2026-2030 päästökiintiö ", rv$cumallod, " Mt yhteensä"
+    )})
+  output$emisa= renderText({
+    paste(
+      
+      "2021-2025 nettopäästöt -", rv$cumsink, " Mt yhteensä"
+    )})
+  
+  output$emisb= renderText({
+    paste(
+      
+      "2026-2030 nettopäästöt -", rv$cumsinkb, " Mt yhteensä"
+    )})
+  output$emisc= renderText({
+    paste(
+      
+      "2021-2025 päästöt ", rv$cumsinkc, " Mt yhteensä"
+    )})
+  output$emisd= renderText({
+    paste(
+      
+      "2026-2030 päästöt ", rv$cumsinkd, " Mt yhteensä"
+    )})
+  
+  
   
   output$alu= renderText({
     paste(
@@ -910,7 +1023,7 @@ server <- function(input, output) {
       " Mt ", '</span>',
       "= ",
       '<span style=\"color: white; background-color: var(--coldiff)', '\"><b>', 
-      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsd,  
+      '<span style=\"color: white; background-color:var(--coldiff)','\"><b>',  rv$cumsda,  
       
       # format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       " Mt",'</b></span>',
@@ -964,7 +1077,7 @@ server <- function(input, output) {
       "
       
       Tällä sivulla voi hahmotella, että millaisia kustannuksia tai tuottoja Suomelle 
-      tulee kaupankäynnistä riippuen Suomen päästö- ja nielukehityksestä sekä yksiköiden hinnasta. 
+      tulee kaupankäynnistä, riippuen Suomen päästökehityksestä sekä yksiköiden hinnasta. 
       Yksiköiden kaupalle ei ainakaan toistaiseksi ole keskitettyä markkinapaikkaa ja yksiköillä ei luultavasti ole juurikaan
       käyty kauppaa maiden välillä, joten yksiköiden hintatasoa on vaikea arvioida. Kauden 2021-2025 osalta yksiköiden kaupankäynti
       tulee suorittaa 2027 mennessä ja kauden 2026-2030 osalta 2032 mennessä. 
@@ -987,7 +1100,7 @@ server <- function(input, output) {
       "- Joustoja sektoreiden välillä. Jäsenmailla on mahdollisuus kompensoida sektorin alijäämiään toisen sektorin
       ylijäämillään. Varsinkin mikäli ylijäämäsektorin yksiköiden hinta on halvempi, niin niitä kannattaa käyttää
       alijäämäsektorin kompensointiin sen sijaan että hankkisi yksiköitä muilta jäsenmailta. 
-    Jäsenmailla on mahdollisuus myös käyttää rajoitetusti päästökauppasektorin päästöoikeuksien mitätöintiä alijäämän korvaamiseen. 
+    Jäsenmailla on mahdollisuus myös käyttää rajoitetusti päästökauppasektorin päästöoikeuksien mitätöintiä alijäämän korvaamiseen taakanjakosektorilla. 
     Tällöin ne menettävät mitätöinnin verran tuloja päästöoikeuksien huutokauppaamisesta.
          ",
       # ' ',
@@ -997,19 +1110,19 @@ server <- function(input, output) {
     
           "-Lainausrajoja vuosien välillä sektoreiden sisällä kauden aikana. 
           Kaudella 2021-2025 jäsenmaa voi taakanjakosektorilla siirtää seuraavan vuoden kiintiöstä korkeintaan 
-          7,5% kunkin vuoden alijäämän paikkaamiseen. Kaudella 2026-2030 maksimisiirto on 5%. Tämä huomioitava kertymää
-          laskettaessa. Kuitenkin, jäsenmaan kaupankäyntimahdollisuuksien myötä 
+          7,5% edellisen vuoden alijäämän paikkaamiseen. Kaudella 2026-2030 maksimisiirto on 5%. Tämä huomioitava kertymää
+          laskettaessa. Kuitenkin, jäsenmaan kaupankäyntimahdollisuuksien myötä tämä ei käytännössä ole välttämättä kovin rajoittava.  
       ",
      # Hoidettu viljelysmaa = 29-29=0",
       '<br>',
     '<br>',
     
-      "- Pankitusmahdollisuuksia kausien välillä. Kunkin vuoden ylijäämästä jäsenmaa voi viedä vuoden 2021 osalta korkeintaan 75% vuosikiintiöstä vastaavan summan seuraaville vuosille aina 2030 saakka ja
+      "- Pankitusmahdollisuuksia vuosien ja kausien välillä. Kunkin vuoden ylijäämästä jäsenmaa voi viedä vuoden 2021 osalta korkeintaan 75% vuosikiintiöstä vastaavan summan seuraaville vuosille aina 2030 saakka ja
      2021-2029 ylijäämistä 25% vuosikiintiötä vastaavan summan. Rajoitteet vaikuttavat löysiltä ja tuskin vähentävät pankitusta. Maankäyttösektorilla ei ole kai vastaavia rajoitteita. ",
       '<br>',
     '<br>',
     
-      "- Mahdollisia ylimääräisiä yksiköitä, joita jäsenmaat voivat saada mikäli EU pääsee kokonaisuutena tavoitteisiina. 
+      "- Mahdollisia ylimääräisiä yksiköitä, joita jäsenmaat voivat saada mikäli EU pääsee kokonaisuutena tavoitteisiina sektorilla. 
     
      
     "
@@ -1022,16 +1135,16 @@ server <- function(input, output) {
     paste(
       rv$cul3,
       "\n",
-      '<span style=\"color: var(--colcost)', '\"><b>',
+      '<span style=\"color: white; background-color: var(--colcost)', '\"><b>',
       format(round(input$pricepre*rv$cumsi,0), nsmall=0, decimal.mark=","),
       '</span>',
       " + ",'</b>',
-      '<span style=\"color: var(--coldiff)',  '\"><b>',  input$maa2025, " Mtt ",'</b></span>',
+      '<span style=\"color: white; background-color: var(--coldiff)',  '\"><b>',  input$maa2025, " Mtt ",'</b></span>',
       " x ",
-      '<span style=\"color: var(--colprice)', '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
+      '<span style=\"color: white; background-color: var(--colprice)', '\"><b>',  input$pricepre, " €/t ",'</b></span>',"= ",
       
     
-      '<span style=\"color: var(--colcost)',  '\"><b>', 
+      '<span style=\"color: white; background-color: var(--colcost)',  '\"><b>', 
       format(round((input$pricepre*rv$cumsi+input$pricepre*input$maa2025),0), nsmall=0, decimal.mark=","),
       " milj. €",'</b></span>',
       sep ="")})
@@ -1869,11 +1982,11 @@ server <- function(input, output) {
         plot.caption=element_text(size =10*f, hjust =c(0,1) , family = "merriweather sans",
                                   lineheight=.85 ,color=c("black","black")),
         
-        axis.text.x = element_text(size=12*f), 
-        axis.title.y.left=element_text(color="blue"),
-        axis.text.y.left=element_text(color="blue", size=15*f),
-        axis.title.y.right=element_text(color="red"),
-        axis.text.y.right=element_text(color="red", size=15*f),
+        axis.text.x = element_text(size=15*f), 
+        axis.title.y.left=element_text(color=dgr),
+        axis.text.y.left=element_text(color=dgr, size=15*f),
+        axis.title.y.right=element_text(color=re),
+        axis.text.y.right=element_text(color=re, size=15*f),
         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 
@@ -2101,11 +2214,11 @@ server <- function(input, output) {
         plot.caption=element_text(size =10*f, hjust =c(0,1) , family = "merriweather sans",
                                   lineheight=.85 ,color=c("black","black")),
         
-        axis.text.x = element_text(size=12*f), 
-        axis.title.y.left=element_text(color="blue"),
-        axis.text.y.left=element_text(color="blue", size=15*f),
-        axis.title.y.right=element_text(color="red"),
-        axis.text.y.right=element_text(color="red", size=15*f),
+        axis.text.x = element_text(size=15*f), 
+        axis.title.y.left=element_text(color=dgr),
+        axis.text.y.left=element_text(color=dgr, size=15*f),
+        axis.title.y.right=element_text(color=re),
+        axis.text.y.right=element_text(color=re, size=15*f),
         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 
@@ -2336,11 +2449,11 @@ server <- function(input, output) {
         plot.caption=element_text(size =10*f, hjust =c(0,1) , family = "merriweather sans",
                                   lineheight=.85 ,color=c("black","black")),
         
-        axis.text.x = element_text(size=12*f), 
-        axis.title.y.left=element_text(color="blue"),
-        axis.text.y.left=element_text(color="blue", size=15*f),
-        axis.title.y.right=element_text(color="red"),
-        axis.text.y.right=element_text(color="red", size=15*f),
+        axis.text.x = element_text(size=15*f), 
+        axis.title.y.left=element_text(color=dgr),
+        axis.text.y.left=element_text(color=dgr, size=15*f),
+        axis.title.y.right=element_text(color=re),
+        axis.text.y.right=element_text(color=re, size=15*f),
         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 

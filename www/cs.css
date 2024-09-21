@@ -105,20 +105,22 @@ height: 40px;
 }
 */
 .slidy {
-     padding: .2vw;
+     padding: 5px;
+  margin: 3px;   
 
   padding-bottom: -5vw!important;
   color:white!important; 
-  margin: .2vw;   
  border-color: black;
   padding-top: .2vw; 
 }
 
 .boxy {
   color:white; font-weight: 600;
- margin: 2px; padding: 2px;
+ margin: 3px; padding: 5px;
 }
 
+
+hr {border-top: 2px solid white; margin-bottom:13px; margin-top:13px;}
 
 
 /* 
