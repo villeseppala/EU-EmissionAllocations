@@ -25,6 +25,7 @@ allo = "#3111ab"
 emis = "#13aa82"
 price = "#c66910"
 cu = "#df16e2"
+cu = "white"
 
 
 emis = "#8b513b"
@@ -181,6 +182,7 @@ tags$style(HTML(" .js-irs-12 .irs-bar {background:var(--colprice)}
 
 uiOutput("css_style2"),
 
+uiOutput("css_style3"),
 
 
 
@@ -192,13 +194,16 @@ uiOutput("css_style2"),
 fluidRow(
 #   column(1,
 #          actionButton(inputId = "eng", label = NULL, style = "width: 2.5rem; height: 1.5rem; margin: 3px;
-# background: url('flag/eng.png');  background-size: cover; background-position: center;"), 
-#   ) , 
+# background: url('flag/eng.png');  background-size: cover; background-position: center;"),
+#          actionButton(inputId = "fin", label = NULL, style = "width: 2.5rem; height: 1.5rem; margin: 3px;
+# background: url('flag/fin.png');  background-size: cover; background-position: center;"),
+#          
+#   ) ,
 
   column(10,
   h3(style="padding-top: .1vw; ",
      tags$b("Suomen EU-päästötavoitteista poikkeamisen kustannusten ja tuottojen hahmottaminen", 
-            style="color: white; padding: 1vw;")
+            style="color: white; ")
   ) ), 
   column(2,
   tagList(a
@@ -552,7 +557,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                      style = " background-color:var(--colemis);",
                                      sliderTextInput(
                                        "esd2024", label = "2024 päästöt:", 
-                                       choices = seq(from = 10, to = 30, by = 1),
+                                       choices = seq(from = 10, to = 30, by = .1),
                                        selected = 24,
                                        width = "100%",
                                        post = " Mt",
@@ -564,7 +569,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        
                                        sliderTextInput(
                                          "esd2025", label = "2025 päästöt:", 
-                                         choices = seq(from =  10, to = 30, by = 1),
+                                         choices = seq(from =  10, to = 30, by = .1),
                                          selected = 23,
                                          width = "100%",
                                          post = " Mt",
@@ -603,7 +608,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 ),
                 
                 
-                column(9,class="scrolly",
+                column(9,class="scrollyb",
                        
                        # div(
                          plotOutput(outputId = "plotesdpre", height = "550px", width = "700px")
@@ -653,7 +658,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                      style = " background-color:var(--colemis);",
                                      sliderTextInput(
                                        "esd2026", label = "2026 päästöt:", 
-                                       choices = seq(from = 10, to = 25, by = 1),
+                                       choices = seq(from = 10, to = 25, by = .1),
                                        selected = 22,
                                        width = "100%",
                                        post = " Mt",
@@ -665,7 +670,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                                        
                                        sliderTextInput(
                                          "esd2030", label = "2030 päästöt:", 
-                                         choices = seq(from =  10, to = 25, by = 1),
+                                         choices = seq(from =  10, to = 25, by = .1),
                                          selected = 19,
                                          width = "100%",
                                          post = " Mt",
@@ -706,7 +711,7 @@ div(          style = " background-color:#D6D6D6!important;    ",
                 ),
                 
                 
-                column(9,class="scrolly",
+                column(9,class="scrollyb",
                        
                        # div(
                          plotOutput(outputId = "plotesdpost", height = "550px", width = "800px")
@@ -738,6 +743,7 @@ server <- function(input, output) {
   
   
   
+  rv$lang = "fin"
   
   
   
@@ -747,14 +753,14 @@ server <- function(input, output) {
   
   
   
-  # observeEvent(input$fin,{
-  #   rv$lang = c("fin")
-  # }    )
-  # 
-  # observeEvent(input$eng,{
-  #   rv$lang = c("eng")
-  # }    )
-  # 
+  observeEvent(input$fin,{
+    rv$lang = c("fin")
+  }    )
+
+  observeEvent(input$eng,{
+    rv$lang = c("eng")
+  }    )
+
   
   # serveriin|
     
@@ -771,6 +777,22 @@ server <- function(input, output) {
       
     }
     )
+    
+    style3 <- reactive({
+      # if (is.null(input$countr)) { 
+      if (rv$ale3 ==1) {
+        # if (input$nok =="EXTRA: Country profiles") { 
+        ".scrollyb {direction: rtl; overflow-x: scroll; }"
+        
+      }
+      else if (rv$ale3 ==2) {
+        ".scrollyb {direction: ltr; overflow-x: scroll; }"    
+      }
+      
+    }
+    )
+    
+    
   
   output$css_style2 <- renderUI({
     tags$head(
@@ -781,6 +803,15 @@ server <- function(input, output) {
       )
     )})
   
+  
+  output$css_style3 <- renderUI({
+    tags$head(
+      tags$style(
+        HTML(
+          paste0(c(style3()), collapse = "\n")
+        )
+      )
+    )})
   # different setting for different screen sizes
   
   # observeEvent(input$dim, {
@@ -854,6 +885,19 @@ server <- function(input, output) {
       # rv$fonts = input$d
       
     }
+    
+    
+    if (input$dim[1] <1100) {
+      
+      rv$ale3 = 1
+    }
+    else {
+      rv$ale3 =2
+      # rv$fonts = .85
+      # rv$fonts = input$d
+      
+    }
+    
     
   })
   
@@ -1080,9 +1124,14 @@ server <- function(input, output) {
       tulee kaupankäynnistä, riippuen Suomen päästökehityksestä sekä yksiköiden hinnasta. 
       Yksiköiden kaupalle ei ainakaan toistaiseksi ole keskitettyä markkinapaikkaa ja yksiköillä ei luultavasti ole juurikaan
       käyty kauppaa maiden välillä, joten yksiköiden hintatasoa on vaikea arvioida. Kauden 2021-2025 osalta yksiköiden kaupankäynti
-      tulee suorittaa 2027 mennessä ja kauden 2026-2030 osalta 2032 mennessä. 
+      tulee suorittaa 2027 mennessä ja kauden 2026-2030 osalta 2032 mennessä. ",
+      '<br>',
+      '<br>',
+      
+      "
+      
    
-    
+    Lähteitä päästöille päästötavoitteille: https://villeseppala.wordpress.com/2024/04/26/suomen-kasvihuonekaasupaastot-ja-paastotavoitteet/
     "
     )
   })
@@ -1302,25 +1351,45 @@ server <- function(input, output) {
     rv$cumsba= format(round(koki[year %in% 2030 & sector =="cumu", abs(maara)],1), nsmall=1, decimal.mark=",")
     rv$cumsiba= koki[year %in% 2030 & sector =="cumu", abs(maara)]
     
+
     
     
-    if (rv$cumsb > 0) {
-      rv$cul1b = "Kustannus yksiköiden hankinnasta:"
-    } else {
-      rv$cul1b = "Tuotto yksiköiden myynnistä:"
+    if (rv$lang =="fin") {
+      
+      if (rv$cumsb > 0) {
+        rv$cul1b = "Kustannus yksiköiden hankinnasta:"
+      } else {
+        rv$cul1b = "Tuotto yksiköiden myynnistä:"
+      }
+      
+      
+      if (rv$cumsb > 0) {
+        rv$cul2b = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+      } else {
+        rv$cul2b = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+      }
+      
+      
+      
+    } 
+    else {
+      
+      if (rv$cumsb > 0) {
+        rv$cul1b = "Cost from aquiring allocations:"
+      } else {
+        rv$cul1b = "Profit from selling allocations:"
+      }
+      
+      
+      
+      if (rv$cumsb > 0) {
+        rv$cul2b = "Allocations deficit, i.e. need for purchasable allocations:"
+      } else {
+        rv$cul2b = "Allocations surplus, i.e. allocations available for selling:"
+      }
+      
     }
     
-    if (rv$cumsb > 0) {
-      rv$cul3b = "Kokonaiskustannus yksiköiden hankinnasta maankäyttösektorilla:"
-    } else {
-      rv$cul3b = "Kokonaistuotto yksiköiden myynnistä maankäyttösektorilla:"
-    }
-    
-    if (rv$cumsb > 0) {
-      rv$cul2b = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
-    } else {
-      rv$cul2b = "Kiintiön alitus eli myytävissä olevat yksiköt:"
-    }
     
     
     
@@ -1388,24 +1457,43 @@ server <- function(input, output) {
     rv$cumsca= format(round(koki[year %in% 2025 & sector =="cumu", abs(maara)],1), nsmall=1, decimal.mark=",")
     rv$cumsica= koki[year %in% 2025 & sector =="cumu", abs(maara)]
     
-    if (rv$cumsc > 0) {
+
+    
+    if (rv$lang =="fin") {
+      
+        if (rv$cumsc > 0) {
       rv$cul1c = "Kustannus yksiköiden hankinnasta:"
     } else {
       rv$cul1c = "Tuotto yksiköiden myynnistä:"
     }
     
-    if (rv$cumsc > 0) {
-      rv$cul3c = "Kokonaiskustannus yksiköiden hankinnasta maankäyttösektorilla:"
-    } else {
-      rv$cul3c = "Kokonaistuotto yksiköiden myynnistä maankäyttösektorilla:"
-    }
-    
+
     if (rv$cumsc > 0) {
       rv$cul2c = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
     } else {
       rv$cul2c = "Kiintiön alitus eli myytävissä olevat yksiköt:"
     }
     
+      
+      
+    } 
+    else {
+      
+      if (rv$cumsc > 0) {
+        rv$cul1c = "Cost from aquiring allocations:"
+      } else {
+        rv$cul1c = "Profit from selling allocations:"
+      }
+      
+      
+      
+      if (rv$cumsc > 0) {
+        rv$cul2c = "Allocations deficit, i.e. need for purchasable allocations:"
+      } else {
+        rv$cul2c = "Allocations surplus, i.e. allocations available for selling:"
+      }
+      
+    }
     
     
     koki
@@ -1481,24 +1569,45 @@ server <- function(input, output) {
     rv$cumsda= format(round(koki[year %in% 2030 & sector =="cumu", abs(maara)],1), nsmall=1, decimal.mark=",")
     rv$cumsida= koki[year %in% 2030 & sector =="cumu", abs(maara)]
     
+    
+    if (rv$lang =="fin") {
+      
     if (rv$cumsd > 0) {
       rv$cul1d = "Kustannus yksiköiden hankinnasta:"
     } else {
       rv$cul1d = "Tuotto yksiköiden myynnistä:"
     }
-    
-    if (rv$cumsd > 0) {
-      rv$cul3d = "Kokonaiskustannus yksiköiden hankinnasta maankäyttösektorilla:"
-    } else {
-      rv$cul3d = "Kokonaistuotto yksiköiden myynnistä maankäyttösektorilla:"
+      
+      
+
+      if (rv$cumsd > 0) {
+        rv$cul2d = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+      } else {
+        rv$cul2d = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+      }
+      
+      
+    } 
+    else {
+      
+      if (rv$cumsd > 0) {
+        rv$cul1d = "Cost from aquiring allocations:"
+      } else {
+        rv$cul1d = "Profit from selling allocations:"
+      }
+      
+      
+
+      if (rv$cumsd > 0) {
+        rv$cul2d = "Allocations deficit, i.e. need for purchasable allocations:"
+      } else {
+        rv$cul2d = "Allocations surplus, i.e. allocations available for selling:"
+      }
+      
     }
     
-    if (rv$cumsd > 0) {
-      rv$cul2d = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
-    } else {
-      rv$cul2d = "Kiintiön alitus eli myytävissä olevat yksiköt:"
-    }
-    
+
+
     
     
     koki
@@ -1739,8 +1848,8 @@ server <- function(input, output) {
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       
-      labs(caption =c("Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  ", 
-                      "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
+      labs(caption =c("", 
+                      "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
       
         scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
@@ -1969,8 +2078,8 @@ server <- function(input, output) {
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       
-      labs(caption =c("Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  ", 
-                      "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
+      labs(caption =c("", 
+                      "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
       
       scale_x_continuous(breaks =seq(luk, 2030, by=1), minor_breaks = seq(luk-.5, 2030.5, by=1))   +
@@ -2201,8 +2310,8 @@ server <- function(input, output) {
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       
-      labs(caption =c("Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  ", 
-                      "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
+      labs(caption =c("", 
+                      "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
       
       scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
@@ -2436,8 +2545,8 @@ server <- function(input, output) {
                       # ylim=c(mi, max(90, ma)),
                       clip ="off") +
       
-      labs(caption =c("Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  ", 
-                      "Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
+      labs(caption =c("", 
+                      "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
       scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
       
       scale_x_continuous(breaks =seq(luk, 2030, by=1), minor_breaks = seq(luk-.5, 2030.5, by=1))   +
