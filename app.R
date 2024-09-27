@@ -9,6 +9,7 @@ library(data.table)
 # library(tibble)
 # library(tidyr)
 library(shinyWidgets)
+# library(shinyjs)
 
 #ff
 cumc ="#1b87ab"
@@ -28,14 +29,14 @@ cu = "#df16e2"
 cu = "white"
 
 
-emis = "#8b513b"
+emis = "#6b364a"
 
 allo ="#518161"
-cumc ="#6b364a"
+cumc ="#a6a24c"
 
 debt = "#38553f"
 
-price = "#a6a24c"
+price = "#8b513b"
 
 re = "#ef4205"
   gr = "#8fff4a"
@@ -245,25 +246,25 @@ fluidRow(  div(
 
 
 
+# actionButton("reset1", "Reset"),      
 
 
 
 
 
-div(  style = " background-color:#D6D6D6!important;    ",
+div(id ="res1",  style = " background-color:#D6D6D6!important;    ",
       
  
               h3(style="padding-top: .3vw; ",
                 tags$b("Maankäyttösektori 2021-2025", 
                        style="color: var(--coltit); padding: 1vw;")
               ), 
-                          
                 fluidRow( 
                   style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
                                             h4(
                             tags$b("Metsämaa ja puutuotteet kaudella 2021-2025", 
                                    style="color: black; padding: 1vw;")
-                          ),
+                          ), 
   
   column(3, style = "     padding-right: 10px;
     padding-left: 5px;",
@@ -340,6 +341,7 @@ uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
 
         uiOutput(class= "boxy",style = "background-color:var(--colcost);","pula"),
     hr(),
+
     hr(),
   # )
 ),
@@ -347,7 +349,8 @@ uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
   
 
   column(9, class="scrolly",
-   #       style = 'overflow-x: scroll;  align-items:left;
+         
+            #       style = 'overflow-x: scroll;  align-items:left;
    # ',
   # div(
     # style = 'overflow-x: scroll;  direction: rtl;   ',
@@ -749,7 +752,21 @@ server <- function(input, output) {
   
   
   
+  observeEvent(input$reset1, {
+    reset("res1")
+  }) 
   
+  observeEvent(input$reset2, {
+    reset("res2")
+  }) 
+  
+  observeEvent(input$reset3, {
+    reset("res3")
+  }) 
+  
+  observeEvent(input$reset4, {
+    reset("res4")
+  }) 
   
   
   
@@ -1006,23 +1023,23 @@ server <- function(input, output) {
   output$kiin= renderText({
     paste(
       
-      "2021-2025 nielukiintiö -96,4 Mt yhteensä, -19,3 Mt vuodessa"
+      "2021-2025 nielutavoite -96,4 Mt yhteensä, -19,3 Mt vuodessa"
 )})
   
   output$kiinb= renderText({
     paste(
       
-      "2026-2030 nielukiintiö ", rv$cumallob, " Mt yhteensä"
+      "2026-2030 nielutavoite ", rv$cumallob, " Mt yhteensä"
     )})
   output$kiinc= renderText({
     paste(
       
-      "2021-2025 päästökiintiö ", rv$cumalloc, " Mt yhteensä"
+      "2021-2025 päästötavoite ", rv$cumalloc, " Mt yhteensä"
     )})
   output$kiind= renderText({
     paste(
       
-      "2026-2030 päästökiintiö ", rv$cumallod, " Mt yhteensä"
+      "2026-2030 päästötavoite ", rv$cumallod, " Mt yhteensä"
     )})
   output$emisa= renderText({
     paste(
@@ -1092,7 +1109,7 @@ server <- function(input, output) {
       " 
           Lähde 14 Mt oletukselle PEIKKO-WEM-Perusskenaariosta s.140: https://julkaisut.valtioneuvosto.fi/bitstream/handle/10024/165717/VNTEAS_2024_26.pdf?",
  '<br/>',
-      "Ylitykset eli kiintiötarve = vertailutaso - nielu
+      "Ylitykset eli yksikkötarve = vertailutaso - nielu
          ",
       "\n",
       '<br/>',     "
@@ -1113,7 +1130,7 @@ server <- function(input, output) {
     paste0(
       "EU:n päästötavoitteet on maankäyttö- ja taakanjakosektoreilla jaoteltu maa- ja vuosikohtaisiksi 
       tavoitteiksi/kiintiöiksi, jotka yhdessä toteuttavat EU:n laajuiset tavoitteet. 
-      Mailla on käytössä joustomekanismeja kiintiöisiin pääsemiseksi. Yksi keskeisin on kaupankäynti 
+      Mailla on käytössä joustomekanismeja tavoitteisiin pääsemiseksi. Yksi keskeisin on kaupankäynti 
       päästö- tai nieluyksiköistä maiden välillä.",
       '<br>',
       '<br>',
@@ -1158,7 +1175,7 @@ server <- function(input, output) {
     '<br>',
     
           "-Lainausrajoja vuosien välillä sektoreiden sisällä kauden aikana. 
-          Kaudella 2021-2025 jäsenmaa voi taakanjakosektorilla siirtää seuraavan vuoden kiintiöstä korkeintaan 
+          Kaudella 2021-2025 jäsenmaa voi taakanjakosektorilla siirtää seuraavan vuoden tavoitteesta korkeintaan 
           7,5% edellisen vuoden alijäämän paikkaamiseen. Kaudella 2026-2030 maksimisiirto on 5%. Tämä huomioitava kertymää
           laskettaessa. Kuitenkin, jäsenmaan kaupankäyntimahdollisuuksien myötä tämä ei käytännössä ole välttämättä kovin rajoittava.  
       ",
@@ -1166,8 +1183,8 @@ server <- function(input, output) {
       '<br>',
     '<br>',
     
-      "- Pankitusmahdollisuuksia vuosien ja kausien välillä. Kunkin vuoden ylijäämästä jäsenmaa voi viedä vuoden 2021 osalta korkeintaan 75% vuosikiintiöstä vastaavan summan seuraaville vuosille aina 2030 saakka ja
-     2021-2029 ylijäämistä 25% vuosikiintiötä vastaavan summan. Rajoitteet vaikuttavat löysiltä ja tuskin vähentävät pankitusta. Maankäyttösektorilla ei ole kai vastaavia rajoitteita. ",
+      "- Pankitusmahdollisuuksia vuosien ja kausien välillä. Kunkin vuoden ylijäämästä jäsenmaa voi viedä vuoden 2021 osalta korkeintaan 75% vuositavoitetta vastaavan summan seuraaville vuosille aina 2030 saakka ja
+     2021-2029 ylijäämistä 25% vuositavoitetta vastaavan summan. Rajoitteet vaikuttavat löysiltä ja tuskin vähentävät pankitusta. Maankäyttösektorilla ei ole kai vastaavia rajoitteita. ",
       '<br>',
     '<br>',
     
@@ -1267,9 +1284,9 @@ server <- function(input, output) {
     }
     
     if (rv$cums > 0) {
-      rv$cul2 = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+      rv$cul2 = "Tavoitteen ylitys eli tarve yksiköiden hankinnalle:"
     } else {
-      rv$cul2 = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+      rv$cul2 = "Tavoitteen alitus eli myytävissä olevat yksiköt:"
     }
     
     
@@ -1364,9 +1381,9 @@ server <- function(input, output) {
       
       
       if (rv$cumsb > 0) {
-        rv$cul2b = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+        rv$cul2b = "Tavoitteen ylitys eli tarve yksiköiden hankinnalle:"
       } else {
-        rv$cul2b = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+        rv$cul2b = "Tavoitteen alitus eli myytävissä olevat yksiköt:"
       }
       
       
@@ -1469,9 +1486,9 @@ server <- function(input, output) {
     
 
     if (rv$cumsc > 0) {
-      rv$cul2c = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+      rv$cul2c = "Tavoitteen ylitys eli tarve yksiköiden hankinnalle:"
     } else {
-      rv$cul2c = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+      rv$cul2c = "Tavoitteen alitus eli myytävissä olevat yksiköt:"
     }
     
       
@@ -1581,9 +1598,9 @@ server <- function(input, output) {
       
 
       if (rv$cumsd > 0) {
-        rv$cul2d = "Kiintiön ylitys eli tarve yksiköiden hankinnalle:"
+        rv$cul2d = "Tavoitteen ylitys eli tarve yksiköiden hankinnalle:"
       } else {
-        rv$cul2d = "Kiintiön alitus eli myytävissä olevat yksiköt:"
+        rv$cul2d = "Tavoitteen alitus eli myytävissä olevat yksiköt:"
       }
       
       
@@ -1832,13 +1849,23 @@ server <- function(input, output) {
                aes(x=year, y = maara,fill=col, width=si), 
                stat='identity', position='stack', alpha=.99 )+
       
-      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("diff"),], 
-               aes(x=year, y = maara,fill=col,  width=si), 
+      
+      geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("diff"),],
+               aes(x=year, y = maara,fill=col,  width=si, col=col2),
                stat='identity', position='stack', linewidth =.6 )+
       
-           geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col), 
-                      size=4.5, stroke=1, alpha=.9, shape =21)+
       geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=2)+
+      
+      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col2, color=col), 
+                 size=2.5, stroke=3.1, alpha=.9, shape =21)+
+      
+      # geom_col(data=koke[year %in% c(luk:2025) & sector %in% c("diff"),], 
+      #          aes(x=year, y = maara,fill=col,  width=si), 
+      #          stat='identity', position='stack', linewidth =.6 )+
+      # 
+      #      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col), 
+      #                 size=4.5, stroke=1, alpha=.9, shape =21)+
+      # geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=2)+
         geom_point(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=5, alpha=.9)+
       geom_line(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=1.5)+      
       
@@ -2066,9 +2093,10 @@ server <- function(input, output) {
                aes(x=year, y = maara,fill=col,  width=si, col=col2),
                stat='identity', position='stack', linewidth =.6 )+
 
-      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col, color=col2), 
-                 size=4.5, stroke=1, alpha=.9, shape =21)+
       geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=2)+
+      
+      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col2, color=col), 
+                 size=2.5, stroke=3.1, alpha=.9, shape =21)+
       geom_point(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=5, alpha=.9)+
       geom_line(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=1.5)+      
       
@@ -2298,9 +2326,10 @@ server <- function(input, output) {
                aes(x=year, y = maara,fill=col,  width=si, col=col2),
                stat='identity', position='stack', linewidth =.6 )+
       
-      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col, color=col2), 
-                 size=4.5, stroke=1, alpha=.9, shape =21)+
       geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=2)+
+      
+      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col2, color=col), 
+                 size=2.5, stroke=3.1, alpha=.9, shape =21)+
       geom_point(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=5, alpha=.9)+
       geom_line(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=1.5)+ 
       
@@ -2533,9 +2562,10 @@ server <- function(input, output) {
                aes(x=year, y = maara,fill=col,  width=si, col=col2),
                stat='identity', position='stack', linewidth =.6 )+
       
-      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col, color=col2), 
-                 size=4.5, stroke=1, alpha=.9, shape =21)+
       geom_line(data=koke[sector %in% c("cost"),], aes(y=hmaara),  size=2)+
+      
+      geom_point(data=koke[sector %in% c("cost"),], aes(y=hmaara, fill=col2, color=col), 
+                 size=2.5, stroke=3.1, alpha=.9, shape =21)+
       geom_point(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=5, alpha=.9)+
       geom_line(data=koke[sector %in% c("price"),], aes(y=hmaara),  size=1.5)+ 
       

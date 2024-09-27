@@ -510,15 +510,15 @@ koki[sector =="esd",si :=.6]
 
 
 koki[sector =="cumu", lab :="Ylitysten/alitusten kertymä, Mt"]
-koki[sector =="diff", lab :="Kiintiön ylitys/alitus, Mt"]
-koki[sector =="metsajapuuk", lab :="Nielukiintiö, Mt"]
-koki[sector =="metsajapuu", lab :="Nettonielu, Mt"]
-koki[sector =="lallocation",lab :="EU-nielukiintiö, Mt"]
-koki[sector =="lulucf", lab :="Nettonielu, Mt"]
+koki[sector =="diff", lab :="Tavoitteen ylitys/alitus, Mt"]
+koki[sector =="metsajapuuk", lab :="Päästötavoite, Mt"]
+koki[sector =="metsajapuu", lab :="Nettopäästöt, Mt"]
+koki[sector =="lallocation",lab :="Päästötavoite, Mt"]
+koki[sector =="lulucf", lab :="Nettopäästöt, Mt"]
 koki[sector =="cost",lab :="Kustannus yksiköistä, M€"]
 koki[sector =="debt", lab :="Kustannusten kertymä, M€"]
 koki[sector =="price", lab :="Yksiköiden keskihinta, €/t"]
-koki[sector =="allocation",lab :="EU-päästökiintiö, Mt"]
+koki[sector =="allocation",lab :="Päästötavoite, Mt"]
 koki[sector =="esd", lab :="Päästöt, Mt"]
 
 # Kusta
