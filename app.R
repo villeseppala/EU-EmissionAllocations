@@ -10,7 +10,7 @@ library(data.table)
 # library(tidyr)
 library(shinyWidgets)
 # library(shinyjs)
-
+# https://stackoverflow.com/questions/65142640/how-to-store-previous-states-of-reactive-variables-in-r-shiny-application
 #ff
 cumc ="#1b87ab"
 debt ="#540772"
@@ -32,7 +32,7 @@ cu = "white"
 emis = "#6b364a"
 
 allo ="#518161"
-cumc ="#a6a24c"
+cumc ="#a5ae45"
 
 debt = "#38553f"
 
@@ -76,8 +76,13 @@ lyear = koki[sector == "metsajapuu" & maara <1000000, max(year)]
 #v = Ylitukset: Kiintiötarve = vertailutaso - nielu
 # Hoidettu viljelysmaa
 
+# koki$num = 0
 
 koki1 = koki[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost", "cumu", "cost", "debt", "price"),]
+
+# koki1e = koki[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost", "cumu", "cost", "debt", "price", "num"),]
+# koki1e$se = "bet"
+
 koki2 = koki[sector %in% c("lulucf", "lallocation", "diff", "cost", "cumu","cost", "debt", "price"),]
 koki3 = koki[sector %in% c("esd", "allocation", "diff", "cost", "cumu","cost", "debt", "price"),]
 koki4 = koki[sector %in% c("esd", "allocation", "diff", "cost", "cumu","cost", "debt", "price"),]
@@ -741,6 +746,7 @@ server <- function(input, output) {
   rv <- reactiveValues(cul ="Kustannus")
   rv <- reactiveValues(view =2)
   rv <- reactiveValues(ale =2)
+  rv <- reactiveValues(count =1)
   
   rv <- reactiveValues(fonts =.95)
   
@@ -782,9 +788,7 @@ server <- function(input, output) {
   # serveriin|
     
     style2 <- reactive({
-      # if (is.null(input$countr)) { 
       if (rv$ale ==1) {
-        # if (input$nok =="EXTRA: Country profiles") { 
         ".scrolly {direction: rtl; overflow-x: scroll; }"
         
       }
@@ -796,9 +800,7 @@ server <- function(input, output) {
     )
     
     style3 <- reactive({
-      # if (is.null(input$countr)) { 
       if (rv$ale3 ==1) {
-        # if (input$nok =="EXTRA: Country profiles") { 
         ".scrollyb {direction: rtl; overflow-x: scroll; }"
         
       }
@@ -864,6 +866,7 @@ server <- function(input, output) {
   
   
   observeEvent(input$dim, {
+    rv$count = 1
     
     if (input$dim[1] >4800) {
       rv$view = 1
@@ -1162,12 +1165,14 @@ server <- function(input, output) {
       '<br/><dd>',
       '<br>',
       
+      
+      # Jäsenmailla on mahdollisuus kompensoida sektorin alijäämiään toisen sektorin
+      # ylijäämillään. Varsinkin mikäli ylijäämäsektorin yksiköiden hinta on halvempi, niin niitä kannattaa käyttää
+      # alijäämäsektorin kompensointiin sen sijaan että hankkisi yksiköitä muilta jäsenmailta. 
+      # Jäsenmailla on mahdollisuus myös käyttää rajoitetusti päästökauppasektorin päästöoikeuksien mitätöintiä alijäämän korvaamiseen taakanjakosektorilla. 
+      # Tällöin ne menettävät mitätöinnin verran tuloja päästöoikeuksien huutokauppaamisesta.
       # '',
-      "- Joustoja sektoreiden välillä. Jäsenmailla on mahdollisuus kompensoida sektorin alijäämiään toisen sektorin
-      ylijäämillään. Varsinkin mikäli ylijäämäsektorin yksiköiden hinta on halvempi, niin niitä kannattaa käyttää
-      alijäämäsektorin kompensointiin sen sijaan että hankkisi yksiköitä muilta jäsenmailta. 
-    Jäsenmailla on mahdollisuus myös käyttää rajoitetusti päästökauppasektorin päästöoikeuksien mitätöintiä alijäämän korvaamiseen taakanjakosektorilla. 
-    Tällöin ne menettävät mitätöinnin verran tuloja päästöoikeuksien huutokauppaamisesta.
+      "- Joustomahdollisuuksia sektoreiden välillä maan sisällä. 
          ",
       # ' ',
       "\n",
@@ -1217,7 +1222,7 @@ server <- function(input, output) {
   
   koke1=reactive({
     koki =copy(koki1)
-    
+
     startpre = koki[year ==lyear & sector =="metsajapuu", maara]
     
     
@@ -1289,11 +1294,34 @@ server <- function(input, output) {
       rv$cul2 = "Tavoitteen alitus eli myytävissä olevat yksiköt:"
     }
     
+rv$count = isolate(rv$count)+1
+ koki$num = isolate(rv$count)   
+
+    # if (rv$count > 3) {
+    # 
+    # 
+    # 
+    #   # if (rv$count > 1) {
+    #     kokie =copy(isolate(kokei1()))
+    #   # }
+    #   # if (num %in% c(count, count-1))
+    # 
+    #     koki = rbind(koki, kokie)
+    # 
+    #     koki = koki[num %in% c(count, count-1)]
+    # 
+    # }
     
     
     koki
   })
   
+  # kokei1 =  eventReactive(koke1(), {
+  # isolate(koke1())
+  # })
+  # kokei1 = reactive({
+  #   isolate(koke1())
+  # })
   
   koke2=reactive({
     koki =copy(koki2)
@@ -1670,11 +1698,20 @@ server <- function(input, output) {
     #luk = 2010
     
     f = rv$fonts
+    count= rv$count
     
     koke = koke1()
     koke = as.data.table(koke)
-    koke = koke[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost",  "price") & year %in% C(luk:2025)]
+    
 
+    
+    koke = koke[sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost",  "price") & year %in% C(luk:2025),]
+   
+    # if (rv$count>1){
+    #  kokel = koke[num == rv$count-1]
+    # }
+    # koke= koke[num == rv$count]
+    # 
     koks = koke[year %in% c(2025) & sector %in% c("diff"),]
     
     mi = as.numeric(unique(koke[sector %in% c("metsajapuu", "metsajapuuk", "diff"),min(maara, na.rm=TRUE)]))
@@ -1906,8 +1943,16 @@ server <- function(input, output) {
 
       )
     
-    # gup =     gup+    coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE, clip = "on")
-    
+    # if (count==3) {
+    # gup = gup +
+    #   geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("diff") ,],
+    #             aes(x=year+.5, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ","), color=col2),
+    #             size=5*f, fontface="bold")
+    # 
+    # 
+    # } else {
+    #   gup = gup
+    # }
     gup
    })
   
