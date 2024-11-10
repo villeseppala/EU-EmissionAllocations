@@ -1,6 +1,8 @@
 # library(shiny)
 # library(bslib)
 
+
+
 library(shiny)
 library(ggplot2)
 # library(pxweb)
@@ -29,6 +31,9 @@ cu = "#df16e2"
 cu = "white"
 
 
+
+
+
 emis = "#6b364a"
 
 allo ="#518161"
@@ -38,8 +43,21 @@ debt = "#38553f"
 
 price = "#8b513b"
 
-re = "#ef4205"
-  gr = "#8fff4a"
+
+
+
+allo ="#3c9990"
+
+emis = "#98428c"
+
+cumc ="#3f6099"
+price =  "#cca357"
+
+debt ="#8457cd"
+
+
+re = "#ff4d00"
+  gr = "#25fe44"
   dgr = "darkgreen"
   
 # --colemis: #24aa61;
@@ -89,6 +107,8 @@ koki4 = koki[sector %in% c("esd", "allocation", "diff", "cost", "cumu","cost", "
 
 
 ui <- fluidPage(
+  
+  useBusyIndicators(pulse = TRUE),
   tags$style(".span12 {background-color: black;}"),
   # App title ----
   title = "Hello Shiny!",
@@ -126,6 +146,10 @@ document.querySelector('input').addEventListener('input', function(){
 
                     ")),
   
+  tags$style(type="text/css",
+             ".shiny-output-error { visibility: hidden; }",
+             ".shiny-output-error:before { visibility: hidden; }"
+  ),
   
   
   tags$style(HTML(" 
@@ -253,481 +277,500 @@ fluidRow(  div(
 
 # actionButton("reset1", "Reset"),      
 
-
-
-
-
-div(id ="res1",  style = " background-color:#D6D6D6!important;    ",
-      
- 
-              h3(style="padding-top: .3vw; ",
-                tags$b("Maankäyttösektori 2021-2025", 
-                       style="color: var(--coltit); padding: 1vw;")
-              ), 
-                fluidRow( 
-                  style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
-                                            h4(
-                            tags$b("Metsämaa ja puutuotteet kaudella 2021-2025", 
-                                   style="color: black; padding: 1vw;")
-                          ), 
-  
-  column(3, style = "     padding-right: 10px;
+tabsetPanel(
+  tabPanel("Maankäyttösektori 2021-2025",
+           
+           
+           div(id ="res1",  style = " background-color:#D6D6D6!important;    ",
+                                             
+                                             
+                                             h3(style="padding-top: .3vw; ",
+                                                tags$b("Maankäyttösektori 2021-2025", 
+                                                       style="color: var(--coltit); padding: 1vw;")
+                                             ), 
+                                             fluidRow( 
+                                               style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+                                               h4(
+                                                 tags$b("Metsämaa ja puutuotteet kaudella 2021-2025", 
+                                                        style="color: black; padding: 1vw;")
+                                               ), 
+                                               
+                                               column(3, style = "     padding-right: 10px;
     padding-left: 5px;",
-         
-         
-   
-    # div(        
-    #   style = "  margin-right: -0.2vw; padding: .1vw;",
-   
-      
-    
-      uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
-outputId = "kiin"
-),
-hr(),
-
-uiOutput(   class= "boxy",     style = " background-color:var(--colemis);",
-                 outputId = "alu"),
-hr(),
-
-      div(        class="slidy", 
-        style = " background-color:var(--colemis);",
-      sliderTextInput(
-        "lulucf2024", label = "2024 nettopäästöt:", 
-        choices = seq(from = -35, to = 0, by = 1),
-        selected = -14,
-        width = "100%",
-        post = " Mt",
-        grid =T
-      )),
-      hr(),
-      div(          class="slidy",  
-                    style = " background-color:var(--colemis);",
-                    
-        # style = "color:#4ba180;",
-        
-      sliderTextInput(
-        "lulucf2025", label = "2025 nettopäästöt:", 
-        choices = seq(from = -35, to = 0, by = 1),
-        selected = -14,
-        width = "100%",
-        post = " Mt",
-        grid=T
-      )),
-      hr(),
-
-      # h5(
-      #   tags$b("2021-2023-nielu alustavista tilastoista",    )),
-      
-      # h5(
-      #   tags$b("Kauden 2021-2025 nettonielu",   ))  ),
-# border-color: var(--colcu);
-      # div(style = "background-color:var(--coldiff);",
-
-uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
-         outputId = "emisa"
-),
-
-          uiOutput(class= "boxy", style = "background-color:var(--coldiff);","difa")
-,
-      
-      hr(),
-    
-      div(  class="slidy",  
-            style = " background-color:var(--colprice)!important;",
-            sliderTextInput("pricepre", label = "Yksiköiden keskihinta:", 
-                           choices = seq(from = 0, to = 100, by = 1),
-                           selected = 30,
-                           width = "100%",
-                           post = " €/t",
-                           grid =T
-                       )),
-# border-color: var(--colcu);
-
-        uiOutput(class= "boxy",style = "background-color:var(--colcost);","pula"),
-    hr(),
-
-    hr(),
-  # )
-),
-  
-  
-
-  column(9, class="scrolly",
-         
-            #       style = 'overflow-x: scroll;  align-items:left;
-   # ',
-  # div(
-    # style = 'overflow-x: scroll;  direction: rtl;   ',
-    # style = "box-shadow: inset -5px -5px 10px 3px #e7e7e7, inset 5px 5px 10px 3px; padding:8px;",
-      # div(style = "padding:8px;",
-       plotOutput(outputId = "plotmetsajapuu", height = "550px", width = "1100px")
-      # ) 
-    # )
-  )),
-
-
-
-
-
-# div(
-    
-    fluidRow(style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
-      column(3,style = "     padding-right: 10px;
+                                                      
+                                                      
+                                                      
+                                                      # div(        
+                                                      #   style = "  margin-right: -0.2vw; padding: .1vw;",
+                                                      
+                                                      
+                                                      
+                                                      uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                                               outputId = "kiin"
+                                                      ),
+                                                      hr(),
+                                                      
+                                                      uiOutput(   class= "boxy",     style = " background-color:var(--colemis);",
+                                                                  outputId = "alu"),
+                                                      hr(),
+                                                      
+                                                      div(        class="slidy", 
+                                                                  style = " background-color:var(--colemis);",
+                                                                  sliderTextInput(
+                                                                    "lulucf2024", label = "2024 nettopäästöt:", 
+                                                                    choices = seq(from = -35, to = 0, by = 1),
+                                                                    selected = -14,
+                                                                    width = "100%",
+                                                                    post = " Mt",
+                                                                    grid =T
+                                                                  )),
+                                                      hr(),
+                                                      div(          class="slidy",  
+                                                                    style = " background-color:var(--colemis);",
+                                                                    
+                                                                    # style = "color:#4ba180;",
+                                                                    
+                                                                    sliderTextInput(
+                                                                      "lulucf2025", label = "2025 nettopäästöt:", 
+                                                                      choices = seq(from = -35, to = 0, by = 1),
+                                                                      selected = -14,
+                                                                      width = "100%",
+                                                                      post = " Mt",
+                                                                      grid=T
+                                                                    )),
+                                                      hr(),
+                                                      
+                                                      # h5(
+                                                      #   tags$b("2021-2023-nielu alustavista tilastoista",    )),
+                                                      
+                                                      # h5(
+                                                      #   tags$b("Kauden 2021-2025 nettonielu",   ))  ),
+                                                      # border-color: var(--colcu);
+                                                      # div(style = "background-color:var(--coldiff);",
+                                                      
+                                                      uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+                                                               outputId = "emisa"
+                                                      ),
+                                                      
+                                                      uiOutput(class= "boxy", style = "background-color:var(--coldiff);","difa")
+                                                      ,
+                                                      
+                                                      hr(),
+                                                      
+                                                      div(  class="slidy",  
+                                                            style = " background-color:var(--colprice)!important;",
+                                                            sliderTextInput("pricepre", label = "Yksiköiden keskihinta:", 
+                                                                            choices = seq(from = 0, to = 100, by = 1),
+                                                                            selected = 30,
+                                                                            width = "100%",
+                                                                            post = " €/t",
+                                                                            grid =T
+                                                            )),
+                                                      # border-color: var(--colcu);
+                                                      
+                                                      uiOutput(class= "boxy",style = "background-color:var(--colcost);","pula"),
+                                                      hr(),
+                                                      
+                                                      hr(),
+                                                      # )
+                                               ),
+                                               
+                                               
+                                               
+                                               column(9, class="scrolly",
+                                                      
+                                                      #       style = 'overflow-x: scroll;  align-items:left;
+                                                      # ',
+                                                      # div(
+                                                      # style = 'overflow-x: scroll;  direction: rtl;   ',
+                                                      # style = "box-shadow: inset -5px -5px 10px 3px #e7e7e7, inset 5px 5px 10px 3px; padding:8px;",
+                                                      # div(style = "padding:8px;",
+                                                      plotOutput(outputId = "plotmetsajapuu", height = "550px", width = "1100px")
+                                                      # ) 
+                                                      # )
+                                               )),
+                                             
+                                             
+                                             
+                                             
+                                             
+                                             # div(
+                                             
+                                             fluidRow(style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+                                                      column(3,style = "     padding-right: 10px;
     padding-left: 5px;",
-             div(   class="slidy",         
-                    style = "background-color:var(--coldiff);",
-               sliderTextInput(
-                 "maa2025", label = "Maankäyttösektorin muiden tilinpitoluokkien ylitys kaudelta:", 
-                 choices = seq(from = 0, to = 30, by = 1),
-                 selected = 14,
-                 width = "100%",
-                 post = " Mt",
-                 grid=T
-                  )),
-             
-             checkboxInput("mores", "Näytä lisätietoja 14 Mt oletukselle", value =F),
-             conditionalPanel( condition = "input.mores == true",
-                               
-                               htmlOutput("moress")
-                               
-             )
-               ),
-
-      
-      column(9,
-             # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                 uiOutput(class="boxy",style = "background-color:var(--colcost); color: white;","totu")
-             # )
-      ,
-             h5(
-               tags$b("Huom: Laskelma ei huomioi Suomen mahdollisia joustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa.", 
-                  )), 
-      )
-      # ),
-
-
-)
-),
-
-
-
-
-
-
-
-div(          style = " background-color:#D6D6D6!important;    ",
-              
-              
-              h3(style="padding-top: .3vw; ",
-                tags$b("Maankäyttösektori 2026-2030", 
-                       style="color: var(--coltit); padding: 1vw;")
-              ), 
-              
-              fluidRow( 
-                style = "padding: .2vw; margin: .5vw;",
-                # h5(
-                #   tags$b("Maankäyttösektorin tavoitteet ja päästöt kaudella 2026-2030", 
-                #          style="color: blue; padding: 1vw;")
-                # ),
-                
-                # Sidebar panel for inputs ----
-                column(3,
-                       style = "     padding-right: 10px;
-    padding-left: 5px;",
-                       # div(        
-                       #   style = "  margin-right: -0.2vw; padding: .2vw;",
-                         
-                         uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
-                                  outputId = "kiinb"
-                         ),
-                         
-    # A
+                                                             div(   class="slidy",         
+                                                                    style = "background-color:var(--coldiff);",
+                                                                    sliderTextInput(
+                                                                      "maa2025", label = "Maankäyttösektorin muiden tilinpitoluokkien ylitys kaudelta:", 
+                                                                      choices = seq(from = 0, to = 30, by = 1),
+                                                                      selected = 14,
+                                                                      width = "100%",
+                                                                      post = " Mt",
+                                                                      grid=T
+                                                                    )),
+                                                             
+                                                             checkboxInput("mores", "Näytä lisätietoja 14 Mt oletukselle", value =F),
+                                                             conditionalPanel( condition = "input.mores == true",
+                                                                               
+                                                                               htmlOutput("moress")
+                                                                               
+                                                             )
+                                                      ),
+                                                      
+                                                      
+                                                      column(9,
+                                                             # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                                                             uiOutput(class="boxy",style = "background-color:var(--colcost); color: white;","totu")
+                                                             # )
+                                                             ,
+                                                             h5(
+                                                               tags$b("Huom: Laskelma ei huomioi Suomen mahdollisia joustoja, joita on saatavilla vain mikäli EU kokonaisuutena pääsee tavoitteisiinsa.", 
+                                                               )), 
+                                                      )
+                                                      # ),
+                                                      
+                                                      
+                                             )
+  ),
+  ),
+  tabPanel("Maankäyttösektori 2026-2030",
+           
+           div(          style = " background-color:#D6D6D6!important;    ",
                          
                          
-                         div(        class="slidy", 
-                                     style = " background-color:var(--colemis);",
-                                     sliderTextInput(
-                                       "lulucf2026", label = "2026 nettopäästöt:", 
-                                       choices = seq(from = -25 , to =10, by = 1),
-                                       selected = -3,
-                                       width = "100%",
-                                       post = " Mt",
-                                       grid =T
-                                     )),
-                         hr(),
-                         div(          class="slidy",  
-                                       style = " background-color:var(--colemis);",
-                                       
-                                       sliderTextInput(
-                                         "lulucf2030", label = "2030 nettopäästöt:", 
-                                         choices = seq(from = -25 , to = 10, by = 1),
-                                         selected = -7,
-                                         width = "100%",
-                                         post = " Mt",
-                                         grid=T
-                                       )),
-                         hr(),
+                         h3(style="padding-top: .3vw; ",
+                            tags$b("Maankäyttösektori 2026-2030", 
+                                   style="color: var(--coltit); padding: 1vw;")
+                         ), 
                          
-                         
-                         # uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
-                         #          outputId = "kiin"
-                         # ),
-                         
-                         # div(
-                           p(class= "boxy",style = " background-color:var(--colemis); ","2027-2029 arvot laskettu valintojen lineaarisena kehityksenä",  
-                             # )
-    ),
-                         
-    
-                         # h5(
-                         #   tags$b("Kauden 2021-2025 nettonielu",   )) 
-                         # ),
-                       # div(                    style = "background-color:var(--coldiff);
-                       #                         ",
-    
-    uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
-             outputId = "emisb"
-    ),
-                           uiOutput( class= "boxy",style = "background-color:var(--coldiff);","difab"),
-                       
-                       hr(),
-                       
-                       div(  class="slidy",  
-                             style = " background-color:var(--colprice)!important;",
-                             sliderTextInput("pricepost", label = "Kauden yksiköiden keskihinta:", 
-                                             choices = seq(from = 0, to = 100, by = 1),
-                                             selected = 30,
-                                             width = "100%",
-                                             post = " €/t",
-                                             grid =T
-                             )),
-                       hr(),
-                       
-                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(class= "boxy", style = "background-color:var(--colcost); ","pulab")
-                           # )
-                       ,
-                       hr(),
-                       hr(),
-                ),
-                
-                
-                column(9,class="scrolly",
-                       
-                       # div(
-                         plotOutput(outputId = "plotlulucf", height = "550px", width = "1100px")
-                       # ), 
-                )
-              ),
-
-), 
-
-
-
-
-
-
-
-
-
-
-div(          style = " background-color:#D6D6D6!important;    ",
-              
-              
-              h3(style="padding-top: .3vw; ",
-                 tags$b("Taakanjakosektori 2021-2025", 
-                        style="color: var(--coltit); padding: 1vw;")
-              ), 
-              
-              fluidRow( 
-                style = "padding: .2vw; margin: .5vw;",
-                # h5(
-                #   tags$b("Maankäyttösektorin tavoitteet ja päästöt kaudella 2026-2030", 
-                #          style="color: blue; padding: 1vw;")
-                # ),
-                
-                # Sidebar panel for inputs ----
-                column(3,style = "     padding-right: 10px;
-    padding-left: 5px;",
-                       
-                       # div(        
-                       #   style = "  margin-right: -0.2vw; padding: .2vw;",
-                       #   
-                         
-                         uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
-                                  outputId = "kiinc"
-                         ),
-                         
-                         p(class= "boxy",style = " background-color:var(--colemis); ","2021-2023-päästöt alustavista tilastoista"),  
+                         fluidRow( 
+                           style = "padding: .2vw; margin: .5vw;",
+                           # h5(
+                           #   tags$b("Maankäyttösektorin tavoitteet ja päästöt kaudella 2026-2030", 
+                           #          style="color: blue; padding: 1vw;")
+                           # ),
                            
-                         div(        class="slidy", 
-                                     style = " background-color:var(--colemis);",
-                                     sliderTextInput(
-                                       "esd2024", label = "2024 päästöt:", 
-                                       choices = seq(from = 10, to = 30, by = .1),
-                                       selected = 24,
-                                       width = "100%",
-                                       post = " Mt",
-                                       grid =T
-                                     )),
-                         hr(),
-                         div(          class="slidy",  
-                                       style = " background-color:var(--colemis);",
-                                       
-                                       sliderTextInput(
-                                         "esd2025", label = "2025 päästöt:", 
-                                         choices = seq(from =  10, to = 30, by = .1),
-                                         selected = 23,
-                                         width = "100%",
-                                         post = " Mt",
-                                         grid=T
-                                       )),
-                         hr(),
-                         # h5(
-                         #   tags$b("2021-2023-päästöt laskettu lineaarisena kehityksenä",    )),
-                         
-                         # h5(
-                         #   tags$b("Kauden 2021-2025 nettonielu",   )) 
-                       # ),
-                       uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
-                                outputId = "emisc"
-                       ),
-                       
-                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difac"),
-                       
-                       hr(),
-                       
-                       div(  class="slidy",  
-                             style = " background-color:var(--colprice)!important;",
-                             sliderTextInput("priceesdpre", label = "Kauden yksiköiden keskihinta:", 
-                                             choices = seq(from = 0, to = 200, by = 1),
-                                             selected = 50,
-                                             width = "100%",
-                                             post = " €/t",
-                                             grid =T
-                             )),
-                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulac"),
-                       hr(),
-                       hr(),
-                       hr(),
-                ),
-                
-                
-                column(9,class="scrollyb",
-                       
-                       # div(
-                         plotOutput(outputId = "plotesdpre", height = "550px", width = "700px")
-                       # ), 
-                )
-              ),
-              
-)
-,
-
-
-
-
-
-
-
-
-
-div(          style = " background-color:#D6D6D6!important;    ",
-              
-              
-              h3(style="padding-top: .3vw; ",
-                 tags$b("Taakanjakosektori 2026-2030", 
-                        style="color: var(--coltit); padding: 1vw;")
-              ), 
-              
-              fluidRow( 
-                style = "padding: .2vw; margin: .5vw;",
-                # h5(
-                #   tags$b("Maankäyttösektorin tavoitteet ja päästöt kaudella 2026-2030", 
-                #          style="color: blue; padding: 1vw;")
-                # ),
-                
-                # Sidebar panel for inputs ----
-                column(3,style = "     padding-right: 10px;
+                           # Sidebar panel for inputs ----
+                           column(3,
+                                  style = "     padding-right: 10px;
     padding-left: 5px;",
-                       
-                       # div(        
-                       #   style = "  margin-right: -0.2vw; padding: .2vw;",
-                         
-                         
-                         uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
-                                  outputId = "kiind"
+                                  # div(        
+                                  #   style = "  margin-right: -0.2vw; padding: .2vw;",
+                                  
+                                  uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                           outputId = "kiinb"
+                                  ),
+                                  
+                                  # A
+                                  
+                                  
+                                  div(        class="slidy", 
+                                              style = " background-color:var(--colemis);",
+                                              sliderTextInput(
+                                                "lulucf2026", label = "2026 nettopäästöt:", 
+                                                choices = seq(from = -25 , to =10, by = 1),
+                                                selected = -3,
+                                                width = "100%",
+                                                post = " Mt",
+                                                grid =T
+                                              )),
+                                  hr(),
+                                  div(          class="slidy",  
+                                                style = " background-color:var(--colemis);",
+                                                
+                                                sliderTextInput(
+                                                  "lulucf2030", label = "2030 nettopäästöt:", 
+                                                  choices = seq(from = -25 , to = 10, by = 1),
+                                                  selected = -7,
+                                                  width = "100%",
+                                                  post = " Mt",
+                                                  grid=T
+                                                )),
+                                  hr(),
+                                  
+                                  
+                                  # uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                  #          outputId = "kiin"
+                                  # ),
+                                  
+                                  # div(
+                                  p(class= "boxy",style = " background-color:var(--colemis); ","2027-2029 arvot laskettu valintojen lineaarisena kehityksenä",  
+                                    # )
+                                  ),
+                                  
+                                  
+                                  # h5(
+                                  #   tags$b("Kauden 2021-2025 nettonielu",   )) 
+                                  # ),
+                                  # div(                    style = "background-color:var(--coldiff);
+                                  #                         ",
+                                  
+                                  uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+                                           outputId = "emisb"
+                                  ),
+                                  uiOutput( class= "boxy",style = "background-color:var(--coldiff);","difab"),
+                                  
+                                  hr(),
+                                  
+                                  div(  class="slidy",  
+                                        style = " background-color:var(--colprice)!important;",
+                                        sliderTextInput("pricepost", label = "Kauden yksiköiden keskihinta:", 
+                                                        choices = seq(from = 0, to = 100, by = 1),
+                                                        selected = 30,
+                                                        width = "100%",
+                                                        post = " €/t",
+                                                        grid =T
+                                        )),
+                                  hr(),
+                                  
+                                  # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                                  uiOutput(class= "boxy", style = "background-color:var(--colcost); ","pulab")
+                                  # )
+                                  ,
+                                  hr(),
+                                  hr(),
+                           ),
+                           
+                           
+                           column(9,class="scrolly",
+                                  
+                                  # div(
+                                  plotOutput(outputId = "plotlulucf", height = "550px", width = "1100px")
+                                  # ), 
+                           )
                          ),
                          
-                         div(        class="slidy", 
-                                     style = " background-color:var(--colemis);",
-                                     sliderTextInput(
-                                       "esd2026", label = "2026 päästöt:", 
-                                       choices = seq(from = 10, to = 25, by = .1),
-                                       selected = 22,
-                                       width = "100%",
-                                       post = " Mt",
-                                       grid =T
-                                     )),
-                         hr(),
-                         div(          class="slidy",  
-                                       style = " background-color:var(--colemis);",
-                                       
-                                       sliderTextInput(
-                                         "esd2030", label = "2030 päästöt:", 
-                                         choices = seq(from =  10, to = 25, by = .1),
-                                         selected = 19,
-                                         width = "100%",
-                                         post = " Mt",
-                                         grid=T
-                                       )),
-                         hr(),
-                         # h5(class= "boxy",style = " background-color:var(--colemis); color:white",
-                            p(class= "boxy",style = " background-color:var(--colemis); ","2027-2029-päästöt laskettu lineaarisena kehityksenä"  ),
-                       hr(),
-                       
-                         # h5(
-                         #   tags$b("Kauden 2021-2025 nettonielu",   )) 
-                       # ),
-                       
-                       uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
-                                outputId = "emisd"
-                       ),
-                       hr(),
-                       
-                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difad"),
-                       
-                       hr(),
-                       
-                       div(  class="slidy",  
-                             style = " background-color:var(--colprice)!important;",
-                             sliderTextInput("priceesdpost", label = "Kauden yksiköiden keskihinta:", 
-                                             choices = seq(from = 0, to = 200, by = 1),
-                                             selected = 50,
-                                             width = "100%",
-                                             post = " €/t",
-                                             grid =T
-                             )),
-                       # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
-                           uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulad"),
-                       hr(),
-                       hr(),
-                ),
-                
-                
-                column(9,class="scrollyb",
-                       
-                       # div(
-                         plotOutput(outputId = "plotesdpost", height = "550px", width = "800px")
-                       # ), 
-                )
-              ),
-              
-)
+           ), 
+           
+           
+           
+           
+  ),
+  tabPanel("Taakanjakosektori 2021-2025", 
+           div(          style = " background-color:#D6D6D6!important;    ",
+                         
+                         
+                         h3(style="padding-top: .3vw; ",
+                            tags$b("Taakanjakosektori 2021-2025", 
+                                   style="color: var(--coltit); padding: 1vw;")
+                         ), 
+                         
+                         fluidRow( 
+                           style = "padding: .2vw; margin: .5vw;",
+                           # h5(
+                           #   tags$b("Maankäyttösektorin tavoitteet ja päästöt kaudella 2026-2030", 
+                           #          style="color: blue; padding: 1vw;")
+                           # ),
+                           
+                           # Sidebar panel for inputs ----
+                           column(3,style = "     padding-right: 10px;
+    padding-left: 5px;",
+                                  
+                                  # div(        
+                                  #   style = "  margin-right: -0.2vw; padding: .2vw;",
+                                  #   
+                                  
+                                  uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                           outputId = "kiinc"
+                                  ),
+                                  
+                                  p(class= "boxy",style = " background-color:var(--colemis); ","2021-2023-päästöt alustavista tilastoista"),  
+                                  
+                                  div(        class="slidy", 
+                                              style = " background-color:var(--colemis);",
+                                              sliderTextInput(
+                                                "esd2024", label = "2024 päästöt:", 
+                                                choices = seq(from = 10, to = 30, by = .1),
+                                                selected = 24,
+                                                width = "100%",
+                                                post = " Mt",
+                                                grid =T
+                                              )),
+                                  hr(),
+                                  div(          class="slidy",  
+                                                style = " background-color:var(--colemis);",
+                                                
+                                                sliderTextInput(
+                                                  "esd2025", label = "2025 päästöt:", 
+                                                  choices = seq(from =  10, to = 30, by = .1),
+                                                  selected = 23,
+                                                  width = "100%",
+                                                  post = " Mt",
+                                                  grid=T
+                                                )),
+                                  hr(),
+                                  # h5(
+                                  #   tags$b("2021-2023-päästöt laskettu lineaarisena kehityksenä",    )),
+                                  
+                                  # h5(
+                                  #   tags$b("Kauden 2021-2025 nettonielu",   )) 
+                                  # ),
+                                  uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+                                           outputId = "emisc"
+                                  ),
+                                  
+                                  # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                                  uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difac"),
+                                  
+                                  hr(),
+                                  
+                                  div(  class="slidy",  
+                                        style = " background-color:var(--colprice)!important;",
+                                        sliderTextInput("priceesdpre", label = "Kauden yksiköiden keskihinta:", 
+                                                        choices = seq(from = 0, to = 200, by = 1),
+                                                        selected = 50,
+                                                        width = "100%",
+                                                        post = " €/t",
+                                                        grid =T
+                                        )),
+                                  # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                                  uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulac"),
+                                  hr(),
+                                  hr(),
+                                  hr(),
+                           ),
+                           
+                           
+                           column(9,class="scrollyb",
+                                  
+                                  # div(
+                                  plotOutput(outputId = "plotesdpre", height = "550px", width = "700px")
+                                  # ), 
+                           )
+                         ),
+                         
+           )),
+  
+  
+  
+  
+  
+  
+  
+  
+  tabPanel("Taakanjakosektori 2026-2030", 
+           div(          style = " background-color:#D6D6D6!important;    ",
+                         
+                         
+                         h3(style="padding-top: .3vw; ",
+                            tags$b("Taakanjakosektori 2026-2030", 
+                                   style="color: var(--coltit); padding: 1vw;")
+                         ), 
+                         
+                         fluidRow( 
+                           style = "padding: .2vw; margin: .5vw;",
+                           # h5(
+                           #   tags$b("Maankäyttösektorin tavoitteet ja päästöt kaudella 2026-2030", 
+                           #          style="color: blue; padding: 1vw;")
+                           # ),
+                           
+                           # Sidebar panel for inputs ----
+                           column(3,style = "     padding-right: 10px;
+    padding-left: 5px;",
+                                  
+                                  # div(        
+                                  #   style = "  margin-right: -0.2vw; padding: .2vw;",
+                                  
+                                  
+                                  uiOutput(class= "boxy",style = " background-color:var(--colallo); ",
+                                           outputId = "kiind"
+                                  ),
+                                  
+                                  div(        class="slidy", 
+                                              style = " background-color:var(--colemis);",
+                                              sliderTextInput(
+                                                "esd2026", label = "2026 päästöt:", 
+                                                choices = seq(from = 10, to = 25, by = .1),
+                                                selected = 22,
+                                                width = "100%",
+                                                post = " Mt",
+                                                grid =T
+                                              )),
+                                  hr(),
+                                  div(          class="slidy",  
+                                                style = " background-color:var(--colemis);",
+                                                
+                                                sliderTextInput(
+                                                  "esd2030", label = "2030 päästöt:", 
+                                                  choices = seq(from =  10, to = 25, by = .1),
+                                                  selected = 19,
+                                                  width = "100%",
+                                                  post = " Mt",
+                                                  grid=T
+                                                )),
+                                  hr(),
+                                  # h5(class= "boxy",style = " background-color:var(--colemis); color:white",
+                                  p(class= "boxy",style = " background-color:var(--colemis); ","2027-2029-päästöt laskettu lineaarisena kehityksenä"  ),
+                                  hr(),
+                                  
+                                  # h5(
+                                  #   tags$b("Kauden 2021-2025 nettonielu",   )) 
+                                  # ),
+                                  
+                                  uiOutput(class= "boxy",style = " background-color:var(--colemis); ",
+                                           outputId = "emisd"
+                                  ),
+                                  hr(),
+                                  
+                                  # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                                  uiOutput(class= "boxy",style = "background-color:var(--coldiff);","difad"),
+                                  
+                                  hr(),
+                                  
+                                  div(  class="slidy",  
+                                        style = " background-color:var(--colprice)!important;",
+                                        sliderTextInput("priceesdpost", label = "Kauden yksiköiden keskihinta:", 
+                                                        choices = seq(from = 0, to = 200, by = 1),
+                                                        selected = 50,
+                                                        width = "100%",
+                                                        post = " €/t",
+                                                        grid =T
+                                        )),
+                                  # div(style = "border-color: var(--colcu); border-style: solid; border-size: .1px; padding: .2vw;",
+                                  uiOutput(class= "boxy",style = "background-color:var(--colcost);","pulad"),
+                                  hr(),
+                                  hr(),
+                           ),
+                           
+                           
+                           column(9,class="scrollyb",
+                                  
+                                  # div(
+                                  plotOutput(outputId = "plotesdpost", height = "550px", width = "800px")
+                                  # ), 
+                           )
+                         ),
+                         
+           ))
+  
+  # tabPanel("Table", tableOutput("table"))
+),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ,
+
+
+
+
+
+
+
+
+
+
 
 )
 
@@ -1680,6 +1723,12 @@ rv$count = isolate(rv$count)+1
   #   )
   # })
   
+  ger = function(){
+    
+    
+    
+  }
+  
   
   output$plotmetsajapuu <- renderPlot({
     luk = 2010
@@ -1744,7 +1793,7 @@ rv$count = isolate(rv$count)+1
                     fill=col), 
                   size=0)+
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuu", "metsajapuuk"),],
-                aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")),
+                aes(x=year, y=place, label=paste0(format(round(maara,decim), nsmall=decim, decimal.mark = ","))),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("diff") ,],
@@ -1774,7 +1823,7 @@ rv$count = isolate(rv$count)+1
                  size=5*f, fontface="bold", alpha=0,label.size=0)+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "diff"),],

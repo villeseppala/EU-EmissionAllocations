@@ -18,13 +18,16 @@
 --colcost: #361c77;
 --colcu: #df16e2;
 
---colemis:#6b364a;
 
---colallo:#518161;
+--colallo:#3c9990;
 
---coldiff:#a5ae45;
---colprice:#8b513b;
---colcost:  #38553f;
+--colemis:#98428c;
+
+
+--coldiff:#8457cd;
+--colprice:#cca357;
+--colcost:  #3f6099;
+
 --colcu: #a12da7;
 
 
@@ -51,7 +54,7 @@
 --colt: #426f83;
 --colm: #67CEC4;
 --colo: #AA8B56;
-W
+
 --colbtable:#e7e7e7;
 
 
@@ -67,6 +70,8 @@ W
 
 --collineb: #d7d7d7;
 --backs:  #ededed5e;
+--coltab: #89D681;
+
 }  
 .irs--shiny.irs-with-grid {
 height: 40px;
@@ -131,7 +136,28 @@ height: 40px;
 
 hr {border-top: 2px solid white; margin-bottom:13px; margin-top:13px;}
 
+h3 {
+      margin-top: 0;
+  
+}
 
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: var(--collineb);
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    background-color:  var(--coltab);
+    color: black;
+}
 /* 
   margin-right: -0.2vw; 
 
