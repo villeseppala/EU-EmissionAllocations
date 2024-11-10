@@ -152,10 +152,10 @@ document.querySelector('input').addEventListener('input', function(){
 
                     ")),
   
-  # tags$style(type="text/css",
-  #            ".shiny-output-error { visibility: hidden; }",
-  #            ".shiny-output-error:before { visibility: hidden; }"
-  # ),
+  tags$style(type="text/css",
+             ".shiny-output-error { visibility: hidden; }",
+             ".shiny-output-error:before { visibility: hidden; }"
+  ),
   # 
   
   tags$style(HTML(" 
