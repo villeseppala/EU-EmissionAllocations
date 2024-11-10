@@ -71,6 +71,7 @@
 --collineb: #d7d7d7;
 --backs:  #ededed5e;
 --coltab: #89D681;
+--colba: #cccccc;
 
 }  
 .irs--shiny.irs-with-grid {
@@ -144,7 +145,7 @@ h3 {
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     color: #555;
     cursor: default;
-    background-color: var(--collineb);
+    background-color: var(--colba);
     border: 1px solid #ddd;
     border-bottom-color: transparent;
 }

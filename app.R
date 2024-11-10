@@ -60,6 +60,12 @@ re = "#ff4d00"
   gr = "#25fe44"
   dgr = "darkgreen"
   
+  bg = "var(--colba)"
+  bg = "#e7e7e7"
+  bg = "#c2c2c2"
+  bg = "#d9d9d9"
+  bg = "#e1e1e1"
+  
 # --colemis: #24aa61;
 #   
 #   --colallo: #198baa;
@@ -146,11 +152,11 @@ document.querySelector('input').addEventListener('input', function(){
 
                     ")),
   
-  tags$style(type="text/css",
-             ".shiny-output-error { visibility: hidden; }",
-             ".shiny-output-error:before { visibility: hidden; }"
-  ),
-  
+  # tags$style(type="text/css",
+  #            ".shiny-output-error { visibility: hidden; }",
+  #            ".shiny-output-error:before { visibility: hidden; }"
+  # ),
+  # 
   
   tags$style(HTML(" 
                                    hr {
@@ -247,7 +253,7 @@ fluidRow(
 
 
 fluidRow(  div(
-  style = " background-color:#D6D6D6!important;    ",
+  style = " background-color:var(--colba)!important;    ",
 
   style = "padding: .2vw; font-size: 15px !important; margin: 15px;",
   
@@ -281,7 +287,7 @@ tabsetPanel(
   tabPanel("Maankäyttösektori 2021-2025",
            
            
-           div(id ="res1",  style = " background-color:#D6D6D6!important;    ",
+           div(id ="res1",  style = " background-color:var(--colba)!important;    ",
                                              
                                              
                                              h3(style="padding-top: .3vw; ",
@@ -289,7 +295,7 @@ tabsetPanel(
                                                        style="color: var(--coltit); padding: 1vw;")
                                              ), 
                                              fluidRow( 
-                                               style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+                                               style = "background-color:var(--colba)!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
                                                h4(
                                                  tags$b("Metsämaa ja puutuotteet kaudella 2021-2025", 
                                                         style="color: black; padding: 1vw;")
@@ -396,7 +402,7 @@ tabsetPanel(
                                              
                                              # div(
                                              
-                                             fluidRow(style = "background-color:#D6D6D6!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
+                                             fluidRow(style = "background-color:var(--colba)!important; border-color: black; border-style: solid; border-size: .1px; padding: .2vw; margin: .5vw;",
                                                       column(3,style = "     padding-right: 10px;
     padding-left: 5px;",
                                                              div(   class="slidy",         
@@ -436,7 +442,7 @@ tabsetPanel(
   ),
   tabPanel("Maankäyttösektori 2026-2030",
            
-           div(          style = " background-color:#D6D6D6!important;    ",
+           div(          style = " background-color:var(--colba)!important;    ",
                          
                          
                          h3(style="padding-top: .3vw; ",
@@ -548,7 +554,7 @@ tabsetPanel(
            
   ),
   tabPanel("Taakanjakosektori 2021-2025", 
-           div(          style = " background-color:#D6D6D6!important;    ",
+           div(          style = " background-color:var(--colba)!important;    ",
                          
                          
                          h3(style="padding-top: .3vw; ",
@@ -650,7 +656,7 @@ tabsetPanel(
   
   
   tabPanel("Taakanjakosektori 2026-2030", 
-           div(          style = " background-color:#D6D6D6!important;    ",
+           div(          style = " background-color:var(--colba)!important;    ",
                          
                          
                          h3(style="padding-top: .3vw; ",
@@ -1769,10 +1775,7 @@ rv$count = isolate(rv$count)+1
     # ran =.07
     ba =5.25
     koke[,place := ma + ba + ran*0.064*hi]
-    
-    bg = "#D6D6D6"
-    bg = "#e7e7e7"
-    bg = "#d9d9d9"
+
     
     #e6e6e6
     #e7e7e7
@@ -1827,15 +1830,15 @@ rv$count = isolate(rv$count)+1
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "diff"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
                 size=5*f, fontface="bold")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "price"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("cost"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
                 size=5*f, fontface="bold")+
       
       
@@ -2031,11 +2034,11 @@ rv$count = isolate(rv$count)+1
     koke = koke[sector %in% c("lulucf", "lallocation", "diff", "cost",  "price") & year %in% C(luk:2030)]
 
 
-    
-    bg = "#e7e7e7"
-    bg = "#d9d9d9"
-    bg = "#D6D6D6"
-    
+    # 
+    # bg = "#e7e7e7"
+    # bg = "#d9d9d9"
+    # bg = "var(--colba)"
+    # 
     
     #e7e7e7
     
@@ -2101,21 +2104,24 @@ rv$count = isolate(rv$count)+1
                  size=5*f, fontface="bold", alpha=0,label.size=0)+
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c("lulucf", "lallocation"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
                 size=5*f, fontface="bold", color="white")+
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "diff"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
                 size=5*f, fontface="bold")+
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "price"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
                 size=5*f, fontface="bold", color="white")+
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c("cost"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
                 size=5*f, fontface="bold")+
 
+
+      
+      
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c("lallocation"),],
                 aes(x=year+1.5, y=place+.059*hi, label="Kertymä"), size=5*f, fontface="bold", color ="black")+
@@ -2257,12 +2263,12 @@ rv$count = isolate(rv$count)+1
     koke = koke[sector %in% c("esd", "allocation", "diff", "cost",  "price") & year %in% C(luk:2025)]
     
     
-    
-    bg = "#e7e7e7"
-    bg = "#D6D6D6"
-    bg = "#d9d9d9"
-    
-    
+    # 
+    # bg = "#e7e7e7"
+    # bg = "var(--colba)"
+    # bg = "#d9d9d9"
+    # 
+    # 
     #e7e7e7
     
     # for scaling scales
@@ -2327,20 +2333,22 @@ rv$count = isolate(rv$count)+1
                  size=5*f, fontface="bold", alpha=0,label.size=0)+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("esd", "allocation"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "diff"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
                 size=5*f, fontface="bold")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "price"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("cost"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
                 size=5*f, fontface="bold")+
+      
+
       
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("allocation"),],
@@ -2494,13 +2502,13 @@ rv$count = isolate(rv$count)+1
     koke = as.data.table(koke)
     koke = koke[sector %in% c("esd", "allocation", "diff", "cost",  "price") & year %in% C(luk:2030)]
     
-    
-    
-    bg = "#e7e7e7"
-    bg = "#D6D6D6"
-    bg = "#d9d9d9"
-    
-    
+    # 
+    # 
+    # bg = "#e7e7e7"
+    # bg = "var(--colba)"
+    # bg = "#d9d9d9"
+
+    # 
     #e7e7e7
     
     # for scaling scales
@@ -2565,20 +2573,25 @@ rv$count = isolate(rv$count)+1
                  size=5*f, fontface="bold", alpha=0,label.size=0)+
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c("esd", "allocation"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "diff"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,decim), nsmall=decim, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
                 size=5*f, fontface="bold")+
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "price"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ",")),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
                 size=5*f, fontface="bold", color="white")+
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c("cost"),],
-                aes(x=year+1.5, y=place, label=format(round(maarab,0), nsmall=0, decimal.mark = ","), color=col3),
+                aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
                 size=5*f, fontface="bold")+
+      
+      
+
+      
+      
       
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c("allocation"),],
