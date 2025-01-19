@@ -330,6 +330,21 @@ tabsetPanel(
                                                                     post = " Mt",
                                                                     grid =T
                                                                   )),
+                                                      
+                                                      
+                                                      # div(     
+                                                      #   class="slidy", 
+                                                      #             style = " background-color:var(--colemis);",
+                                                      #             numericInput(
+                                                      #               "lulucf2024", label = "2024 nettopäästöt:", 
+                                                      #               # choices = seq(from = -35, to = 0, by = 1),
+                                                      #               value = -14,
+                                                      #              min=-35, max=0,
+                                                      #               width = "30px",
+                                                      #               # post = " Mt",
+                                                      #               # grid =T
+                                                      #             )),
+                                                      
                                                       hr(),
                                                       div(          class="slidy",  
                                                                     style = " background-color:var(--colemis);",
