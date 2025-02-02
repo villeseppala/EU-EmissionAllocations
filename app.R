@@ -11,6 +11,7 @@ library(data.table)
 # library(tibble)
 # library(tidyr)
 library(shinyWidgets)
+# library(extrafont)
 # library(shinyjs)
 # https://stackoverflow.com/questions/65142640/how-to-store-previous-states-of-reactive-variables-in-r-shiny-application
 #ff
@@ -56,15 +57,61 @@ price =  "#cca357"
 debt ="#8457cd"
 
 
-re = "#ff4d00"
-  gr = "#25fe44"
-  dgr = "darkgreen"
+
+
+allo ="#3c9990"
+
+emis = "#98428c"
+
+cumc ="#3f6099"
+price =  "#cca357"
+
+debt ="#664488"
+# debt ="#408fbf"
+# 
+
+
+re = "#cc0000"
+gr = "#139900"
+dgr = "black"
+re2 = dgr
+  
+  
+  allo ="#264653"
+  
+  emis = "#f4a261"
+  
+  cumc ="#0068af"
+  price =  "#e9c46a"
+  
+  debt ="#f0a390"
+  # debt ="#408fbf"
+  # 
+  
+  
+  allo ="#008080"
+  
+  emis = "#70a494"
+  
+  cumc ="#b4c8a8"
+  price = "#edbb8a"
+  
+  debt ="#de8a5a" 
+  
+  
+  # re = "#e76f51"
+  # gr = "#2a9d8f"
+  # dgr = "darkgreen"
+  # re = "#ca562c"
+  # gr = "#25fe44"
+  # dgr = "darkgreen"
   
   bg = "var(--colba)"
   bg = "#e7e7e7"
   bg = "#c2c2c2"
   bg = "#d9d9d9"
   bg = "#e1e1e1"
+  teksvari  = "white"
   
 # --colemis: #24aa61;
 #   
@@ -92,7 +139,7 @@ koki[sector =="allocation", col :=allo]
 koki[sector =="esd", col :=emis]
 
 lyear = koki[sector == "metsajapuu" & maara <1000000, max(year)]
-
+llyear = 2023
 
 #https://julkaisut.valtioneuvosto.fi/bitstream/handle/10024/165717/VNTEAS_2024_26.pdf?
 
@@ -237,7 +284,7 @@ fluidRow(
 #   ) ,
 
   column(10,
-  h3(style="padding-top: .1vw; ",
+  h3(style="padding-top: .94vw; ",
      tags$b("Suomen EU-päästötavoitteista poikkeamisen kustannusten ja tuottojen hahmottaminen", 
             style="color: white; ")
   ) ), 
@@ -323,9 +370,9 @@ tabsetPanel(
                                                       div(        class="slidy", 
                                                                   style = " background-color:var(--colemis);",
                                                                   sliderTextInput(
-                                                                    "lulucf2024", label = "2024 nettopäästöt:", 
-                                                                    choices = seq(from = -35, to = 0, by = 1),
-                                                                    selected = -14,
+                                                                    "lulucf2024", label = "2024 päästöt:", 
+                                                                    choices = seq(from = -15, to = 5, by = 1),
+                                                                    selected = -1,
                                                                     width = "100%",
                                                                     post = " Mt",
                                                                     grid =T
@@ -352,9 +399,9 @@ tabsetPanel(
                                                                     # style = "color:#4ba180;",
                                                                     
                                                                     sliderTextInput(
-                                                                      "lulucf2025", label = "2025 nettopäästöt:", 
-                                                                      choices = seq(from = -35, to = 0, by = 1),
-                                                                      selected = -14,
+                                                                      "lulucf2025", label = "2025 päästöt:", 
+                                                                      choices = seq(from = -15, to = 5, by = 1),
+                                                                      selected = -1,
                                                                       width = "100%",
                                                                       post = " Mt",
                                                                       grid=T
@@ -489,9 +536,9 @@ tabsetPanel(
                                   div(        class="slidy", 
                                               style = " background-color:var(--colemis);",
                                               sliderTextInput(
-                                                "lulucf2026", label = "2026 nettopäästöt:", 
-                                                choices = seq(from = -25 , to =10, by = 1),
-                                                selected = -3,
+                                                "lulucf2026", label = "2026 päästöt:", 
+                                                choices = seq(from = -20, to =20, by = 1),
+                                                selected = 10,
                                                 width = "100%",
                                                 post = " Mt",
                                                 grid =T
@@ -501,9 +548,9 @@ tabsetPanel(
                                                 style = " background-color:var(--colemis);",
                                                 
                                                 sliderTextInput(
-                                                  "lulucf2030", label = "2030 nettopäästöt:", 
-                                                  choices = seq(from = -25 , to = 10, by = 1),
-                                                  selected = -7,
+                                                  "lulucf2030", label = "2030 päästöt:", 
+                                                  choices = seq(from = -20 , to = 20, by = 1),
+                                                  selected = 5,
                                                   width = "100%",
                                                   post = " Mt",
                                                   grid=T
@@ -596,7 +643,10 @@ tabsetPanel(
                                            outputId = "kiinc"
                                   ),
                                   
-                                  p(class= "boxy",style = " background-color:var(--colemis); ","2021-2023-päästöt alustavista tilastoista"),  
+                                  # p(class= "boxy",style = " background-color:var(--colemis); ","2021-2023-päästöt alustavista tilastoista"),  
+                                  
+                                  uiOutput(   class= "boxy",     style = " background-color:var(--colemis);",
+                                              outputId = "alu3"),
                                   
                                   div(        class="slidy", 
                                               style = " background-color:var(--colemis);",
@@ -1090,44 +1140,44 @@ server <- function(input, output) {
   output$kiin= renderText({
     paste(
       
-      "2021-2025 nielutavoite -96,4 Mt yhteensä, -19,3 Mt vuodessa"
+      "2021-2025 nielutavoite:\n",'<br>',"-19,3 Mt/vuosi, -96,4 Mt yhteensä"
 )})
   
   output$kiinb= renderText({
     paste(
       
-      "2026-2030 nielutavoite ", rv$cumallob, " Mt yhteensä"
+      "2026-2030 nielutavoite:",'<br>',  rv$cumallob, " Mt yhteensä"
     )})
   output$kiinc= renderText({
     paste(
       
-      "2021-2025 päästötavoite ", rv$cumalloc, " Mt yhteensä"
+      "2021-2025 päästötavoite:",'<br>',  rv$cumalloc, " Mt yhteensä"
     )})
   output$kiind= renderText({
     paste(
       
-      "2026-2030 päästötavoite ", rv$cumallod, " Mt yhteensä"
+      "2026-2030 päästötavoite:",'<br>',  rv$cumallod, " Mt yhteensä"
     )})
   output$emisa= renderText({
     paste(
       
-      "2021-2025 nettopäästöt -", rv$cumsink, " Mt yhteensä"
+      "2021-2025 nettopäästöt:",'<br>', "-", rv$cumsink, " Mt yhteensä"
     )})
   
   output$emisb= renderText({
     paste(
       
-      "2026-2030 nettopäästöt -", rv$cumsinkb, " Mt yhteensä"
+      "2026-2030 nettopäästöt:",'<br>', "-", rv$cumsinkb, " Mt yhteensä"
     )})
   output$emisc= renderText({
     paste(
       
-      "2021-2025 päästöt ", rv$cumsinkc, " Mt yhteensä"
+      "2021-2025 päästöt: ",'<br>', rv$cumsinkc, " Mt yhteensä"
     )})
   output$emisd= renderText({
     paste(
       
-      "2026-2030 päästöt ", rv$cumsinkd, " Mt yhteensä"
+      "2026-2030 päästöt: ",'<br>', rv$cumsinkd, " Mt yhteensä"
     )})
   
   
@@ -1135,7 +1185,13 @@ server <- function(input, output) {
   output$alu= renderText({
     paste(
       
-      "2021-2023 nettopäästöt alustavista tilastoista"
+      "2021-2023 päästöt:",'<br>',  rv$cumsink3, "Mt yhteensä"
+    )})
+  
+  output$alu3= renderText({
+    paste(
+      
+      "2021-2023 päästöt:",'<br>',  rv$cumsinkc3, "Mt yhteensä"
     )})
   
   output$difad= renderText({
@@ -1305,6 +1361,9 @@ server <- function(input, output) {
     mor =   cumsum(koki[year %in% c(2021:2025) & sector =="metsajapuu", maara])
     koki = koki[year %in% c(2021:2025)& sector =="metsajapuu", maarab :=mor]
     
+    mor =   cumsum(koki[year %in% c(2021:llyear) & sector =="metsajapuu", maara])
+    koki = koki[year %in% c(2021:llyear)& sector =="metsajapuu", maarac :=mor]
+    
     
     mor =   cumsum(koki[year %in% c(2021:2025) & sector =="diff", maara])
     koki = koki[year %in% c(2021:2025)& sector =="diff", maarab :=mor]
@@ -1329,7 +1388,18 @@ server <- function(input, output) {
     
     rv$cumsink= format(round(koki[year %in% 2025 & sector =="metsajapuu", abs(maarab)],1), nsmall=1, decimal.mark=",")
     rv$cumsinki= koki[year %in% 2025 & sector =="metsajapuu", maarab]  
+    
+    # observerd years 
+    # 
+    # rv$lu2021 = format(round(koki[year %in% 2021 & sector =="metsajapuu", abs(maara)],1), nsmall=1, decimal.mark=",")
+    # rv$lu2022 = format(round(koki[year %in% 2022 & sector =="metsajapuu", abs(maara)],1), nsmall=1, decimal.mark=",")
+    # rv$lu2023 = format(round(koki[year %in% 2023 & sector =="metsajapuu", abs(maara)],1), nsmall=1, decimal.mark=",")
+    
+    rv$cumsink3= format(round(koki[year %in% c(llyear) & sector =="metsajapuu", maarac],1), nsmall=1, decimal.mark=",")
+    rv$cumsinki3=cumsum(koki[year %in% c(llyear) & sector =="metsajapuu", maarac])
   
+      
+    
     rv$cumallo= format(round(koki[year %in% 2025 & sector =="metsajapuuk", abs(maarab)],1), nsmall=1, decimal.mark=",")
     rv$cumalloi= koki[year %in% 2025 & sector =="metsajapuuk", maarab]  
     
@@ -1530,6 +1600,9 @@ rv$count = isolate(rv$count)+1
     mor =   cumsum(koki[year %in% c(2021:2025) & sector =="esd", maara])
     koki = koki[year %in% c(2021:2025)& sector =="esd", maarab :=mor]
     
+    mor =   cumsum(koki[year %in% c(2021:llyear) & sector =="esd", maara])
+    koki = koki[year %in% c(2021:llyear)& sector =="esd", maarac :=mor]
+    
     
     mor =   cumsum(koki[year %in% c(2021:2025) & sector =="diff", maara])
     koki = koki[year %in% c(2021:2025)& sector =="diff", maarab :=mor]
@@ -1551,6 +1624,10 @@ rv$count = isolate(rv$count)+1
     koki[maara > 0, col2 :=re]
     koki[maarab < 0, col3 :=gr]
     koki[maarab > 0, col3 :=re]
+    
+    
+      rv$cumsinkc3= format(round(koki[year %in% c(llyear) & sector =="esd", maarac],1), nsmall=1, decimal.mark=",")
+    rv$cumsinkic3=cumsum(koki[year %in% c(llyear) & sector =="esd", maarac])
     
     
     rv$cumsinkc= format(round(koki[year %in% 2025 & sector =="esd", abs(maarab)],1), nsmall=1, decimal.mark=",")
@@ -1804,7 +1881,7 @@ rv$count = isolate(rv$count)+1
       
   
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuuk"),],
-                aes(x=year, y=place+.059*hi, label=year), size=5*f, fontface="bold", color ="black")+
+                aes(x=year, y=place+.059*hi, label=year), size=5*f, fontface="bold", color ="black", family="Helvetica-Narrow")+
      
       geom_rect(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "cost", "price"),],
                 aes(xmin=luk, xmax=year+1.5+.9, ymax=(place+0.03*hi), ymin=(place-0.03*hi),
@@ -1812,14 +1889,14 @@ rv$count = isolate(rv$count)+1
                   size=0)+
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("metsajapuu", "metsajapuuk"),],
                 aes(x=year, y=place, label=paste0(format(round(maara,decim), nsmall=decim, decimal.mark = ","))),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("diff") ,],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
           geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "price"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
             geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "cost"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
@@ -1827,7 +1904,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2021) & sector %in% c("metsajapuu", "metsajapuuk", "diff", "price",  "cumu", "cost", "debt"),],
                 aes(x=2020.2, y=place, label=paste0(lab, ":")), 
-                size=5*f, hjust=1, fontface="bold", color="white")+
+                size=5*f, hjust=1, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2021:2024) & sector %in% c("cumu"),],
                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")),
@@ -1842,7 +1919,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("metsajapuu", "metsajapuuk"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "diff"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
@@ -1850,7 +1927,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "price"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("cost"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
@@ -1981,7 +2058,8 @@ rv$count = isolate(rv$count)+1
       
       labs(caption =c("", 
                       "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
-      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
+      # scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
+      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis= dup_axis())   +
       
         scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
        scale_alpha_identity() + 
@@ -1995,8 +2073,8 @@ rv$count = isolate(rv$count)+1
         axis.text.x = element_text(size=15*f), 
           axis.title.y.left=element_text(color=dgr),
         axis.text.y.left=element_text(color=dgr, size=15*f),
-        axis.title.y.right=element_text(color=re),
-        axis.text.y.right=element_text(color=re, size=15*f),
+        axis.title.y.right=element_text(color=re2),
+        axis.text.y.right=element_text(color=re2, size=15*f),
          axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 
@@ -2090,14 +2168,14 @@ rv$count = isolate(rv$count)+1
                 size=0)+
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c("lulucf", "lallocation"),],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
 
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c("diff") ,],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c( "price"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c( "cost"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
@@ -2105,7 +2183,7 @@ rv$count = isolate(rv$count)+1
 
       geom_text(data=koke[year %in% c(2026) & sector %in% c("lulucf", "lallocation", "diff", "price",  "cumu", "cost", "debt"),],
                 aes(x=2025.2, y=place, label=paste0(lab, ":")),
-                size=5*f, hjust=1, fontface="bold", color="white")+
+                size=5*f, hjust=1, fontface="bold", color=teksvari)+
 
       geom_text(data=koke[year %in% c(2026:2029) & sector %in% c("cumu"),],
                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")),
@@ -2120,7 +2198,7 @@ rv$count = isolate(rv$count)+1
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c("lulucf", "lallocation"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "diff"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
@@ -2128,7 +2206,7 @@ rv$count = isolate(rv$count)+1
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "price"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
 
       geom_text(data=koke[year %in% c(2030) & sector %in% c("cost"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
@@ -2223,7 +2301,8 @@ rv$count = isolate(rv$count)+1
       
       labs(caption =c("", 
                       "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
-      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
+      # scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
+      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis= dup_axis())   +
       
       scale_x_continuous(breaks =seq(luk, 2030, by=1), minor_breaks = seq(luk-.5, 2030.5, by=1))   +
       scale_alpha_identity() + 
@@ -2237,8 +2316,8 @@ rv$count = isolate(rv$count)+1
         axis.text.x = element_text(size=15*f), 
         axis.title.y.left=element_text(color=dgr),
         axis.text.y.left=element_text(color=dgr, size=15*f),
-        axis.title.y.right=element_text(color=re),
-        axis.text.y.right=element_text(color=re, size=15*f),
+        axis.title.y.right=element_text(color=re2),
+        axis.text.y.right=element_text(color=re2, size=15*f),
         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 
@@ -2319,14 +2398,14 @@ rv$count = isolate(rv$count)+1
                 size=0)+
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("esd", "allocation"),],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c("diff") ,],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "price"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       geom_text(data=koke[year %in% c(2021:2025) & sector %in% c( "cost"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
@@ -2334,7 +2413,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("esd", "allocation",  "diff", "price",  "cumu", "cost", "debt"),],
                 aes(x=2020.2, y=place, label=paste0(lab, ":")),
-                size=5*f, hjust=1, fontface="bold", color="white")+
+                size=5*f, hjust=1, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2026:2029) & sector %in% c("cumu"),],
                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")),
@@ -2349,7 +2428,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("esd", "allocation"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "diff"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
@@ -2357,7 +2436,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c( "price"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2025) & sector %in% c("cost"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
@@ -2458,7 +2537,8 @@ rv$count = isolate(rv$count)+1
       
       labs(caption =c("", 
                       "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
-      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
+      # scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
+      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis= dup_axis())   +
       
       scale_x_continuous(breaks =seq(luk, 2025, by=1), minor_breaks = seq(luk-.5, 2025.5, by=1))   +
       scale_alpha_identity() + 
@@ -2472,8 +2552,8 @@ rv$count = isolate(rv$count)+1
         axis.text.x = element_text(size=15*f), 
         axis.title.y.left=element_text(color=dgr),
         axis.text.y.left=element_text(color=dgr, size=15*f),
-        axis.title.y.right=element_text(color=re),
-        axis.text.y.right=element_text(color=re, size=15*f),
+        axis.title.y.right=element_text(color=re2),
+        axis.text.y.right=element_text(color=re2, size=15*f),
         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 
@@ -2559,14 +2639,14 @@ rv$count = isolate(rv$count)+1
                 size=0)+
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c("esd", "allocation"),],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c("diff") ,],
                 aes(x=year, y=place, label=format(round(maara,decim), nsmall=decim, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c( "price"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ",")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       geom_text(data=koke[year %in% c(2026:2030) & sector %in% c( "cost"),],
                 aes(x=year, y=place, label=format(round(maara,0), nsmall=0, decimal.mark = ","), color=col2),
                 size=5*f, fontface="bold")+
@@ -2574,7 +2654,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2026) & sector %in% c("esd", "allocation",  "diff", "price",  "cumu", "cost", "debt"),],
                 aes(x=2025.2, y=place, label=paste0(lab, ":")),
-                size=5*f, hjust=1, fontface="bold", color="white")+
+                size=5*f, hjust=1, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2026:2029) & sector %in% c("cumu"),],
                 aes(x=year, y=place, label=format(round(maara,1), nsmall=1, decimal.mark = ",")),
@@ -2589,7 +2669,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c("esd", "allocation"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "diff"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=decim, decimal.mark = ","), " Mt"), color=col3),
@@ -2597,7 +2677,7 @@ rv$count = isolate(rv$count)+1
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c( "price"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " €/t")),
-                size=5*f, fontface="bold", color="white")+
+                size=5*f, fontface="bold", color=teksvari)+
       
       geom_text(data=koke[year %in% c(2030) & sector %in% c("cost"),],
                 aes(x=year+1.5, y=place, label=paste0(format(round(maarab,decim), nsmall=0, decimal.mark = ","), " M€"), color=col3),
@@ -2699,7 +2779,8 @@ rv$count = isolate(rv$count)+1
       
       labs(caption =c("", 
                       "Data: Tilastokeskus, Luonnonvarakeskus, omat laskelmat.  Kuva: villeseppala.github.io/EU-EmissionAllocations")) +
-      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa"))   +
+      # scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis=sec_axis(~./scaleFactor, name="Kustannukset, miljoonaa euroa", breaks=waiver()))   +
+      scale_y_continuous(name= "Päästöt, miljoonaa tCO2-ekvivalenttia",sec.axis= dup_axis())   +
       
       scale_x_continuous(breaks =seq(luk, 2030, by=1), minor_breaks = seq(luk-.5, 2030.5, by=1))   +
       scale_alpha_identity() + 
@@ -2713,8 +2794,8 @@ rv$count = isolate(rv$count)+1
         axis.text.x = element_text(size=15*f), 
         axis.title.y.left=element_text(color=dgr),
         axis.text.y.left=element_text(color=dgr, size=15*f),
-        axis.title.y.right=element_text(color=re),
-        axis.text.y.right=element_text(color=re, size=15*f),
+        axis.title.y.right=element_text(color=re2),
+        axis.text.y.right=element_text(color=re2, size=15*f),
         axis.title.x= element_blank(),
         plot.background = element_rect(fill =bg ,color="grey"), 
         panel.background = element_rect(fill = bg, color="grey"), 

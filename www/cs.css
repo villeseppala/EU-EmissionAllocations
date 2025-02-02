@@ -4,7 +4,7 @@
  {
    
 --colb: #D6D6D6;
---colback:  #41644A;
+--colback:  #008080;
 --colbcard: #BDBDBD;
 
 
@@ -31,9 +31,23 @@
 --colcu: #a12da7;
 
 
+--colallo:#008080;
+
+--colemis:#70a494;
 
 
---colm: #89D681;
+--coldiff: #b4c8a8;
+--colprice:#edbb8a;
+--colcost: #de8a5a;
+
+--colcu: #a12da7;
+
+
+
+
+  
+
+--colm: #008080;
 --colo: #E86A33;
 --colink: #C98B2C;
 --colbut: #C98B2C;
@@ -65,12 +79,12 @@
 --colslide:#67CEC4;
 --colcheck: #5ABAE0;
 
---collinea: #41644A;
+--collinea: #008080;
 --collinea: #D3DDE0;
 
 --collineb: #d7d7d7;
 --backs:  #ededed5e;
---coltab: #89D681;
+--coltab: #b4c8a8;
 --colba: #cccccc;
 
 }  
@@ -117,6 +131,10 @@ height: 40px;
     height: 22px;
     top: -9px;
     z-index: 2;
+}
+
+.irs--shiny .irs-bar {
+ border: 1px solid white;
 }
 
 .slidy {
