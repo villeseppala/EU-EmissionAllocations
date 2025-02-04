@@ -371,8 +371,8 @@ tabsetPanel(
                                                                   style = " background-color:var(--colemis);",
                                                                   sliderTextInput(
                                                                     "lulucf2024", label = "2024 päästöt:", 
-                                                                    choices = seq(from = -15, to = 5, by = 1),
-                                                                    selected = -1,
+                                                                    choices = seq(from = -15, to = 10, by = 1),
+                                                                    selected = 3,
                                                                     width = "100%",
                                                                     post = " Mt",
                                                                     grid =T
@@ -400,8 +400,8 @@ tabsetPanel(
                                                                     
                                                                     sliderTextInput(
                                                                       "lulucf2025", label = "2025 päästöt:", 
-                                                                      choices = seq(from = -15, to = 5, by = 1),
-                                                                      selected = -1,
+                                                                      choices = seq(from = -15, to = 10, by = 1),
+                                                                      selected = 7,
                                                                       width = "100%",
                                                                       post = " Mt",
                                                                       grid=T
@@ -538,7 +538,7 @@ tabsetPanel(
                                               sliderTextInput(
                                                 "lulucf2026", label = "2026 päästöt:", 
                                                 choices = seq(from = -20, to =20, by = 1),
-                                                selected = 10,
+                                                selected = 12,
                                                 width = "100%",
                                                 post = " Mt",
                                                 grid =T
@@ -550,7 +550,7 @@ tabsetPanel(
                                                 sliderTextInput(
                                                   "lulucf2030", label = "2030 päästöt:", 
                                                   choices = seq(from = -20 , to = 20, by = 1),
-                                                  selected = 5,
+                                                  selected = 11,
                                                   width = "100%",
                                                   post = " Mt",
                                                   grid=T
